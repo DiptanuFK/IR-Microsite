@@ -146,7 +146,7 @@ nav a.active {
 
 /* ── Dropdown – hidden by default, shown on hamburger click ── */
 .nav-dropdown {
-  width: 198px;
+  width: auto;
   align-self: center;
   margin-top: 8px;
   background: var(--color-glass);
