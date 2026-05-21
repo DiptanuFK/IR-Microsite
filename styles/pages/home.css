@@ -830,13 +830,13 @@
   z-index: 2;
 }
 .apart-card-text h3 {
-  font-size: clamp(16px, 3.2vw, 56px);
+  font-size: clamp(32px, 3.2vw, 56px);
   font-weight: 700;
   color: var(--color-accent);
   line-height: 1.3;
 }
 .apart-card-text p {
-  font-size: clamp(12px, 1.85vw, 32px);
+  font-size: clamp(24px, 1.85vw, 32px);
   font-weight: 500;
   color: #fff;
   line-height: 1.5;
