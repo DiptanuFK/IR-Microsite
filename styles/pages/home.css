@@ -772,8 +772,6 @@
 .apart { background: var(--color-bg); }
 /* ── Apart: pinned stacking deck ── */
 .apart {
-  position: relative;
-  z-index: 0;
   /* tall enough for ScrollTrigger to scrub through all 5 cards
      300vh = 100vh pin + 5 × 40vh card transitions. Adjust to taste. */
   height: 340vh;
