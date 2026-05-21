@@ -787,15 +787,15 @@
 }
 .apart-stage {
   display: flex;
+  flex-direction: column;
   gap: var(--gutter);
 }
 .apart-card {
-  flex: 1;
   position: relative;
   border-radius: var(--radius-round);
   overflow: hidden;
   background: #111;
-  aspect-ratio: 4 / 5;
+  height: 50vh;
 }
 .apart-card-img {
   position: absolute;
