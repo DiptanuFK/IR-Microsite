@@ -787,11 +787,10 @@
 }
 .apart-stage {
   display: flex;
-  flex-wrap: wrap;
   gap: var(--gutter);
 }
 .apart-card {
-  flex: 1 1 calc(33.333% - var(--gutter));
+  flex: 1;
   position: relative;
   border-radius: var(--radius-round);
   overflow: hidden;
