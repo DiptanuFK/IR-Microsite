@@ -70,7 +70,7 @@
 }
 
 /* ── tablet breakpoint ── */
-@media (max-width: var(--bp-tablet)) {
+@media (max-width: 1024px) {
   .hero { display: block; }
   .hero-inner {
     display: flex;
@@ -185,7 +185,7 @@
 .ceo-play { width: clamp(60px, 5.56vw, 96px); height: clamp(60px, 5.56vw, 96px); display: block; }
 
 /* ── desktop breakpoint ── */
-@media (max-width: var(--bp-desktop)) {
+@media (max-width: 1440px) {
   .ceo-card          { padding: 0; display: flex; overflow: hidden; }
   .ceo-text          { position: absolute; top: 0; left: 56px; bottom: 0; width: 45%; justify-content: center; z-index: 1; }
   .ceo-img-container { width: 474px; height: clamp(400px, 35.59vw, 615px); margin-left: auto; flex-shrink: 0; }
@@ -193,7 +193,7 @@
 }
 
 /* ── tablet breakpoint ── */
-@media (max-width: var(--bp-tablet)) {
+@media (max-width: 1024px) {
   .ceo-message {
     padding: 24px var(--page-pad-tablet);
     height: auto;
@@ -384,7 +384,7 @@
 .adv-card p  { font-size: clamp(13px, 1.16vw, 20px); font-weight: 400; color: var(--color-text-muted); line-height: 1.5; }
 
 /* ── desktop-lg breakpoint ── */
-@media (min-width: var(--bp-desktop-lg)) {
+@media (min-width: 1729px) {
   .advantages { height: clamp(919px, 35.9vw, 920px); }
   .adv-bg-img {
     top: clamp(-272px, -10.6vw, -272px);
@@ -408,13 +408,13 @@
 }
 
 /* ── desktop breakpoint ── */
-@media (max-width: var(--bp-desktop)) {
+@media (max-width: 1440px) {
   .advantages { height: clamp(700px, 53.2vw, 919px); }
   .adv-people-layer { left: 44%; width: 56%; }
 }
 
 /* ── tablet breakpoint ── */
-@media (max-width: var(--bp-tablet)) {
+@media (max-width: 1024px) {
   .advantages {
     position: relative;
     height: auto;
@@ -471,7 +471,7 @@
 }
 
 /* ── tablet-sm breakpoint ── */
-@media (max-width: var(--bp-tablet-sm)) {
+@media (max-width: 768px) {
   .adv-people-layer { aspect-ratio: 1587 / 1180; }
   .adv-heading {
     margin: 40px var(--page-pad-tablet) 28px;
@@ -490,7 +490,7 @@
 }
 
 /* ── mobile-sm breakpoint ── */
-@media (max-width: var(--bp-mobile-sm)) {
+@media (max-width: 425px) {
   .adv-heading { margin-top: 32px; margin-bottom: 24px; max-width: 100%; font-size: clamp(15px, 5.5vw, 24px); }
   .adv-cards  { gap: clamp(8px, 2.5vw, 10px); }
   .adv-card   { border-radius: var(--adv-card-radius-sm); padding: clamp(12px, 3.5vw, 16px) clamp(14px, 4.5vw, 18px); min-height: clamp(80px, 22vw, 88px); }
@@ -670,7 +670,7 @@
 }
 
 /* ── tablet breakpoint ── */
-@media (max-width: var(--bp-tablet)) {
+@media (max-width: 1024px) {
   .impact {
     padding-left: var(--page-pad-tablet);
     padding-right: var(--page-pad-tablet);
@@ -691,7 +691,7 @@
 }
 
 /* ── tablet-sm breakpoint ── */
-@media (max-width: var(--bp-tablet-sm)) {
+@media (max-width: 768px) {
   .impact {
     --impact-card-radius: 20px;
     --impact-chip-radius: 22px;
@@ -729,7 +729,7 @@
 }
 
 /* ── mobile-sm breakpoint ── */
-@media (max-width: var(--bp-mobile-sm)) {
+@media (max-width: 425px) {
   .impact {
     --impact-card-radius: 18px;
     --impact-chip-radius: 20px;
@@ -745,7 +745,7 @@
 }
 
 /* ── mobile-xs breakpoint ── */
-@media (max-width: var(--bp-mobile-xs)) {
+@media (max-width: 375px) {
   .impact {
     --impact-card-radius: clamp(14px, 4.5vw, 18px);
     --impact-chip-radius: clamp(16px, 5vw, 20px);
