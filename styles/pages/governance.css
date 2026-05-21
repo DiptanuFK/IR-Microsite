@@ -58,9 +58,8 @@
 body { background: var(--gov-bg-primary); }
 
 .gov-container {
-  max-width: var(--gov-max-width);
-  margin: 0 auto;
-  padding: 0 clamp(16px, 4vw, 160px);
+  width: 100%;
+  padding: 0;
 }
 
 /* ── HERO SECTION ── */
@@ -602,7 +601,8 @@ body { background: var(--gov-bg-primary); }
 
 /* ── LEADERSHIP SECTION ── */
 .gov-leadership {
-  padding: var(--gov-pad-top) var(--gov-pad-x) var(--gov-pad-bottom);
+  width: 100%;
+  padding: var(--gov-pad-top) 0 var(--gov-pad-bottom);
   background: var(--gov-bg-primary);
 }
 
@@ -753,6 +753,22 @@ body { background: var(--gov-bg-primary); }
 .ecl-wrapper {
   position: relative;
   margin-top: var(--gov-space-3xl);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1920px;
+  padding: 0 5%;
+}
+
+@media (max-width: 1024px) {
+  .ecl-wrapper {
+    padding: 0 3%;
+  }
+}
+
+@media (max-width: 768px) {
+  .ecl-wrapper {
+    padding: 0 2%;
+  }
 }
 
 /* ─ Desktop: avatar row ─ */
