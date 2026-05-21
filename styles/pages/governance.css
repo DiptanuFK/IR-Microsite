@@ -281,7 +281,7 @@ body { background: var(--gov-bg-primary); }
 .gov-section-title {
   font-size: var(--gov-type-h2);
   font-weight: 700;
-  color: var(--gov-text-primary);
+  color: var(--color-navy);
   margin: 0 0 var(--gov-space-4xl) 0;
   text-align: center;
 }
@@ -780,7 +780,7 @@ body { background: var(--gov-bg-primary); }
   padding: 0 clamp(12px, 6vw, 120px);
   position: relative;
   z-index: 2;
-  margin-bottom: clamp(-48px, -5.5vw, -95px);
+  margin-bottom: clamp(-90px, -4vw, -110px);
 }
 
 /* ─ Avatar buttons (inactive = circle) ─ */
@@ -908,9 +908,9 @@ body { background: var(--gov-bg-primary); }
 .ecl-mob-trigger {
   display: flex;
   align-items: center;
-  gap: clamp(14px, 3vw, 26px);
+  gap: clamp(16px, 4vw, 32px);
   width: 100%;
-  padding: clamp(10px, 2vw, 20px);
+  padding: clamp(16px, 3vw, 28px);
   border-radius: 9999px;
   border: 1px solid rgba(255, 255, 255, 0.6);
   background: rgba(30, 115, 255, 0.8);
@@ -929,8 +929,8 @@ body { background: var(--gov-bg-primary); }
 }
 
 .ecl-mob-img-wrap {
-  width: clamp(52px, 12vw, 84px);
-  height: clamp(52px, 12vw, 84px);
+  width: clamp(72px, 16vw, 110px);
+  height: clamp(72px, 16vw, 110px);
   border-radius: 50%;
   border: 2.5px solid rgba(255, 255, 255, 0.6);
   overflow: hidden;
@@ -952,12 +952,12 @@ body { background: var(--gov-bg-primary); }
   text-align: left;
 }
 .ecl-mob-trigger .ecl-name {
-  font-size: clamp(13px, 3.6vw, 16px);
+  font-size: clamp(16px, 4.5vw, 22px);
   font-weight: 700;
   line-height: 1.3;
 }
 .ecl-mob-trigger .ecl-role {
-  font-size: clamp(10px, 2.4vw, 11px);
+  font-size: clamp(12px, 3vw, 16px);
   line-height: 1.5;
   opacity: 0.85;
 }
