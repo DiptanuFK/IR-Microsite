@@ -137,23 +137,17 @@ function addParallax(el, updateFn) {
     });
 }());
 
-// ── What Sets Us Apart — pinned stacking deck ────────────────────────────────
+// ── What Sets Us Apart — CSS-sticky stacking deck (no GSAP pin) ──────────────
 (function () {
     const section = document.querySelector('.apart');
     const header  = document.querySelector('.apart-header h2');
     const cards   = gsap.utils.toArray('.apart-card');
     if (!section || !cards.length) return;
 
-    // ── How to tune the animation ──────────────────────────────────────────
-    // Total scroll distance = section height in CSS (.apart { height: 340vh })
-    // The pin occupies 100vh; the remaining 240vh is shared across card transitions.
-    // Each card transition = 240vh / 5 cards = ~48vh of scroll per card.
-    // To slow down the stacking, increase .apart height (e.g. 400vh).
-    // To speed it up, decrease it (e.g. 280vh).
-    // The scrub value below controls lag: scrub: 1 = 1s smoothing behind scroll.
-    // ──────────────────────────────────────────────────────────────────────
+    // CSS position:sticky on .apart-sticky handles the pinning.
+    // GSAP ScrollTrigger only drives the card animations — no pin, no layout disruption.
 
-    // Phase 1 — Header entrance: fires when apart section reaches the top
+    // Header bounce-in when section reaches top
     gsap.from(header, {
         y: 40,
         scale: 0.8,
@@ -167,7 +161,7 @@ function addParallax(el, updateFn) {
         },
     });
 
-    // Card 0 entrance: same bounce-in as the header, slightly delayed
+    // Card 0 bounce-in slightly after header
     gsap.from(cards[0], {
         y: 60,
         scale: 0.85,
@@ -181,31 +175,24 @@ function addParallax(el, updateFn) {
             toggleActions: 'play none none reverse',
         },
     });
-    // Cards 1-4 wait below
 
     gsap.set(cards.slice(1), { autoAlpha: 0 });
 
-    // Phase 2 — Pinned stacking deck
+    // Scrubbed timeline drives card stacking — CSS sticky keeps the view locked
     const tl = gsap.timeline({
         scrollTrigger: {
             trigger: section,
-            start: 'top top',        // pin locks when section hits the top
-            end: 'bottom bottom',    // unpin when the tall section scrolls out
-            pin: '.apart-sticky',
-            scrub: 1,                // 1s smoothing; set to true for instant scrub
-            anticipatePin: 1,
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: 1,
         },
     });
 
-    // Timeline starts at card 1 (card 0 is already visible).
-    // Each incoming card slides up from below while all previous cards scale back.
-    // Increase the label spacing (e.g. '+=2') to give each transition more scroll room.
     tl.addLabel('card1', 0);
 
     cards.slice(1).forEach((card, idx) => {
-        const i = idx + 1; // real index in the full cards array
+        const i = idx + 1;
 
-        // Slide incoming card up and make it visible
         tl.to(card, {
             y: '0%',
             autoAlpha: 1,
@@ -213,7 +200,6 @@ function addParallax(el, updateFn) {
             ease: 'power2.out',
         }, `card${i}`);
 
-        // Push all previous cards back: progressively deeper scale + dim
         cards.slice(0, i).forEach((prev, j) => {
             const depth  = i - j;
             const scale  = Math.max(0.78, 1 - depth * 0.06);
@@ -233,7 +219,6 @@ function addParallax(el, updateFn) {
         tl.addLabel(`card${i + 1}`, `card${i}+=1.4`);
     });
 
-    // Small buffer at the end before unpin (already baked into .apart height)
     tl.to({}, { duration: 0.6 });
 })();
 
