@@ -30,7 +30,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 56px;
+  gap: 3%;
   box-shadow: var(--shadow-glass);
 }
 
@@ -45,7 +45,7 @@
   .nav-pill {
     max-width: 304px;
     height: 68px;
-    gap: 46px;
+    gap: 3%;
   }
 }
 
@@ -53,7 +53,7 @@
   .nav-pill {
     max-width: 193px;
     height: 68px;
-    gap: 46px;
+    gap: 3%;
   }
 }
 
