@@ -502,8 +502,6 @@
    IMPACT STATS
    ═══════════════════════════════════════ */
 .impact {
-  position: relative;
-  z-index: 1;
   background: var(--color-bg);
   padding-top: clamp(65px, 6.5vw, 112px);
   padding-bottom: clamp(65px, 6.5vw, 112px);
@@ -778,9 +776,6 @@
   background: var(--color-bg);
 }
 .apart-sticky {
-  position: sticky;
-  top: 0;
-  z-index: 0;
   height: 100vh;
   overflow: hidden;
   display: flex;

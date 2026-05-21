@@ -191,7 +191,7 @@ function addParallax(el, updateFn) {
             trigger: section,
             start: 'top top',        // pin locks when section hits the top
             end: 'bottom bottom',    // unpin when the tall section scrolls out
-            pin: '.apart-sticky',    // only the sticky inner div gets pinned
+            pin: section,            // pin the whole section; apart-sticky fills it
             scrub: 1,                // 1s smoothing; set to true for instant scrub
             anticipatePin: 1,
         },
