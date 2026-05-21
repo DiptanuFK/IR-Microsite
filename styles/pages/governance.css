@@ -811,7 +811,7 @@ body { background: var(--gov-bg-primary); }
   border-radius: 9999px;
   border: 1px solid rgba(255, 255, 255, 0.6);
   overflow: visible;
-  background: rgba(30, 115, 255, 0.3);
+  background: rgba(30, 115, 255, 0.8);
   backdrop-filter: blur(57px);
   -webkit-backdrop-filter: blur(57px);
   box-shadow:
@@ -833,6 +833,7 @@ body { background: var(--gov-bg-primary); }
   gap: 2px;
   width: clamp(110px, 12vw, 224px);
   color: white;
+  text-align: left;
 }
 .ecl-avatar-btn.active .ecl-name {
   font-weight: 700;
@@ -932,6 +933,7 @@ body { background: var(--gov-bg-primary); }
   display: flex;
   flex-direction: column;
   gap: 2px;
+  text-align: left;
 }
 .ecl-mob-trigger .ecl-name {
   font-size: clamp(13px, 3.6vw, 16px);
@@ -1018,6 +1020,7 @@ body { background: var(--gov-bg-primary); }
   display: flex;
   flex-direction: column;
   gap: 2px;
+  text-align: left;
 }
 .ecl-mob-item .ecl-name {
   font-size: clamp(13px, 3.4vw, 15px);
