@@ -795,7 +795,7 @@
   border-radius: var(--radius-round);
   overflow: hidden;
   background: #111;
-  height: 50vh;
+  height: 60vh;
 }
 .apart-card-img {
   position: absolute;
