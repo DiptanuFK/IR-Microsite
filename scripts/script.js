@@ -137,89 +137,38 @@ function addParallax(el, updateFn) {
     });
 }());
 
-// ── What Sets Us Apart — CSS-sticky stacking deck (no GSAP pin) ──────────────
+// ── What Sets Us Apart — simple fade-in on scroll ────────────────────────────
 (function () {
-    const section = document.querySelector('.apart');
-    const header  = document.querySelector('.apart-header h2');
-    const cards   = gsap.utils.toArray('.apart-card');
-    if (!section || !cards.length) return;
+    const header = document.querySelector('.apart-header h2');
+    const cards  = gsap.utils.toArray('.apart-card');
+    if (!header) return;
 
-    // CSS position:sticky on .apart-sticky handles the pinning.
-    // GSAP ScrollTrigger only drives the card animations — no pin, no layout disruption.
-
-    // Header bounce-in when section reaches top
     gsap.from(header, {
-        y: 40,
-        scale: 0.8,
+        y: 30,
         opacity: 0,
-        duration: 0.9,
-        ease: 'back.out(1.7)',
+        duration: 0.7,
+        ease: 'power2.out',
         scrollTrigger: {
-            trigger: section,
-            start: 'top top',
+            trigger: header,
+            start: 'top 85%',
             toggleActions: 'play none none reverse',
         },
     });
 
-    // Card 0 bounce-in slightly after header
-    gsap.from(cards[0], {
-        y: 60,
-        scale: 0.85,
-        opacity: 0,
-        duration: 0.9,
-        ease: 'back.out(1.7)',
-        delay: 0.15,
-        scrollTrigger: {
-            trigger: section,
-            start: 'top top',
-            toggleActions: 'play none none reverse',
-        },
-    });
-
-    gsap.set(cards.slice(1), { autoAlpha: 0 });
-
-    // Scrubbed timeline drives card stacking — CSS sticky keeps the view locked
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: section,
-            start: 'top top',
-            end: 'bottom bottom',
-            scrub: 1,
-        },
-    });
-
-    tl.addLabel('card1', 0);
-
-    cards.slice(1).forEach((card, idx) => {
-        const i = idx + 1;
-
-        tl.to(card, {
-            y: '0%',
-            autoAlpha: 1,
-            duration: 1,
+    cards.forEach((card, i) => {
+        gsap.from(card, {
+            y: 40,
+            opacity: 0,
+            duration: 0.6,
             ease: 'power2.out',
-        }, `card${i}`);
-
-        cards.slice(0, i).forEach((prev, j) => {
-            const depth  = i - j;
-            const scale  = Math.max(0.78, 1 - depth * 0.06);
-            const dimAmt = Math.min(0.55, depth * 0.18);
-            tl.to(prev, {
-                scale,
-                duration: 1,
-                ease: 'power2.out',
-            }, `card${i}`);
-            tl.to(prev.querySelector('.apart-card-dim'), {
-                backgroundColor: `rgba(0,0,0,${dimAmt})`,
-                duration: 1,
-                ease: 'power2.out',
-            }, `card${i}`);
+            delay: i * 0.1,
+            scrollTrigger: {
+                trigger: card,
+                start: 'top 90%',
+                toggleActions: 'play none none reverse',
+            },
         });
-
-        tl.addLabel(`card${i + 1}`, `card${i}+=1.4`);
     });
-
-    tl.to({}, { duration: 0.6 });
 })();
 
 

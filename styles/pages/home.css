@@ -767,27 +767,18 @@
 /* ═══════════════════════════════════════
    WHAT SETS US APART
    ═══════════════════════════════════════ */
-.apart { background: var(--color-bg); }
-/* ── Apart: pinned stacking deck ── */
+/* ── What Sets Us Apart — static grid ── */
 .apart {
-  /* tall enough for ScrollTrigger to scrub through all 5 cards
-     300vh = 100vh pin + 5 × 40vh card transitions. Adjust to taste. */
-  height: 340vh;
   background: var(--color-bg);
+  padding: clamp(64px, 6vw, 112px) var(--page-pad-desktop);
 }
 .apart-sticky {
-  height: 100vh;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
+  gap: clamp(32px, 3vw, 56px);
 }
 .apart-header {
-  /* sits just below the fixed nav pill (≈96px) */
-  padding: 0;
   text-align: center;
-  position: relative;
-  z-index: 2;
-  flex-shrink: 0;
 }
 .apart-header h2 {
   font-size: clamp(28px, 3.7vw, 64px);
@@ -795,21 +786,16 @@
   color: var(--color-accent);
 }
 .apart-stage {
-  /* card arena: fills remaining viewport below header */
-  position: relative;
-  flex: 1;
-  margin: clamp(64px, 2.2vw, 96px) calc(var(--col) + var(--gutter));
-  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gutter);
 }
 .apart-card {
-  position: absolute;
-  inset: 0;
+  position: relative;
   border-radius: var(--radius-round);
   overflow: hidden;
   background: #111;
-  /* start below the viewport; GSAP drives them up */
-  transform: translateY(100%);
-  will-change: transform, filter;
+  aspect-ratio: 4 / 5;
 }
 .apart-card-img {
   position: absolute;
@@ -830,34 +816,27 @@
     rgba(0,0,0,0.8) 100%);
   pointer-events: none;
 }
-/* dim overlay for cards pushed into the background */
-.apart-card-dim {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0);
-  pointer-events: none;
-  z-index: 10;
-}
+.apart-card-dim { display: none; }
 .apart-card-text {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: clamp(20px, 2.8vw, 48px);
+  padding: clamp(16px, 2vw, 36px);
   display: flex;
   flex-direction: column;
-  gap: clamp(6px, 0.7vw, 12px);
+  gap: clamp(6px, 0.5vw, 10px);
   text-align: center;
   z-index: 2;
 }
 .apart-card-text h3 {
-  font-size: clamp(20px, 3.7vw, 64px);
+  font-size: clamp(16px, 1.8vw, 32px);
   font-weight: 700;
   color: var(--color-accent);
-  line-height: 1.4;
+  line-height: 1.3;
 }
 .apart-card-text p {
-  font-size: clamp(13px, 1.39vw, 24px);
+  font-size: clamp(12px, 1vw, 18px);
   font-weight: 500;
   color: #fff;
   line-height: 1.5;
