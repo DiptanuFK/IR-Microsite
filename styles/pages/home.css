@@ -790,7 +790,7 @@
 }
 .apart-header {
   /* sits just below the fixed nav pill (≈96px) */
-  padding: 64px 0 0;
+  padding: 0;
   text-align: center;
   position: relative;
   z-index: 2;
