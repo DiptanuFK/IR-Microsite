@@ -275,6 +275,8 @@ if (impactPhoto) {
         mobDropdown.classList.remove('is-open');
         if (mobTrigger) mobTrigger.setAttribute('aria-expanded', 'false');
         if (mobList)    mobList.setAttribute('aria-hidden', 'true');
+        const quoteCard = document.querySelector('.ecl-quote-card');
+        if (quoteCard) quoteCard.classList.remove('blurred');
     }
 
     function updateMobTrigger(index) {
@@ -313,6 +315,14 @@ if (impactPhoto) {
             const isOpen = mobDropdown.classList.toggle('is-open');
             mobTrigger.setAttribute('aria-expanded', String(isOpen));
             if (mobList) mobList.setAttribute('aria-hidden', String(!isOpen));
+            const quoteCard = document.querySelector('.ecl-quote-card');
+            if (quoteCard) {
+                if (isOpen) {
+                    quoteCard.classList.add('blurred');
+                } else {
+                    quoteCard.classList.remove('blurred');
+                }
+            }
         });
     }
 
