@@ -201,8 +201,20 @@ body { background: var(--gov-bg-primary); }
 
 /* ── BELIEFS SECTION ── */
 .gov-beliefs {
-  padding: var(--gov-pad-top) var(--gov-pad-x) var(--gov-pad-bottom);
+  width: 100%;
+  padding-top: var(--gov-pad-top);
+  padding-bottom: var(--gov-pad-bottom);
+  padding-left: 0;
+  padding-right: 0;
   background: var(--gov-bg-primary);
+}
+
+.gov-beliefs-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .gov-beliefs-cards {
@@ -256,7 +268,7 @@ body { background: var(--gov-bg-primary); }
 .gov-beliefs-list li {
   font-size: var(--gov-type-body);
   line-height: var(--gov-leading-relaxed);
-  color: var(--gov-text-secondary);
+  color: var(--gov-text-primary);
   padding-left: var(--gov-space-lg);
   position: relative;
 }

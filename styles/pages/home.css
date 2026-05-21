@@ -535,8 +535,8 @@
   background: var(--color-bg);
   padding-top: clamp(65px, 6.5vw, 112px);
   padding-bottom: clamp(65px, 6.5vw, 112px);
-  padding-left: var(--page-pad-desktop);
-  padding-right: var(--page-pad-desktop);
+  padding-left: 5%;
+  padding-right: 5%;
   --impact-card-radius:      clamp(16px, 1.39vw, 24px);
   --impact-chip-radius:      clamp(16px, 1.74vw, 30px);
   --impact-card-padding:     clamp(18px, 1.56vw, 27px);
@@ -548,6 +548,8 @@
   display: grid;
   grid-template-columns: minmax(0, 3.45fr) minmax(0, 3fr) minmax(0, 3fr);
   gap: var(--gutter);
+  max-width: 1920px;
+  margin: 0 auto;
 }
 
 .impact-photo-card {
@@ -701,8 +703,6 @@
 /* ── tablet breakpoint ── */
 @media (max-width: 1024px) {
   .impact {
-    padding-left: var(--page-pad-tablet);
-    padding-right: var(--page-pad-tablet);
     --impact-card-radius: clamp(16px, 2.34vw, 24px);
     --impact-chip-radius: clamp(16px, 2.93vw, 26px);
     --impact-card-padding: clamp(18px, 2.2vw, 22px);
