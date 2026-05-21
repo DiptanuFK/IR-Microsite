@@ -1,0 +1,24 @@
+/* ─────────────────────────────────────────
+   LAYOUT
+   12-column grid system · 1728px canvas · 20px gutters
+   1 col = 125.67px  |  col + gutter = 145.67px
+   n cols = n×125.67 + (n-1)×20
+   ───────────────────────────────────────── */
+:root {
+  --cols:   12;
+  --gutter: 20px;
+  --col:    calc((100% - var(--gutter) * (var(--cols) - 1)) / var(--cols));
+
+  --span1:  calc(var(--col) * 1  + var(--gutter) * 0);
+  --span2:  calc(var(--col) * 2  + var(--gutter) * 1);
+  --span3:  calc(var(--col) * 3  + var(--gutter) * 2);
+  --span4:  calc(var(--col) * 4  + var(--gutter) * 3);
+  --span5:  calc(var(--col) * 5  + var(--gutter) * 4);
+  --span6:  calc(var(--col) * 6  + var(--gutter) * 5);
+  --span7:  calc(var(--col) * 7  + var(--gutter) * 6);
+  --span8:  calc(var(--col) * 8  + var(--gutter) * 7);
+  --span9:  calc(var(--col) * 9  + var(--gutter) * 8);
+  --span10: calc(var(--col) * 10 + var(--gutter) * 9);
+  --span11: calc(var(--col) * 11 + var(--gutter) * 10);
+  --span12: calc(var(--col) * 12 + var(--gutter) * 11);
+}

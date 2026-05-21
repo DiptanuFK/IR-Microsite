@@ -1,0 +1,199 @@
+/* ─────────────────────────────────────────
+   COMPONENT: Navigation
+   ───────────────────────────────────────── */
+.topnav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: var(--z-nav);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0 0;
+}
+
+/* ── Pill ──
+   Discrete breakpoint scaling:
+   Desktop (1440px+): maxWidth 900px, height 76px
+   Tablet (1024px+): maxWidth 752px, height 76px
+   Tablet-sm (768px+): maxWidth 304px, height 68px
+   Mobile (320px+): maxWidth 193px, height 68px
+   ── */
+.nav-pill {
+  width: 100%;
+  max-width: 900px;
+  height: 76px;
+  background: var(--color-glass);
+  backdrop-filter: var(--blur-card);
+  -webkit-backdrop-filter: var(--blur-card);
+  border-radius: var(--radius-pill);
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 56px;
+  box-shadow: var(--shadow-glass);
+}
+
+@media (max-width: 1439px) {
+  .nav-pill {
+    max-width: 752px;
+    height: 76px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .nav-pill {
+    max-width: 304px;
+    height: 68px;
+    gap: 46px;
+  }
+}
+
+@media (max-width: 767px) {
+  .nav-pill {
+    max-width: 193px;
+    height: 68px;
+    gap: 46px;
+  }
+}
+
+/* ── Logo – both wordmark and icon shown on desktop ── */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  flex-shrink: 0;
+  height: 100%;
+}
+
+.logo-wordmark {
+  width: 93px;
+  height: 24.6px;
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.logo-icon {
+  width: 34.67px;
+  height: 34.67px;
+  display: block;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+/* ── Desktop nav links – constant size ── */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+nav a {
+  text-decoration: none;
+  font-size: 19px;
+  font-weight: 400;
+  color: var(--color-white);
+  padding: 0 8px;
+  white-space: nowrap;
+  transition: color var(--duration-normal) var(--ease-in-out);
+}
+
+nav a:hover {
+  color: var(--color-text-muted);
+}
+
+nav a.active {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* ── Hamburger button ── */
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-hamburger .icon-list {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+.nav-hamburger .icon-x {
+  width: 32px;
+  height: 32px;
+  display: none;
+}
+
+.nav-hamburger.is-open .icon-list {
+  display: none;
+}
+
+.nav-hamburger.is-open .icon-x {
+  display: block;
+}
+
+/* ── Dropdown – hidden by default, shown on hamburger click ── */
+.nav-dropdown {
+  width: 198px;
+  align-self: center;
+  margin-top: 8px;
+  background: var(--color-glass);
+  backdrop-filter: var(--blur-card);
+  -webkit-backdrop-filter: var(--blur-card);
+  border-radius: var(--radius-sm);
+  padding: 12px 24px;
+  box-shadow: var(--shadow-glass);
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity var(--duration-fast) var(--ease-in-out), transform var(--duration-fast) var(--ease-in-out), visibility 0s linear var(--duration-fast);
+}
+
+.nav-dropdown.is-open {
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--duration-fast) var(--ease-in-out), transform var(--duration-fast) var(--ease-in-out), visibility 0s linear 0s;
+}
+
+.nav-dropdown ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nav-dropdown a {
+  font-size: 19px;
+  padding: 0 8px;
+  white-space: nowrap;
+}
+
+/* ── <1024px: hide nav links, show hamburger, hide wordmark ── */
+@media (max-width: 1023px) {
+  .nav-links {
+    display: none;
+  }
+
+  .nav-hamburger {
+    display: flex;
+  }
+
+  .logo-wordmark {
+    display: none;
+  }
+}

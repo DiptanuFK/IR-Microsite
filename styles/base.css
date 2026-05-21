@@ -1,0 +1,24 @@
+/* ─────────────────────────────────────────
+   BASE
+   Reset, root element defaults, typography, utilities
+   ───────────────────────────────────────── */
+
+/* ─── Reset ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; overscroll-behavior: none; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--color-bg);
+  overflow-x: hidden;
+  color: var(--color-text-body);
+  animation: page-in 0.4s ease both;
+}
+@keyframes page-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+img { display: block; }
+
+/* ─── Utilities ─── */
+.text-accent { color: var(--color-accent); }
+.text-blue   { color: var(--color-blue); }

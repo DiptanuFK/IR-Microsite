@@ -1,0 +1,20 @@
+/* ─────────────────────────────────────────
+   COMPONENT: Buttons
+   ───────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, #1162f2, #1152e0);
+  color: var(--color-white);
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 10px 24px;
+  height: 48px;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  align-self: flex-start;
+}

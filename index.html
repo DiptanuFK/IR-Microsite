@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipkart Investor Relations</title>
+    <link rel="icon" type="image/svg+xml" href="images/flipkart-logo.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/tokens.css">
+    <link rel="stylesheet" href="styles/breakpoints.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/components/nav.css">
+    <link rel="stylesheet" href="styles/components/buttons.css">
+    <link rel="stylesheet" href="styles/components/stats.css">
+    <link rel="stylesheet" href="styles/pages/home.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="topnav">
+    <div class="nav-pill">
+        <a class="logo" href="index.html">
+            <img class="logo-wordmark" src="images/flipkart-logo.svg" alt="Flipkart">
+            <img class="logo-icon" src="images/F-logo.svg" alt="Flipkart">
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="business.html">Business</a></li>
+            <li><a href="governance.html">Leadership &amp; Governance</a></li>
+        </ul>
+        <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+            <img class="icon-list" src="images/list.svg" alt="">
+            <img class="icon-x" src="images/x.svg" alt="">
+        </button>
+    </div>
+    <div class="nav-dropdown" aria-hidden="true">
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="business.html">Business</a></li>
+            <li><a href="governance.html">Leadership &amp; Governance</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <picture>
+        <source srcset="images/hero-bg-mobile.jpg" media="(max-width: 768px)">
+        <img class="hero-bg" src="images/hero-bg.jpg" alt="">
+    </picture>
+    <div class="hero-fade"></div>
+    <div class="hero-blue"></div>
+    <div class="hero-inner">
+        <div class="hero-text">
+            <h1>
+                <span>Fueling consumer</span>
+                <span class="text-accent">internet ecosystem</span>
+                <span>for Bharat</span>
+            </h1>
+        </div>
+        <div class="stats-bar">
+            <div class="stat-pill">
+                <div class="stat-num">$29B+</div>
+                <div class="stat-lbl">Gross merchandising value</div>
+            </div>
+            <div class="stat-pill">
+                <div class="stat-num">1.9B+</div>
+                <div class="stat-lbl">Annual shipments</div>
+            </div>
+            <div class="stat-pill">
+                <div class="stat-num">500M+</div>
+                <div class="stat-lbl">Annual active users</div>
+            </div>
+            <div class="stat-pill">
+                <div class="stat-num">1.4M+</div>
+                <div class="stat-lbl">Sellers</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CEO MESSAGE -->
+<section class="ceo-message" id="ceo-message">
+    <div class="ceo-card">
+
+        <!-- Desktop only: text column (left) -->
+        <div class="ceo-text">
+            <div class="ceo-frame20">
+                <blockquote class="ceo-quote">"One of India's leading digital commerce entities, built on a strong technology-first foundation. Its diverse portfolio includes Flipkart, Myntra, Cleartrip, Shopsy, Minutes and super.money"</blockquote>
+            </div>
+            <div class="ceo-author">
+                <p class="ceo-name">Kalyan Krishnamoorthy</p>
+                <p class="ceo-title">CEO Flipkart Group</p>
+            </div>
+        </div>
+
+        <!-- Image as CSS background-fill. On mobile holds play + text too -->
+        <div class="ceo-img-container">
+
+            <!-- Mobile only: play row -->
+            <div class="ceo-play-row">
+                <img class="ceo-play" src="images/Play-Pause.svg" alt="Play">
+            </div>
+
+            <!-- Mobile only: text card -->
+            <div class="ceo-text-card">
+                <div class="ceo-frost">
+                    <div class="ceo-text-inner">
+                        <div class="ceo-frame20">
+                            <blockquote class="ceo-quote">"One of India's leading digital commerce entities, built on a strong technology-first foundation. Its diverse portfolio includes Flipkart, Myntra, Cleartrip, Shopsy, Minutes and super.money"</blockquote>
+                        </div>
+                        <div class="ceo-author">
+                            <p class="ceo-name">Kalyan Krishnamoorthy</p>
+                            <p class="ceo-title">CEO Flipkart Group</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Desktop only: play column (right) -->
+        <div class="ceo-play-col">
+            <img class="ceo-play" src="images/Play-Pause.svg" alt="Play">
+        </div>
+
+    </div>
+</section>
+
+<!-- EMPOWERING / ADVANTAGES -->
+<section class="advantages" id="business">
+    <div class="adv-bg-layer">
+        <img class="adv-bg-img" src="images/advantages-photo.jpg" alt="">
+        <div class="adv-bg-overlay"></div>
+        <div class="adv-bg-gradient"></div>
+    </div>
+    <div class="adv-people-layer">
+        <img class="adv-people-img" src="images/impact-people.jpg" alt="">
+    </div>
+    <p class="adv-heading"><span class="text-accent">Empowering every Indian's dream</span> by delivering value through innovation in technology and commerce</p>
+    <div class="adv-cards-wrapper">
+        <div class="adv-cards">
+            <div class="adv-card">
+                <h3>Enabling Access</h3>
+                <p>Pan-India coverage across all serviceable PIN codes, fully accessible in 12 vernacular languages.</p>
+            </div>
+            <div class="adv-card">
+                <h3>Enhancing Affordability</h3>
+                <p>Vast Selection, Great Value &amp; Credit Constructs</p>
+            </div>
+            <div class="adv-card">
+                <h3>Enriching Experience</h3>
+                <p>Hyper-personalisation at scale</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- IMPACT STATS -->
+<section class="impact" id="stakeholders">
+    <div class="impact-grid">
+        <div class="impact-photo-card">
+            <p class="photo-title">Impacting millions<br>of lives Daily</p>
+            <img src="images/impact-millions.jpg" alt="Impacting millions">
+            <div class="impact-photo-gradient"></div>
+        </div>
+        <div class="impact-mid">
+            <div class="istat">
+                <div class="istat-top">
+                    <div class="istat-num">190M+</div>
+                    <div class="istat-name">Daily Visits</div>
+                    <div class="istat-sub"><i class="ph ph-trend-up istat-arrow"></i>2.1x during TBBD</div>
+                </div>
+            </div>
+            <div class="istat">
+                <div class="istat-top">
+                    <div class="istat-num">6.6M+</div>
+                    <div class="istat-name">Orders</div>
+                    <div class="istat-sub"><i class="ph ph-trend-up istat-arrow"></i>2.9x during TBBD</div>
+                </div>
+            </div>
+        </div>
+        <div class="impact-right">
+            <div class="istat istat--short">
+                <div class="istat-top">
+                    <div class="istat-num">250M+</div>
+                    <div class="istat-name">Listings</div>
+                </div>
+            </div>
+            <div class="istat istat--indians">
+                <div class="istat-top">
+                    <div class="istat-num">250k+</div>
+                    <div class="istat-name">Indians employed</div>
+                    <div class="istat-sub"><i class="ph ph-trend-up istat-arrow"></i>1.8x during TBBD</div>
+                </div>
+            </div>
+            <a href="business.html" class="istat istat--blue">
+                <img class="istat-blue-logo" src="images/F-logo-wthout-box.svg" alt="">
+                <p>Read more about our businesses</p>
+                <div class="istat-blue-chevron">
+                    <i class="ph ph-arrow-right"></i>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- WHAT SETS US APART -->
+<section class="apart" id="governance">
+    <div class="apart-sticky">
+        <div class="apart-header">
+            <h2>What sets us apart</h2>
+        </div>
+        <div class="apart-stage">
+            <div class="apart-card">
+                <img class="apart-card-img" src="images/hero-bg-scaled-trusted.jpg" alt="Scaled and Trusted">
+                <div class="apart-card-overlay"></div>
+                <div class="apart-card-dim"></div>
+                <div class="apart-card-text">
+                    <h3>Scaled and Trusted digital platform</h3>
+                    <p>240M+ Annual active customers<br>1.4Mn+ Registered seller base</p>
+                </div>
+            </div>
+            <div class="apart-card">
+                <img class="apart-card-img" src="images/Enhancing Affordability.png" alt="Enhancing Affordability">
+                <div class="apart-card-overlay"></div>
+                <div class="apart-card-dim"></div>
+                <div class="apart-card-text">
+                    <h3>Enhancing Affordability</h3>
+                    <p>Vast Selection, Great Value &<br>Credit Constructs</p>
+                </div>
+            </div>
+            <div class="apart-card">
+                <img class="apart-card-img" src="images/The supply chain advantage.png" alt="The supply chain advantage">
+                <div class="apart-card-overlay"></div>
+                <div class="apart-card-dim"></div>
+                <div class="apart-card-text">
+                    <h3>The supply chain advantage</h3>
+                    <p>Owned, Tech-powered,<br>Scaled & Cost Effective</p>
+                </div>
+            </div>
+            <div class="apart-card">
+                <img class="apart-card-img" src="images/Best in class talent.png" alt="Deep ecommerce expertise">
+                <div class="apart-card-overlay"></div>
+                <div class="apart-card-dim"></div>
+                <div class="apart-card-text">
+                    <h3>Deep ecommerce expertise</h3>
+                    <p>Start up culture,<br>Entrepreneurial mindset</p>
+                </div>
+            </div>
+            <div class="apart-card">
+                <img class="apart-card-img" src="images/Built-for-Bharat Tech.png" alt="Built-for-Bharat Tech">
+                <div class="apart-card-overlay"></div>
+                <div class="apart-card-dim"></div>
+                <div class="apart-card-text">
+                    <h3>Built-for-Bharat Tech</h3>
+                    <p>The homegrown technology creates immersive, personalized experiences that drive digital inclusion for India's diverse consumer base.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SUPPLY CHAIN -->
+<section class="supply" id="supplychain">
+    <div class="supply-fade"></div>
+    <div class="supply-text">
+        <h2>The Supply Chain Advantage</h2>
+        <p>Owned, Tech-powered, Scaled &amp; Cost Effective Covers all serviceable pin codes across the country</p>
+    </div>
+</section>
+
+<!-- FEATURED STORY -->
+<section class="story" id="featured">
+    <h2>Featured Customer story</h2>
+    <div class="story-scroll-track">
+        <div class="story-card">
+            <div class="story-card-img">
+                <img src="images/story-image.jpg" alt="Customer Story">
+            </div>
+            <div class="story-card-body">
+                <p class="story-card-title">#FixItWithFlipkart: Ensuring Customer Delight is Always "In the Bag"</p>
+                <a href="https://stories.flipkart.com/fix-it-with-flipkart-ensuring-customer-delight-is-always-in-the-bag" target="_blank" class="btn-story">Read full story here</a>
+            </div>
+        </div>
+        <div class="story-card">
+            <div class="story-card-img">
+                <img src="images/story-image.jpg" alt="Customer Story">
+            </div>
+            <div class="story-card-body">
+                <p class="story-card-title">#FixItWithFlipkart: Ensuring Customer Delight is Always "In the Bag"</p>
+                <a href="https://stories.flipkart.com/fix-it-with-flipkart-ensuring-customer-delight-is-always-in-the-bag" target="_blank" class="btn-story">Read full story here</a>
+            </div>
+        </div>
+        <div class="story-card">
+            <div class="story-card-img">
+                <img src="images/story-image.jpg" alt="Customer Story">
+            </div>
+            <div class="story-card-body">
+                <p class="story-card-title">#FixItWithFlipkart: Ensuring Customer Delight is Always "In the Bag"</p>
+                <a href="https://stories.flipkart.com/fix-it-with-flipkart-ensuring-customer-delight-is-always-in-the-bag" target="_blank" class="btn-story">Read full story here</a>
+            </div>
+        </div>
+        <div class="story-card">
+            <div class="story-card-img">
+                <img src="images/story-image.jpg" alt="Customer Story">
+            </div>
+            <div class="story-card-body">
+                <p class="story-card-title">#FixItWithFlipkart: Ensuring Customer Delight is Always "In the Bag"</p>
+                <a href="https://stories.flipkart.com/fix-it-with-flipkart-ensuring-customer-delight-is-always-in-the-bag" target="_blank" class="btn-story">Read full story here</a>
+            </div>
+        </div>
+        <div class="story-card">
+            <div class="story-card-img">
+                <img src="images/story-image.jpg" alt="Customer Story">
+            </div>
+            <div class="story-card-body">
+                <p class="story-card-title">#FixItWithFlipkart: Ensuring Customer Delight is Always "In the Bag"</p>
+                <a href="https://stories.flipkart.com/fix-it-with-flipkart-ensuring-customer-delight-is-always-in-the-bag" target="_blank" class="btn-story">Read full story here</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer"></footer>
+
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="scripts/script.js"></script>
+</body>
+</html>

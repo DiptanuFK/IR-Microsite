@@ -1,0 +1,64 @@
+/* ─────────────────────────────────────────
+   COMPONENT: Stats bar (hero stats pills)
+   ───────────────────────────────────────── */
+.stats-bar {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 3.13vw, 24px);
+  padding: clamp(16px, 5.08vw, 52px) var(--page-pad-desktop);
+  max-width: 100%;
+  width: 100%;
+}
+
+@media (max-width: var(--bp-tablet)) {
+  .stats-bar {
+    grid-template-columns: repeat(2, 1fr);
+    padding: clamp(16px, 5.08vw, 52px) var(--page-pad-tablet);
+    gap: clamp(16px, 3.13vw, 24px);
+  }
+}
+
+@media (max-width: var(--bp-tablet-sm)) {
+  .stats-bar {
+    grid-template-columns: repeat(2, 1fr);
+    padding: clamp(16px, 5.08vw, 52px) var(--page-pad-tablet);
+    gap: clamp(12px, 2.5vw, 16px);
+  }
+}
+
+@media (max-width: var(--bp-mobile-sm)) {
+  .stats-bar {
+    grid-template-columns: repeat(2, 1fr);
+    padding: clamp(16px, 5.08vw, 52px) clamp(16px, 5vw, 20px);
+    gap: clamp(12px, 2.5vw, 16px);
+  }
+}
+
+.stat-pill {
+  background: rgba(148, 148, 148, 0.14);
+  backdrop-filter: var(--blur-card);
+  -webkit-backdrop-filter: var(--blur-card);
+  border-radius: var(--radius-card);
+  padding: clamp(16px, 2.5vw, 32px);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 1vw, 8px);
+}
+
+.stat-num {
+  font-size: clamp(28px, 4.5vw, 80px);
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1;
+}
+
+.stat-lbl {
+  font-size: clamp(14px, 1.8vw, 28px);
+  font-weight: 500;
+  color: var(--color-text-light);
+  margin-top: 0;
+  line-height: 1.3;
+}

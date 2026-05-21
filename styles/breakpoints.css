@@ -1,0 +1,15 @@
+/* ─────────────────────────────────────────
+   BREAKPOINTS
+   Single source of truth for responsive design.
+   All media queries must use these breakpoints.
+   ───────────────────────────────────────── */
+
+:root {
+  --bp-desktop-lg: 1729px;   /* 12-column grid at full width */
+  --bp-desktop: 1440px;      /* Desktop to large-tablet transition */
+  --bp-tablet: 1024px;       /* Tablet layout changes */
+  --bp-tablet-sm: 768px;     /* Small tablet adjustments */
+  --bp-mobile: 640px;        /* Mobile layout changes */
+  --bp-mobile-sm: 425px;     /* Small mobile layout */
+  --bp-mobile-xs: 375px;     /* Extra-small mobile */
+}
