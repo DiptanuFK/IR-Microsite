@@ -30,9 +30,9 @@
   /* Typography scale */
   --gov-type-body:       clamp(16px, 1.1vw, 18px);
   --gov-type-sm:         clamp(14px, 0.95vw, 16px);
-  --gov-type-h4:         clamp(18px, 1.3vw, 20px);
-  --gov-type-h3:         clamp(22px, 1.6vw, 26px);
-  --gov-type-h2:         clamp(28px, 2vw, 36px);
+  --gov-type-h4:         clamp(18px, 1.7vw, 32px);
+  --gov-type-h3:         clamp(22px, 2vw, 36px);
+  --gov-type-h2:         clamp(32px, 2.5vw, 48px);
   --gov-type-h1:         clamp(44px, 3.5vw, 64px);
 
   /* Line heights */
@@ -66,7 +66,7 @@ body { background: var(--gov-bg-primary); }
 /* ── HERO SECTION ── */
 .gov-hero {
   position: relative;
-  height: clamp(400px, 60vh, 600px);
+  height: clamp(400px, 50vh, 540px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,7 +87,7 @@ body { background: var(--gov-bg-primary); }
 .gov-hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(30, 30, 30, 0.5);
+  background: rgba(30, 30, 30, 0.8);
   z-index: 1;
 }
 
@@ -104,6 +104,7 @@ body { background: var(--gov-bg-primary); }
   font-weight: 700;
   line-height: var(--gov-leading-tight);
   margin: 0 0 var(--gov-space-lg) 0;
+  color: var(--color-accent);
 }
 
 .gov-hero-tagline {
@@ -115,17 +116,30 @@ body { background: var(--gov-bg-primary); }
 
 /* ── CORE VALUES SECTION ── */
 .gov-values-section {
+  position: relative;
   padding: var(--gov-pad-top) var(--gov-pad-x) var(--gov-pad-bottom);
-  background: var(--gov-bg-primary);
+  background: url('../../images/core_values_bg.png') center center / cover no-repeat #EBF0F6;
+}
+
+.gov-values-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 0;
+}
+
+.gov-values-section > * {
+  position: relative;
+  z-index: 1;
 }
 
 .gov-values-heading {
   font-size: var(--gov-type-h2);
   font-weight: 700;
-  color: var(--gov-text-primary);
+  color: #ffffff;
+  text-align: center;
   margin: 0 0 var(--gov-space-4xl) 0;
-  padding-bottom: var(--gov-space-lg);
-  border-bottom: 2px solid var(--gov-text-primary);
 }
 
 .gov-values-grid {
@@ -141,28 +155,38 @@ body { background: var(--gov-bg-primary); }
   text-align: center;
   gap: var(--gov-space-lg);
   padding: var(--gov-space-2xl);
-  background: var(--gov-accent-navy);
-  border-radius: var(--gov-radius-md);
+  background: radial-gradient(95.09% 95.08% at 47.73% 100%, #1642B9 0%, rgba(10, 30, 83, 0.00) 100%), rgba(59, 59, 59, 0.14);
+  box-shadow: 0 1px 2px 0 #007AFF inset;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 24px;
   min-height: 200px;
   justify-content: flex-start;
 }
 
+.gov-value-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .gov-value-icon {
-  width: clamp(40px, 6vw, 56px);
-  height: clamp(40px, 6vw, 56px);
-  border: 2px solid var(--gov-bg-primary);
-  border-radius: 50%;
+  width: clamp(48px, 6vw, 72px);
+  height: clamp(48px, 6vw, 72px);
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .gov-value-card h3 {
-  font-size: clamp(14px, 1vw, 16px);
-  font-weight: 700;
-  color: var(--gov-bg-primary);
+  font-size: clamp(18px, 1.7vw, 26px);
+  font-weight: 400;
+  color: #ffffff;
   margin: 0;
-  text-transform: uppercase;
   letter-spacing: 0.5px;
   line-height: var(--gov-leading-tight);
+  text-align: center;
 }
 
 /* ── BELIEFS SECTION ── */
@@ -171,27 +195,43 @@ body { background: var(--gov-bg-primary); }
   background: var(--gov-bg-primary);
 }
 
-.gov-beliefs-wrapper {
+.gov-beliefs-cards {
   display: grid;
-  grid-template-columns: minmax(350px, 35%) 1fr;
-  gap: var(--gov-space-4xl);
-  align-items: start;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gov-space-2xl);
+}
+
+.gov-belief-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gov-space-xl);
+  padding: var(--gov-space-3xl);
+  background: var(--gov-bg-secondary);
+  border-radius: var(--gov-radius-lg);
+}
+
+.gov-beliefs-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gov-space-2xl);
+  align-items: center;
 }
 
 .gov-beliefs-title h2 {
   font-size: var(--gov-type-h2);
   font-weight: 700;
-  color: var(--gov-text-primary);
-  margin: 0 0 var(--gov-space-lg) 0;
-  padding-bottom: var(--gov-space-md);
-  border-bottom: 1px solid var(--gov-text-primary);
+  color: var(--color-navy);
+  margin: 0;
   line-height: var(--gov-leading-tight);
+  text-align: left;
 }
 
 .gov-beliefs-content {
   display: flex;
   flex-direction: column;
   gap: var(--gov-space-2xl);
+  align-items: flex-start;
+  text-align: left;
 }
 
 .gov-beliefs-list {
@@ -461,7 +501,7 @@ body { background: var(--gov-bg-primary); }
 }
 
 .gov-vision-text {
-  font-size: var(--gov-type-body);
+  font-size: var(--gov-type-h4);
   line-height: var(--gov-leading-relaxed);
   color: var(--gov-text-secondary);
   margin: 0;
@@ -633,6 +673,10 @@ body { background: var(--gov-bg-primary); }
     grid-template-columns: repeat(3, 1fr);
   }
 
+  .gov-beliefs-cards {
+    grid-template-columns: 1fr;
+  }
+
   .gov-quotes-grid {
     grid-template-columns: 1fr;
   }
@@ -644,9 +688,10 @@ body { background: var(--gov-bg-primary); }
 
 /* ── RESPONSIVE: Small Tablet ── */
 @media (max-width: 768px) {
-  .gov-beliefs-wrapper {
-    grid-template-columns: 1fr;
+  .gov-hero {
+    height: clamp(300px, 40vh, 540px);
   }
+
 }
 
 /* ── RESPONSIVE: Mobile ── */
@@ -716,12 +761,16 @@ body { background: var(--gov-bg-primary); }
 /* ── RESPONSIVE: Small Mobile ── */
 @media (max-width: 425px) {
   .gov-values-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .gov-values-heading {
-    font-size: clamp(20px, 5vw, 28px);
+  .gov-value-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    min-height: unset;
   }
+
 
   .gov-pillar-header h3 {
     font-size: clamp(18px, 4.5vw, 22px);
