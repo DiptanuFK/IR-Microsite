@@ -153,7 +153,7 @@ function addParallax(el, updateFn) {
     // The scrub value below controls lag: scrub: 1 = 1s smoothing behind scroll.
     // ──────────────────────────────────────────────────────────────────────
 
-    // Phase 1 — Header entrance: fires once on scroll-into-view, NOT scrubbed
+    // Phase 1 — Header entrance: fires when apart section reaches the top
     gsap.from(header, {
         y: 40,
         scale: 0.8,
@@ -162,7 +162,7 @@ function addParallax(el, updateFn) {
         ease: 'back.out(1.7)',
         scrollTrigger: {
             trigger: section,
-            start: 'top 80%',
+            start: 'top top',
             toggleActions: 'play none none reverse',
         },
     });
@@ -177,7 +177,7 @@ function addParallax(el, updateFn) {
         delay: 0.15,
         scrollTrigger: {
             trigger: section,
-            start: 'top 80%',
+            start: 'top top',
             toggleActions: 'play none none reverse',
         },
     });
@@ -191,7 +191,7 @@ function addParallax(el, updateFn) {
             trigger: section,
             start: 'top top',        // pin locks when section hits the top
             end: 'bottom bottom',    // unpin when the tall section scrolls out
-            pin: section,            // pin the whole section; apart-sticky fills it
+            pin: '.apart-sticky',
             scrub: 1,                // 1s smoothing; set to true for instant scrub
             anticipatePin: 1,
         },

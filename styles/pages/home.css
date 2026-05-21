@@ -776,6 +776,8 @@
   background: var(--color-bg);
 }
 .apart-sticky {
+  position: sticky;
+  top: 0;
   height: 100vh;
   overflow: hidden;
   display: flex;
