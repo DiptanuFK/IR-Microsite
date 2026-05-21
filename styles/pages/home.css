@@ -535,8 +535,6 @@
   background: var(--color-bg);
   padding-top: clamp(65px, 6.5vw, 112px);
   padding-bottom: clamp(65px, 6.5vw, 112px);
-  padding-left: 5%;
-  padding-right: 5%;
   --impact-card-radius:      clamp(16px, 1.39vw, 24px);
   --impact-chip-radius:      clamp(16px, 1.74vw, 30px);
   --impact-card-padding:     clamp(18px, 1.56vw, 27px);
@@ -550,6 +548,8 @@
   gap: var(--gutter);
   max-width: 1920px;
   margin: 0 auto;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .impact-photo-card {
@@ -800,12 +800,17 @@
 /* ── What Sets Us Apart — static grid ── */
 .apart {
   background: var(--color-bg);
-  padding: clamp(64px, 6vw, 112px) var(--page-pad-desktop);
+  padding-top: clamp(64px, 6vw, 112px);
+  padding-bottom: clamp(64px, 6vw, 112px);
 }
 .apart-sticky {
   display: flex;
   flex-direction: column;
   gap: clamp(32px, 3vw, 56px);
+  max-width: 1920px;
+  margin: 0 auto;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 .apart-header {
   text-align: center;
