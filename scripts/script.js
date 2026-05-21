@@ -260,65 +260,70 @@ if (impactPhoto) {
     });
 }());
 
-// Leadership tabs + dropdown interaction (governance.html)
+// Ethics & Compliance Leadership (governance.html)
 (function () {
-    const tabs     = document.querySelectorAll('.gov-tab-btn');
-    const panels   = document.querySelectorAll('.gov-quote-panel');
-    const wrapper  = document.querySelector('.gov-dropdown-wrapper');
-    const trigger  = document.querySelector('.gov-dropdown-trigger');
-    const list     = document.querySelector('.gov-dropdown-list');
-    const items    = document.querySelectorAll('.gov-dropdown-item');
-    const selected = document.querySelector('.gov-dropdown-selected');
-    if (!tabs.length && !trigger) return;
+    const desktopBtns = document.querySelectorAll('.ecl-avatar-btn');
+    const panels      = document.querySelectorAll('.ecl-panel');
+    const mobDropdown = document.querySelector('.ecl-mob-dropdown');
+    const mobTrigger  = document.querySelector('.ecl-mob-trigger');
+    const mobList     = document.querySelector('.ecl-mob-list');
+    const mobItems    = document.querySelectorAll('.ecl-mob-item');
+    if (!desktopBtns.length && !mobTrigger) return;
 
-    function closeDropdown() {
-        if (!wrapper) return;
-        wrapper.classList.remove('is-open');
-        if (trigger) trigger.setAttribute('aria-expanded', 'false');
-        if (list)    list.setAttribute('aria-hidden', 'true');
+    function closeMobDropdown() {
+        if (!mobDropdown) return;
+        mobDropdown.classList.remove('is-open');
+        if (mobTrigger) mobTrigger.setAttribute('aria-expanded', 'false');
+        if (mobList)    mobList.setAttribute('aria-hidden', 'true');
+    }
+
+    function updateMobTrigger(index) {
+        if (!mobTrigger) return;
+        const src = document.querySelector(`.ecl-mob-item[data-profile="${index}"]`);
+        if (!src) return;
+        const triggerImg  = mobTrigger.querySelector('.ecl-mob-img-wrap img');
+        const triggerName = mobTrigger.querySelector('.ecl-name');
+        const triggerRole = mobTrigger.querySelector('.ecl-role');
+        const srcImg  = src.querySelector('.ecl-mob-sm-img-wrap img');
+        const srcName = src.querySelector('.ecl-name');
+        const srcRole = src.querySelector('.ecl-role');
+        if (triggerImg && srcImg)   { triggerImg.src = srcImg.src; triggerImg.alt = srcImg.alt; }
+        if (triggerName && srcName) triggerName.textContent = srcName.textContent;
+        if (triggerRole && srcRole) triggerRole.textContent = srcRole.textContent;
     }
 
     function activate(index) {
         const i = String(index);
-
-        tabs.forEach(t => {
-            t.classList.toggle('active', t.dataset.profile === i);
-            t.setAttribute('aria-selected', String(t.dataset.profile === i));
+        desktopBtns.forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.profile === i);
+            btn.setAttribute('aria-selected', String(btn.dataset.profile === i));
         });
         panels.forEach(p => p.classList.toggle('active', p.dataset.profile === i));
-        items.forEach(item => {
+        mobItems.forEach(item => {
             item.classList.toggle('active', item.dataset.profile === i);
             item.setAttribute('aria-selected', String(item.dataset.profile === i));
         });
-
-        if (selected) {
-            const src = document.querySelector(`.gov-dropdown-item[data-profile="${i}"]`);
-            if (src) {
-                selected.innerHTML = '';
-                selected.appendChild(src.querySelector('.gov-tab-avatar').cloneNode(true));
-                selected.appendChild(src.querySelector('.gov-tab-meta').cloneNode(true));
-            }
-        }
+        updateMobTrigger(i);
     }
 
-    tabs.forEach(tab => tab.addEventListener('click', () => activate(tab.dataset.profile)));
+    desktopBtns.forEach(btn => btn.addEventListener('click', () => activate(btn.dataset.profile)));
 
-    if (trigger) {
-        trigger.addEventListener('click', () => {
-            const isOpen = wrapper.classList.toggle('is-open');
-            trigger.setAttribute('aria-expanded', String(isOpen));
-            if (list) list.setAttribute('aria-hidden', String(!isOpen));
+    if (mobTrigger) {
+        mobTrigger.addEventListener('click', () => {
+            const isOpen = mobDropdown.classList.toggle('is-open');
+            mobTrigger.setAttribute('aria-expanded', String(isOpen));
+            if (mobList) mobList.setAttribute('aria-hidden', String(!isOpen));
         });
     }
 
-    items.forEach(item => {
+    mobItems.forEach(item => {
         item.addEventListener('click', () => {
             activate(item.dataset.profile);
-            closeDropdown();
+            closeMobDropdown();
         });
     });
 
     document.addEventListener('click', e => {
-        if (wrapper && !wrapper.contains(e.target)) closeDropdown();
+        if (mobDropdown && !mobDropdown.contains(e.target)) closeMobDropdown();
     });
 }());

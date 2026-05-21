@@ -60,116 +60,117 @@
     <div class="gov-container">
         <h2 class="gov-section-title">Flipkart Leadership</h2>
 
-        <div class="gov-leadership-interactive">
+        <div class="ecl-wrapper">
 
-            <!-- Desktop: vertical tab list -->
-            <nav class="gov-tabs-nav" aria-label="Leadership profiles">
-                <button class="gov-tab-btn active" data-profile="0" aria-selected="true">
-                    <img class="gov-tab-avatar" src="images/Balaji.png" alt="Balaji Thiagarajan">
-                    <div class="gov-tab-meta">
-                        <span class="gov-tab-name">Balaji Thiagarajan</span>
-                        <span class="gov-tab-role">CPTO, Flipkart</span>
+            <!-- Desktop: circular avatar row (active = expanded glassmorphic pill) -->
+            <div class="ecl-desktop-row" role="tablist" aria-label="Leadership profiles">
+                <button class="ecl-avatar-btn active" data-profile="0" role="tab" aria-selected="true">
+                    <div class="ecl-img-wrap"><img src="images/Balaji.png" alt="Balaji Thiagarajan"></div>
+                    <div class="ecl-meta">
+                        <span class="ecl-name">Balaji Thiagarajan</span>
+                        <span class="ecl-role">CPTO, Flipkart</span>
                     </div>
                 </button>
-                <button class="gov-tab-btn" data-profile="1" aria-selected="false">
-                    <img class="gov-tab-avatar" src="images/Jane.png" alt="Jane Duke">
-                    <div class="gov-tab-meta">
-                        <span class="gov-tab-name">Jane Duke</span>
-                        <span class="gov-tab-role">CECO, Flipkart Group</span>
+                <button class="ecl-avatar-btn" data-profile="1" role="tab" aria-selected="false">
+                    <div class="ecl-img-wrap"><img src="images/Jane.png" alt="Jane Duke"></div>
+                    <div class="ecl-meta">
+                        <span class="ecl-name">Jane Duke</span>
+                        <span class="ecl-role">CECO, Flipkart Group</span>
                     </div>
                 </button>
-                <button class="gov-tab-btn" data-profile="2" aria-selected="false">
-                    <img class="gov-tab-avatar" src="images/kalyan.png" alt="Kalyan Krishnamoorthy">
-                    <div class="gov-tab-meta">
-                        <span class="gov-tab-name">Kalyan Krishnamoorthy</span>
-                        <span class="gov-tab-role">CEO, Flipkart Group</span>
+                <button class="ecl-avatar-btn" data-profile="2" role="tab" aria-selected="false">
+                    <div class="ecl-img-wrap"><img src="images/kalyan.png" alt="Kalyan Krishnamoorthy"></div>
+                    <div class="ecl-meta">
+                        <span class="ecl-name">Kalyan Krishnamoorthy</span>
+                        <span class="ecl-role">CEO, Flipkart Group</span>
                     </div>
                 </button>
-                <button class="gov-tab-btn" data-profile="3" aria-selected="false">
-                    <img class="gov-tab-avatar" src="images/RaviIyer.png" alt="Ravi Iyer">
-                    <div class="gov-tab-meta">
-                        <span class="gov-tab-name">Ravi Iyer</span>
-                        <span class="gov-tab-role">CFO & Head of IR, Flipkart</span>
+                <button class="ecl-avatar-btn" data-profile="3" role="tab" aria-selected="false">
+                    <div class="ecl-img-wrap"><img src="images/RaviIyer.png" alt="Ravi Iyer"></div>
+                    <div class="ecl-meta">
+                        <span class="ecl-name">Ravi Iyer</span>
+                        <span class="ecl-role">CFO &amp; Head of IR, Flipkart</span>
                     </div>
                 </button>
-                <button class="gov-tab-btn" data-profile="4" aria-selected="false">
-                    <img class="gov-tab-avatar" src="images/SeemaNair.png" alt="Seema Nair">
-                    <div class="gov-tab-meta">
-                        <span class="gov-tab-name">Seema Nair</span>
-                        <span class="gov-tab-role">CHRO, Flipkart</span>
+                <button class="ecl-avatar-btn" data-profile="4" role="tab" aria-selected="false">
+                    <div class="ecl-img-wrap"><img src="images/SeemaNair.png" alt="Seema Nair"></div>
+                    <div class="ecl-meta">
+                        <span class="ecl-name">Seema Nair</span>
+                        <span class="ecl-role">CHRO, Flipkart</span>
                     </div>
                 </button>
-            </nav>
+            </div>
 
-            <!-- Tablet/Mobile: custom dropdown -->
-            <div class="gov-dropdown-wrapper">
-                <button class="gov-dropdown-trigger" aria-expanded="false" aria-haspopup="listbox">
-                    <div class="gov-dropdown-selected">
-                        <img class="gov-tab-avatar" src="images/Balaji.png" alt="Balaji Thiagarajan">
-                        <div class="gov-tab-meta">
-                            <span class="gov-tab-name">Balaji Thiagarajan</span>
-                            <span class="gov-tab-role">CPTO, Flipkart</span>
-                        </div>
+            <!-- Mobile: glassmorphic pill trigger + dropdown list -->
+            <div class="ecl-mob-dropdown">
+                <button class="ecl-mob-trigger" aria-expanded="false" aria-haspopup="listbox">
+                    <div class="ecl-mob-img-wrap">
+                        <img src="images/Balaji.png" alt="Balaji Thiagarajan">
                     </div>
-                    <span class="gov-dropdown-arrow" aria-hidden="true">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </span>
+                    <div class="ecl-meta">
+                        <span class="ecl-name">Balaji Thiagarajan</span>
+                        <span class="ecl-role">CPTO, Flipkart</span>
+                    </div>
+                    <svg class="ecl-chevron" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                        <circle cx="16" cy="16" r="16" fill="rgba(255,255,255,0.2)"/>
+                        <path d="M10 13L16 19L22 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                 </button>
-                <ul class="gov-dropdown-list" role="listbox" aria-hidden="true">
-                    <li class="gov-dropdown-item active" role="option" data-profile="0" aria-selected="true">
-                        <img class="gov-tab-avatar" src="images/Balaji.png" alt="Balaji Thiagarajan">
-                        <div class="gov-tab-meta">
-                            <span class="gov-tab-name">Balaji Thiagarajan</span>
-                            <span class="gov-tab-role">CPTO, Flipkart</span>
+                <ul class="ecl-mob-list" role="listbox" aria-hidden="true">
+                    <li class="ecl-mob-item active" data-profile="0" role="option" aria-selected="true">
+                        <div class="ecl-mob-sm-img-wrap"><img src="images/Balaji.png" alt="Balaji Thiagarajan"></div>
+                        <div class="ecl-meta">
+                            <span class="ecl-name">Balaji Thiagarajan</span>
+                            <span class="ecl-role">CPTO, Flipkart</span>
                         </div>
                     </li>
-                    <li class="gov-dropdown-item" role="option" data-profile="1" aria-selected="false">
-                        <img class="gov-tab-avatar" src="images/Jane.png" alt="Jane Duke">
-                        <div class="gov-tab-meta">
-                            <span class="gov-tab-name">Jane Duke</span>
-                            <span class="gov-tab-role">CECO, Flipkart Group</span>
+                    <li class="ecl-mob-item" data-profile="1" role="option" aria-selected="false">
+                        <div class="ecl-mob-sm-img-wrap"><img src="images/Jane.png" alt="Jane Duke"></div>
+                        <div class="ecl-meta">
+                            <span class="ecl-name">Jane Duke</span>
+                            <span class="ecl-role">CECO, Flipkart Group</span>
                         </div>
                     </li>
-                    <li class="gov-dropdown-item" role="option" data-profile="2" aria-selected="false">
-                        <img class="gov-tab-avatar" src="images/kalyan.png" alt="Kalyan Krishnamoorthy">
-                        <div class="gov-tab-meta">
-                            <span class="gov-tab-name">Kalyan Krishnamoorthy</span>
-                            <span class="gov-tab-role">CEO, Flipkart Group</span>
+                    <li class="ecl-mob-item" data-profile="2" role="option" aria-selected="false">
+                        <div class="ecl-mob-sm-img-wrap"><img src="images/kalyan.png" alt="Kalyan Krishnamoorthy"></div>
+                        <div class="ecl-meta">
+                            <span class="ecl-name">Kalyan Krishnamoorthy</span>
+                            <span class="ecl-role">CEO, Flipkart Group</span>
                         </div>
                     </li>
-                    <li class="gov-dropdown-item" role="option" data-profile="3" aria-selected="false">
-                        <img class="gov-tab-avatar" src="images/RaviIyer.png" alt="Ravi Iyer">
-                        <div class="gov-tab-meta">
-                            <span class="gov-tab-name">Ravi Iyer</span>
-                            <span class="gov-tab-role">CFO & Head of IR, Flipkart</span>
+                    <li class="ecl-mob-item" data-profile="3" role="option" aria-selected="false">
+                        <div class="ecl-mob-sm-img-wrap"><img src="images/RaviIyer.png" alt="Ravi Iyer"></div>
+                        <div class="ecl-meta">
+                            <span class="ecl-name">Ravi Iyer</span>
+                            <span class="ecl-role">CFO &amp; Head of IR, Flipkart</span>
                         </div>
                     </li>
-                    <li class="gov-dropdown-item" role="option" data-profile="4" aria-selected="false">
-                        <img class="gov-tab-avatar" src="images/SeemaNair.png" alt="Seema Nair">
-                        <div class="gov-tab-meta">
-                            <span class="gov-tab-name">Seema Nair</span>
-                            <span class="gov-tab-role">CHRO, Flipkart</span>
+                    <li class="ecl-mob-item" data-profile="4" role="option" aria-selected="false">
+                        <div class="ecl-mob-sm-img-wrap"><img src="images/SeemaNair.png" alt="Seema Nair"></div>
+                        <div class="ecl-meta">
+                            <span class="ecl-name">Seema Nair</span>
+                            <span class="ecl-role">CHRO, Flipkart</span>
                         </div>
                     </li>
                 </ul>
             </div>
 
-            <!-- Quote panels (desktop: right column / mobile: below dropdown) -->
-            <div class="gov-quote-panels">
-                <div class="gov-quote-panel active" data-profile="0">
-                    <p class="gov-leadership-quote-text">"At the Flipkart Group, trust is the cornerstone of our business, and we earn it every day by choosing what is right over what is easy. Each click, each delivery, and every interaction is an act of faith from our customers and stakeholders. We don't just follow the law; we foster a culture that embraces doing business the right way and empowers every employee to innovate with courage and lead with uncompromising integrity."</p>
+            <!-- Quote card: shared desktop + mobile -->
+            <div class="ecl-quote-card">
+                <div class="ecl-panel active" data-profile="0">
+                    <p class="ecl-panel-text">"At the Flipkart Group, trust is the cornerstone of our business, and we earn it every day by choosing what is right over what is easy. Each click, each delivery, and every interaction is an act of faith from our customers and stakeholders. We don't just follow the law; we foster a culture that embraces doing business the right way and empowers every employee to innovate with courage and lead with uncompromising integrity."</p>
                 </div>
-                <div class="gov-quote-panel" data-profile="1">
-                    <p class="gov-leadership-quote-text">"At the Flipkart Group, trust is the cornerstone of our business, and we earn it every day by choosing what is right over what is easy. Each click, each delivery, and every interaction is an act of faith from our customers and stakeholders. We don't just follow the law; we foster a culture that embraces doing business the right way and empowers every employee to innovate with courage and lead with uncompromising integrity."</p>
+                <div class="ecl-panel" data-profile="1">
+                    <p class="ecl-panel-text">"At the Flipkart Group, trust is the cornerstone of our business, and we earn it every day by choosing what is right over what is easy. Each click, each delivery, and every interaction is an act of faith from our customers and stakeholders. We don't just follow the law; we foster a culture that embraces doing business the right way and empowers every employee to innovate with courage and lead with uncompromising integrity."</p>
                 </div>
-                <div class="gov-quote-panel" data-profile="2">
-                    <p class="gov-leadership-quote-text">"At the Flipkart Group, trust is the cornerstone of our business, and we earn it every day by choosing what is right over what is easy. Each click, each delivery, and every interaction is an act of faith from our customers and stakeholders. We don't just follow the law; we foster a culture that embraces doing business the right way and empowers every employee to innovate with courage and lead with uncompromising integrity."</p>
+                <div class="ecl-panel" data-profile="2">
+                    <p class="ecl-panel-text">"At the Flipkart Group, trust is the cornerstone of our business, and we earn it every day by choosing what is right over what is easy. Each click, each delivery, and every interaction is an act of faith from our customers and stakeholders. We don't just follow the law; we foster a culture that embraces doing business the right way and empowers every employee to innovate with courage and lead with uncompromising integrity."</p>
                 </div>
-                <div class="gov-quote-panel" data-profile="3">
-                    <p class="gov-leadership-quote-text">"At the Flipkart Group, trust is the cornerstone of our business, and we earn it every day by choosing what is right over what is easy. Each click, each delivery, and every interaction is an act of faith from our customers and stakeholders. We don't just follow the law; we foster a culture that embraces doing business the right way and empowers every employee to innovate with courage and lead with uncompromising integrity."</p>
+                <div class="ecl-panel" data-profile="3">
+                    <p class="ecl-panel-text">"At the Flipkart Group, trust is the cornerstone of our business, and we earn it every day by choosing what is right over what is easy. Each click, each delivery, and every interaction is an act of faith from our customers and stakeholders. We don't just follow the law; we foster a culture that embraces doing business the right way and empowers every employee to innovate with courage and lead with uncompromising integrity."</p>
                 </div>
-                <div class="gov-quote-panel" data-profile="4">
-                    <p class="gov-leadership-quote-text">"At the Flipkart Group, trust is the cornerstone of our business, and we earn it every day by choosing what is right over what is easy. Each click, each delivery, and every interaction is an act of faith from our customers and stakeholders. We don't just follow the law; we foster a culture that embraces doing business the right way and empowers every employee to innovate with courage and lead with uncompromising integrity."</p>
+                <div class="ecl-panel" data-profile="4">
+                    <p class="ecl-panel-text">"At the Flipkart Group, trust is the cornerstone of our business, and we earn it every day by choosing what is right over what is easy. Each click, each delivery, and every interaction is an act of faith from our customers and stakeholders. We don't just follow the law; we foster a culture that embraces doing business the right way and empowers every employee to innovate with courage and lead with uncompromising integrity."</p>
                 </div>
             </div>
 

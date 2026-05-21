@@ -602,62 +602,8 @@ body { background: var(--gov-bg-primary); }
 
 /* ── LEADERSHIP SECTION ── */
 .gov-leadership {
-  padding: var(--gov-pad-top) var(--gov-pad-x) 0;
+  padding: var(--gov-pad-top) var(--gov-pad-x) var(--gov-pad-bottom);
   background: var(--gov-bg-primary);
-}
-
-.gov-quotes-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--gov-space-4xl);
-  margin-top: var(--gov-space-3xl);
-}
-
-.gov-quote {
-  padding: var(--gov-space-3xl);
-  background: var(--gov-bg-secondary);
-  border-radius: var(--gov-radius-lg);
-  border: 1px solid var(--gov-border-light);
-  display: flex;
-  flex-direction: column;
-  gap: var(--gov-space-xl);
-}
-
-.gov-quote-avatar {
-  width: clamp(48px, 6vw, 64px);
-  height: clamp(48px, 6vw, 64px);
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--gov-accent-blue), var(--gov-accent-navy));
-  flex-shrink: 0;
-}
-
-.gov-quote-text {
-  font-size: clamp(16px, 1.05vw, 18px);
-  line-height: var(--gov-leading-relaxed);
-  color: var(--gov-text-secondary);
-  margin: 0;
-  font-style: italic;
-  font-weight: 400;
-}
-
-.gov-quote-author {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gov-space-xs);
-}
-
-.gov-author-name {
-  font-size: var(--gov-type-body);
-  font-weight: 700;
-  color: var(--gov-text-primary);
-  margin: 0;
-}
-
-.gov-author-title {
-  font-size: var(--gov-type-sm);
-  color: var(--gov-text-tertiary);
-  margin: 0;
-  font-weight: 400;
 }
 
 /* ── FOOTER ── */
@@ -802,272 +748,308 @@ body { background: var(--gov-bg-primary); }
   }
 }
 
-/* ── LEADERSHIP INTERACTIVE (tabs + dropdown + quote panels) ── */
+/* ── ECL: Ethics & Compliance Leadership ── */
 
-.gov-leadership-interactive {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gov-space-3xl);
+.ecl-wrapper {
+  position: relative;
+  margin-top: var(--gov-space-3xl);
 }
 
-/* ─ Desktop: horizontal tabs ─ */
-.gov-tabs-nav {
-  display: flex;
-  flex-direction: row;
-  border-bottom: 2px solid var(--gov-border-light);
-}
-
-.gov-tab-btn {
+/* ─ Desktop: avatar row ─ */
+.ecl-desktop-row {
   display: flex;
   align-items: center;
-  gap: var(--gov-space-md);
-  padding: var(--gov-space-lg) var(--gov-space-xl);
-  background: transparent;
-  border: none;
-  border-bottom: 3px solid transparent;
-  margin-bottom: -2px;
-  cursor: pointer;
-  text-align: left;
-  flex: 1;
-  transition: background 0.2s ease, border-color 0.2s ease;
-  border-radius: var(--gov-radius-sm) var(--gov-radius-sm) 0 0;
+  justify-content: center;
+  gap: clamp(16px, 2.2vw, 48px);
+  padding: 0 clamp(12px, 6vw, 120px);
+  position: relative;
+  z-index: 2;
+  margin-bottom: clamp(-48px, -5.5vw, -95px);
 }
 
-.gov-tab-btn:hover {
-  background: var(--gov-bg-secondary);
-}
-
-.gov-tab-btn.active {
-  background: var(--gov-bg-secondary);
-  border-bottom-color: var(--gov-accent-navy);
-}
-
-.gov-tab-avatar {
-  width: clamp(44px, 4.5vw, 60px);
-  height: clamp(44px, 4.5vw, 60px);
+/* ─ Avatar buttons (inactive = circle) ─ */
+.ecl-avatar-btn {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0;
+  width: clamp(72px, 8vw, 146px);
+  height: clamp(72px, 8vw, 146px);
   border-radius: 50%;
-  background: var(--gov-bg-tertiary);
-  border: 1px solid var(--gov-border-light);
+  border: 4px solid rgba(255, 255, 255, 0.6);
+  background: transparent;
+  cursor: pointer;
   flex-shrink: 0;
+  box-shadow: 0 14px 42px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.ecl-avatar-btn:hover:not(.active) {
+  transform: scale(1.07);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+.ecl-avatar-btn .ecl-img-wrap {
+  width: 100%;
+  height: 100%;
+}
+.ecl-avatar-btn img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
+.ecl-avatar-btn .ecl-meta {
+  display: none;
+}
 
-.gov-tab-meta {
+/* Active = expanded glassmorphic pill */
+.ecl-avatar-btn.active {
+  width: auto;
+  height: auto;
+  padding: clamp(12px, 1.4vw, 24px);
+  gap: clamp(14px, 1.8vw, 34px);
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  overflow: visible;
+  background: rgba(30, 115, 255, 0.3);
+  backdrop-filter: blur(57px);
+  -webkit-backdrop-filter: blur(57px);
+  box-shadow:
+    0px 35px 42px rgba(0, 0, 0, 0.25),
+    inset 0px -1px 20px rgba(255, 255, 255, 0.05),
+    inset 0px 1px 2px rgba(255, 255, 255, 0.65);
+}
+.ecl-avatar-btn.active .ecl-img-wrap {
+  width: clamp(72px, 8vw, 145px);
+  height: clamp(72px, 8vw, 145px);
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.6);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.ecl-avatar-btn.active .ecl-meta {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  min-width: 0;
+  gap: 2px;
+  width: clamp(110px, 12vw, 224px);
+  color: white;
+}
+.ecl-avatar-btn.active .ecl-name {
+  font-weight: 700;
+  font-size: clamp(14px, 1.6vw, 27px);
+  line-height: 1.3;
+}
+.ecl-avatar-btn.active .ecl-role {
+  font-weight: 400;
+  font-size: clamp(11px, 1vw, 18px);
+  line-height: 1.5;
+  opacity: 0.9;
 }
 
-.gov-tab-name {
-  font-size: var(--gov-type-sm);
-  font-weight: 600;
-  color: var(--gov-text-secondary);
-  line-height: var(--gov-leading-tight);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.gov-tab-btn.active .gov-tab-name {
-  color: var(--gov-accent-navy);
-}
-
-.gov-tab-role {
-  font-size: 12px;
-  color: var(--gov-text-tertiary);
-  line-height: var(--gov-leading-normal);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* ─ Dropdown (hidden on desktop) ─ */
-.gov-dropdown-wrapper {
-  display: none;
+/* ─ Quote card ─ */
+.ecl-quote-card {
   position: relative;
-}
-
-.gov-dropdown-trigger {
+  z-index: 1;
+  border-radius: clamp(28px, 4vw, 72px);
+  background: linear-gradient(155deg, #93bcff 0%, #6ca5ff 18%, #468eff 36%, #2f7dfb 55%, #196cf7 75%);
+  min-height: clamp(280px, 28vw, 525px);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  padding: clamp(80px, 10vw, 155px) clamp(40px, 10vw, 172px) clamp(40px, 5vw, 80px);
+}
+
+/* ─ Quote panels ─ */
+@keyframes ecl-panel-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.ecl-panel {
+  display: none;
+}
+.ecl-panel.active {
+  display: block;
+  animation: ecl-panel-in 0.3s ease forwards;
+}
+.ecl-panel-text {
+  font-size: clamp(15px, 1.35vw, 22px);
+  line-height: 1.6;
+  color: white;
+  font-style: italic;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* ─ Mobile dropdown (hidden on desktop) ─ */
+.ecl-mob-dropdown {
+  display: none;
+  position: relative;
+  z-index: 10;
+}
+
+/* ─ Mobile trigger pill ─ */
+.ecl-mob-trigger {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 3vw, 26px);
   width: 100%;
-  padding: var(--gov-space-lg) var(--gov-space-xl);
-  background: var(--gov-bg-primary);
-  border: 1.5px solid var(--gov-border-medium);
-  border-radius: var(--gov-radius-md);
+  padding: clamp(10px, 2vw, 20px);
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(30, 115, 255, 0.8);
+  backdrop-filter: blur(43px);
+  -webkit-backdrop-filter: blur(43px);
+  box-shadow:
+    0px 27px 32px rgba(0, 0, 0, 0.25),
+    inset 0px -1px 15px rgba(255, 255, 255, 0.05),
+    inset 0px 1px 1.5px rgba(255, 255, 255, 0.65);
   cursor: pointer;
   text-align: left;
   font-family: inherit;
   touch-action: manipulation;
-  transition: border-color 0.2s ease;
+  position: relative;
+  z-index: 3;
 }
 
-.gov-dropdown-trigger:focus {
-  outline: none;
-  border-color: var(--gov-accent-navy);
-}
-
-.gov-dropdown-wrapper.is-open .gov-dropdown-trigger {
-  border-color: var(--gov-accent-navy);
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.gov-dropdown-selected {
-  display: flex;
-  align-items: center;
-  gap: var(--gov-space-md);
-  min-width: 0;
-}
-
-.gov-dropdown-arrow {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  color: var(--gov-text-secondary);
-  transition: transform 0.2s ease;
-}
-
-.gov-dropdown-wrapper.is-open .gov-dropdown-arrow {
-  transform: rotate(180deg);
-}
-
-.gov-dropdown-list {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: var(--gov-bg-primary);
-  border: 1.5px solid var(--gov-accent-navy);
-  border-top: none;
-  border-bottom-left-radius: var(--gov-radius-md);
-  border-bottom-right-radius: var(--gov-radius-md);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  z-index: 100;
-  max-height: 320px;
-  overflow-y: auto;
-}
-
-.gov-dropdown-wrapper.is-open .gov-dropdown-list {
-  display: block;
-}
-
-.gov-dropdown-item {
-  display: flex;
-  align-items: center;
-  gap: var(--gov-space-md);
-  padding: var(--gov-space-lg) var(--gov-space-xl);
-  cursor: pointer;
-  border-bottom: 1px solid var(--gov-border-light);
-  transition: background 0.15s ease;
-}
-
-.gov-dropdown-item:last-child {
-  border-bottom: none;
-}
-
-.gov-dropdown-item:hover {
-  background: var(--gov-bg-secondary);
-}
-
-.gov-dropdown-item.active {
-  background: var(--gov-bg-secondary);
-}
-
-.gov-dropdown-item.active .gov-tab-name {
-  color: var(--gov-accent-navy);
-}
-
-/* ─ Quote panels ─ */
-@keyframes gov-panel-in {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.gov-quote-panel {
-  display: none;
-}
-
-.gov-quote-panel.active {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gov-space-2xl);
-  padding: var(--gov-space-3xl);
-  background: var(--gov-bg-secondary);
-  border-radius: var(--gov-radius-lg);
-  border: 1px solid var(--gov-border-light);
-  animation: gov-panel-in 0.3s ease forwards;
-}
-
-.gov-leadership-quote-text {
-  font-size: clamp(16px, 1.3vw, 22px);
-  line-height: var(--gov-leading-relaxed);
-  color: var(--gov-text-secondary);
-  font-style: italic;
-  font-weight: 400;
-  margin: 0;
-}
-
-.gov-leadership-quote-attr {
-  display: flex;
-  align-items: center;
-  gap: var(--gov-space-lg);
-  padding-top: var(--gov-space-xl);
-  border-top: 1px solid var(--gov-border-light);
-}
-
-.gov-leadership-quote-avatar {
-  width: 52px;
-  height: 52px;
+.ecl-mob-img-wrap {
+  width: clamp(52px, 12vw, 84px);
+  height: clamp(52px, 12vw, 84px);
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--gov-accent-blue), var(--gov-accent-navy));
+  border: 2.5px solid rgba(255, 255, 255, 0.6);
+  overflow: hidden;
   flex-shrink: 0;
+}
+.ecl-mob-img-wrap img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
-
-.gov-leadership-quote-info {
+.ecl-mob-trigger .ecl-meta {
+  flex: 1;
+  min-width: 0;
+  color: white;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 }
-
-.gov-leadership-author-name {
-  font-size: var(--gov-type-body);
+.ecl-mob-trigger .ecl-name {
+  font-size: clamp(13px, 3.6vw, 16px);
   font-weight: 700;
-  color: var(--gov-text-primary);
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  line-height: 1.3;
+}
+.ecl-mob-trigger .ecl-role {
+  font-size: clamp(10px, 2.4vw, 11px);
+  line-height: 1.5;
+  opacity: 0.85;
+}
+.ecl-chevron {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  transition: transform 0.25s ease;
+}
+.ecl-mob-dropdown.is-open .ecl-chevron {
+  transform: rotate(180deg);
 }
 
-.gov-leadership-author-title {
-  font-size: var(--gov-type-sm);
-  color: var(--gov-text-tertiary);
+/* ─ Mobile dropdown list ─ */
+.ecl-mob-list {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  list-style: none;
   margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  padding: 0;
+  z-index: 20;
+  flex-direction: column;
+  gap: 8px;
+}
+.ecl-mob-dropdown.is-open .ecl-mob-list {
+  display: flex;
 }
 
-/* ─ Tablet + Mobile: switch to dropdown ─ */
+.ecl-mob-item {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 3vw, 26px);
+  padding: clamp(8px, 2vw, 16px);
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.51);
+  backdrop-filter: blur(6.5px);
+  -webkit-backdrop-filter: blur(6.5px);
+  box-shadow:
+    0px 14px 32px rgba(0, 0, 0, 0.18),
+    inset 0px -1px 15px rgba(255, 255, 255, 0.05),
+    inset 0px 1px 1.5px rgba(255, 255, 255, 0.65);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background 0.15s ease;
+}
+.ecl-mob-item:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+.ecl-mob-item.active {
+  background: rgba(30, 115, 255, 0.15);
+}
+
+.ecl-mob-sm-img-wrap {
+  width: clamp(40px, 9vw, 57px);
+  height: clamp(40px, 9vw, 57px);
+  border-radius: 50%;
+  border: 2.5px solid rgba(255, 255, 255, 0.6);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.ecl-mob-sm-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.ecl-mob-item .ecl-meta {
+  flex: 1;
+  min-width: 0;
+  color: #1e1e1e;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.ecl-mob-item .ecl-name {
+  font-size: clamp(13px, 3.4vw, 15px);
+  font-weight: 700;
+  line-height: 1.3;
+}
+.ecl-mob-item .ecl-role {
+  font-size: clamp(9px, 2.3vw, 10px);
+  line-height: 1.4;
+  color: #505050;
+}
+
+/* ─ Tablet / Mobile: switch to dropdown layout ─ */
 @media (max-width: 1024px) {
-  .gov-leadership-interactive {
-    grid-template-columns: 1fr;
-    gap: var(--gov-space-2xl);
-  }
-
-  .gov-tabs-nav {
+  .ecl-desktop-row {
     display: none;
   }
-
-  .gov-dropdown-wrapper {
+  .ecl-mob-dropdown {
     display: block;
+  }
+  .ecl-quote-card {
+    margin-top: clamp(-44px, -6vw, -52px);
+    padding-top: clamp(68px, 12vw, 96px);
+    padding-bottom: clamp(32px, 5vw, 48px);
+    padding-left: clamp(24px, 5vw, 40px);
+    padding-right: clamp(24px, 5vw, 40px);
+    border-radius: clamp(20px, 4vw, 32px);
+    min-height: clamp(260px, 50vw, 441px);
+    align-items: flex-start;
+  }
+  .ecl-panel-text {
+    font-size: clamp(14px, 3.8vw, 16px);
   }
 }
 
