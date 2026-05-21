@@ -788,7 +788,7 @@
 .apart-stage {
   display: flex;
   flex-direction: column;
-  gap: var(--gutter);
+  gap: var(--space-3xl);
 }
 .apart-card {
   position: relative;
