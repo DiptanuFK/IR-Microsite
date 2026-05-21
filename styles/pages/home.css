@@ -107,8 +107,6 @@
 .ceo-message {
   background: var(--color-bg);
   padding: 0 5%;
-  max-width: 1920px;
-  margin-inline: auto;
   height: clamp(400px, 35.59vw, 615px);
   overflow: hidden;
   justify-content: flex-start;
@@ -122,6 +120,8 @@
 .ceo-card {
   flex: 1 1 0;
   align-self: stretch;
+  max-width: 1920px;
+  margin-inline: auto;
   padding: 0 clamp(56px, 5.56vw, 160px);
   background: radial-gradient(ellipse 121.03% 121.03% at 50% 102.21%, rgba(22,66,185,0.60) 0%, rgba(10,30,83,0) 100%);
   box-shadow: var(--shadow-card);
