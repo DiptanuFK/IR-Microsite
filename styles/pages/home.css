@@ -792,7 +792,7 @@
 }
 .apart-card {
   position: relative;
-  border-radius: clamp(12px, 4vw, 16px);
+  border-radius: clamp(16px, 4vw, 20px);
   overflow: hidden;
   background: #111;
   height: 60vh;
