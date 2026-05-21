@@ -90,6 +90,12 @@
   .hero-blue { background: linear-gradient(to bottom, rgba(0,0,0,0) 40.534%, rgba(0,0,0,0.7) 71.251%, black 100%); }
 }
 
+/* ── mobile breakpoint: use 100svh to prevent jerk from dynamic viewport height ── */
+@media (max-width: 768px) {
+  .hero { min-height: 100svh; }
+  .hero-inner { min-height: 100svh; }
+}
+
 @media (max-width: 425px) {
   .hero-text { padding-left: 2%; }
 }
