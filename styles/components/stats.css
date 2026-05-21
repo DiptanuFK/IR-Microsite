@@ -7,15 +7,16 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: clamp(16px, 3.13vw, 24px);
-  padding: clamp(16px, 5.08vw, 52px) var(--page-pad-desktop);
-  max-width: 100%;
+  padding: clamp(16px, 5.08vw, 52px) 5%;
+  max-width: 1920px;
+  margin: 0 auto;
   width: 100%;
 }
 
 @media (max-width: 1024px) {
   .stats-bar {
     grid-template-columns: repeat(2, 1fr);
-    padding: clamp(16px, 5.08vw, 52px) var(--page-pad-tablet);
+    padding: clamp(16px, 5.08vw, 52px) 3%;
     gap: clamp(16px, 3.13vw, 24px);
   }
 }
@@ -23,7 +24,7 @@
 @media (max-width: 768px) {
   .stats-bar {
     grid-template-columns: repeat(2, 1fr);
-    padding: clamp(16px, 5.08vw, 52px) var(--page-pad-tablet);
+    padding: clamp(16px, 5.08vw, 52px) 3%;
     gap: clamp(12px, 2.5vw, 16px);
   }
 }
@@ -31,7 +32,7 @@
 @media (max-width: 425px) {
   .stats-bar {
     grid-template-columns: repeat(2, 1fr);
-    padding: clamp(16px, 5.08vw, 52px) clamp(16px, 5vw, 20px);
+    padding: clamp(16px, 5.08vw, 52px) 2%;
     gap: clamp(12px, 2.5vw, 16px);
   }
 }

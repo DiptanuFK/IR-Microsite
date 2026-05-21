@@ -55,9 +55,13 @@
 .hero-text {
   position: relative;
   z-index: 1;
-  padding-left: max(80px, 9.26vw);
+  padding-left: 5%;
+  max-width: 1920px;
+  width: 100%;
   margin-top: auto;
   margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 .hero-text h1 {
   font-weight: 700;
@@ -78,14 +82,16 @@
     justify-content: space-between;
     min-height: 100dvh;
     padding-top: clamp(120px, 15.23vw, 156px);
-    padding-left: var(--page-pad-tablet);
-    padding-right: var(--page-pad-tablet);
     padding-bottom: clamp(16px, 5.08vw, 52px);
   }
-  .hero-text { padding-left: 0; margin-top: 0; margin-bottom: 0; }
+  .hero-text { padding-left: 3%; margin-top: 0; margin-bottom: 0; }
   .hero-text h1 { font-size: clamp(28px, 8.47vw, 36px); gap: 4px; }
   .hero-fade { background: linear-gradient(to right, rgba(0,0,0,0.5) 63.462%, rgba(0,0,0,0) 100%); }
   .hero-blue { background: linear-gradient(to bottom, rgba(0,0,0,0) 40.534%, rgba(0,0,0,0.7) 71.251%, black 100%); }
+}
+
+@media (max-width: 425px) {
+  .hero-text { padding-left: 2%; }
 }
 
 
