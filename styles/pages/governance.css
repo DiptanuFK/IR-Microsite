@@ -602,7 +602,7 @@ body { background: var(--gov-bg-primary); }
 
 /* ── LEADERSHIP SECTION ── */
 .gov-leadership {
-  padding: var(--gov-pad-top) var(--gov-pad-x) var(--gov-pad-bottom);
+  padding: var(--gov-pad-top) var(--gov-pad-x) 0;
   background: var(--gov-bg-primary);
 }
 
@@ -799,6 +799,275 @@ body { background: var(--gov-bg-primary); }
   .gov-pillar-grid {
     grid-template-columns: 1fr 1fr;
     gap: var(--gov-space-lg);
+  }
+}
+
+/* ── LEADERSHIP INTERACTIVE (tabs + dropdown + quote panels) ── */
+
+.gov-leadership-interactive {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gov-space-3xl);
+}
+
+/* ─ Desktop: horizontal tabs ─ */
+.gov-tabs-nav {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 2px solid var(--gov-border-light);
+}
+
+.gov-tab-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--gov-space-md);
+  padding: var(--gov-space-lg) var(--gov-space-xl);
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  text-align: left;
+  flex: 1;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  border-radius: var(--gov-radius-sm) var(--gov-radius-sm) 0 0;
+}
+
+.gov-tab-btn:hover {
+  background: var(--gov-bg-secondary);
+}
+
+.gov-tab-btn.active {
+  background: var(--gov-bg-secondary);
+  border-bottom-color: var(--gov-accent-navy);
+}
+
+.gov-tab-avatar {
+  width: clamp(44px, 4.5vw, 60px);
+  height: clamp(44px, 4.5vw, 60px);
+  border-radius: 50%;
+  background: var(--gov-bg-tertiary);
+  border: 1px solid var(--gov-border-light);
+  flex-shrink: 0;
+  object-fit: cover;
+  display: block;
+}
+
+.gov-tab-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.gov-tab-name {
+  font-size: var(--gov-type-sm);
+  font-weight: 600;
+  color: var(--gov-text-secondary);
+  line-height: var(--gov-leading-tight);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gov-tab-btn.active .gov-tab-name {
+  color: var(--gov-accent-navy);
+}
+
+.gov-tab-role {
+  font-size: 12px;
+  color: var(--gov-text-tertiary);
+  line-height: var(--gov-leading-normal);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ─ Dropdown (hidden on desktop) ─ */
+.gov-dropdown-wrapper {
+  display: none;
+  position: relative;
+}
+
+.gov-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--gov-space-lg) var(--gov-space-xl);
+  background: var(--gov-bg-primary);
+  border: 1.5px solid var(--gov-border-medium);
+  border-radius: var(--gov-radius-md);
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  touch-action: manipulation;
+  transition: border-color 0.2s ease;
+}
+
+.gov-dropdown-trigger:focus {
+  outline: none;
+  border-color: var(--gov-accent-navy);
+}
+
+.gov-dropdown-wrapper.is-open .gov-dropdown-trigger {
+  border-color: var(--gov-accent-navy);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.gov-dropdown-selected {
+  display: flex;
+  align-items: center;
+  gap: var(--gov-space-md);
+  min-width: 0;
+}
+
+.gov-dropdown-arrow {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--gov-text-secondary);
+  transition: transform 0.2s ease;
+}
+
+.gov-dropdown-wrapper.is-open .gov-dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.gov-dropdown-list {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--gov-bg-primary);
+  border: 1.5px solid var(--gov-accent-navy);
+  border-top: none;
+  border-bottom-left-radius: var(--gov-radius-md);
+  border-bottom-right-radius: var(--gov-radius-md);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  z-index: 100;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.gov-dropdown-wrapper.is-open .gov-dropdown-list {
+  display: block;
+}
+
+.gov-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: var(--gov-space-md);
+  padding: var(--gov-space-lg) var(--gov-space-xl);
+  cursor: pointer;
+  border-bottom: 1px solid var(--gov-border-light);
+  transition: background 0.15s ease;
+}
+
+.gov-dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.gov-dropdown-item:hover {
+  background: var(--gov-bg-secondary);
+}
+
+.gov-dropdown-item.active {
+  background: var(--gov-bg-secondary);
+}
+
+.gov-dropdown-item.active .gov-tab-name {
+  color: var(--gov-accent-navy);
+}
+
+/* ─ Quote panels ─ */
+@keyframes gov-panel-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.gov-quote-panel {
+  display: none;
+}
+
+.gov-quote-panel.active {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gov-space-2xl);
+  padding: var(--gov-space-3xl);
+  background: var(--gov-bg-secondary);
+  border-radius: var(--gov-radius-lg);
+  border: 1px solid var(--gov-border-light);
+  animation: gov-panel-in 0.3s ease forwards;
+}
+
+.gov-leadership-quote-text {
+  font-size: clamp(16px, 1.3vw, 22px);
+  line-height: var(--gov-leading-relaxed);
+  color: var(--gov-text-secondary);
+  font-style: italic;
+  font-weight: 400;
+  margin: 0;
+}
+
+.gov-leadership-quote-attr {
+  display: flex;
+  align-items: center;
+  gap: var(--gov-space-lg);
+  padding-top: var(--gov-space-xl);
+  border-top: 1px solid var(--gov-border-light);
+}
+
+.gov-leadership-quote-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gov-accent-blue), var(--gov-accent-navy));
+  flex-shrink: 0;
+  object-fit: cover;
+  display: block;
+}
+
+.gov-leadership-quote-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gov-leadership-author-name {
+  font-size: var(--gov-type-body);
+  font-weight: 700;
+  color: var(--gov-text-primary);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.gov-leadership-author-title {
+  font-size: var(--gov-type-sm);
+  color: var(--gov-text-tertiary);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ─ Tablet + Mobile: switch to dropdown ─ */
+@media (max-width: 1024px) {
+  .gov-leadership-interactive {
+    grid-template-columns: 1fr;
+    gap: var(--gov-space-2xl);
+  }
+
+  .gov-tabs-nav {
+    display: none;
+  }
+
+  .gov-dropdown-wrapper {
+    display: block;
   }
 }
 

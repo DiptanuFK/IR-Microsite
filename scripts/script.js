@@ -259,3 +259,66 @@ if (impactPhoto) {
         setTimeout(() => counter.run(), HERO_COUNTER_DELAY + i * HERO_COUNTER_STAGGER);
     });
 }());
+
+// Leadership tabs + dropdown interaction (governance.html)
+(function () {
+    const tabs     = document.querySelectorAll('.gov-tab-btn');
+    const panels   = document.querySelectorAll('.gov-quote-panel');
+    const wrapper  = document.querySelector('.gov-dropdown-wrapper');
+    const trigger  = document.querySelector('.gov-dropdown-trigger');
+    const list     = document.querySelector('.gov-dropdown-list');
+    const items    = document.querySelectorAll('.gov-dropdown-item');
+    const selected = document.querySelector('.gov-dropdown-selected');
+    if (!tabs.length && !trigger) return;
+
+    function closeDropdown() {
+        if (!wrapper) return;
+        wrapper.classList.remove('is-open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        if (list)    list.setAttribute('aria-hidden', 'true');
+    }
+
+    function activate(index) {
+        const i = String(index);
+
+        tabs.forEach(t => {
+            t.classList.toggle('active', t.dataset.profile === i);
+            t.setAttribute('aria-selected', String(t.dataset.profile === i));
+        });
+        panels.forEach(p => p.classList.toggle('active', p.dataset.profile === i));
+        items.forEach(item => {
+            item.classList.toggle('active', item.dataset.profile === i);
+            item.setAttribute('aria-selected', String(item.dataset.profile === i));
+        });
+
+        if (selected) {
+            const src = document.querySelector(`.gov-dropdown-item[data-profile="${i}"]`);
+            if (src) {
+                selected.innerHTML = '';
+                selected.appendChild(src.querySelector('.gov-tab-avatar').cloneNode(true));
+                selected.appendChild(src.querySelector('.gov-tab-meta').cloneNode(true));
+            }
+        }
+    }
+
+    tabs.forEach(tab => tab.addEventListener('click', () => activate(tab.dataset.profile)));
+
+    if (trigger) {
+        trigger.addEventListener('click', () => {
+            const isOpen = wrapper.classList.toggle('is-open');
+            trigger.setAttribute('aria-expanded', String(isOpen));
+            if (list) list.setAttribute('aria-hidden', String(!isOpen));
+        });
+    }
+
+    items.forEach(item => {
+        item.addEventListener('click', () => {
+            activate(item.dataset.profile);
+            closeDropdown();
+        });
+    });
+
+    document.addEventListener('click', e => {
+        if (wrapper && !wrapper.contains(e.target)) closeDropdown();
+    });
+}());

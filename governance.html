@@ -58,33 +58,121 @@
 <!-- ETHICS & COMPLIANCE LEADERSHIP SECTION -->
 <section class="gov-leadership">
     <div class="gov-container">
-        <h2 class="gov-section-title">Ethics & Compliance Leadership</h2>
-        <div class="gov-profiles-grid">
-            <div class="gov-profile-card">
-                <div class="gov-profile-img"></div>
-                <h3>Leadership Profile 1</h3>
-                <p>Title / Position</p>
+        <h2 class="gov-section-title">Flipkart Leadership</h2>
+
+        <div class="gov-leadership-interactive">
+
+            <!-- Desktop: vertical tab list -->
+            <nav class="gov-tabs-nav" aria-label="Leadership profiles">
+                <button class="gov-tab-btn active" data-profile="0" aria-selected="true">
+                    <img class="gov-tab-avatar" src="images/Balaji.png" alt="Balaji Thiagarajan">
+                    <div class="gov-tab-meta">
+                        <span class="gov-tab-name">Balaji Thiagarajan</span>
+                        <span class="gov-tab-role">CPTO, Flipkart</span>
+                    </div>
+                </button>
+                <button class="gov-tab-btn" data-profile="1" aria-selected="false">
+                    <img class="gov-tab-avatar" src="images/Jane.png" alt="Jane Duke">
+                    <div class="gov-tab-meta">
+                        <span class="gov-tab-name">Jane Duke</span>
+                        <span class="gov-tab-role">CECO, Flipkart Group</span>
+                    </div>
+                </button>
+                <button class="gov-tab-btn" data-profile="2" aria-selected="false">
+                    <img class="gov-tab-avatar" src="images/kalyan.png" alt="Kalyan Krishnamoorthy">
+                    <div class="gov-tab-meta">
+                        <span class="gov-tab-name">Kalyan Krishnamoorthy</span>
+                        <span class="gov-tab-role">CEO, Flipkart Group</span>
+                    </div>
+                </button>
+                <button class="gov-tab-btn" data-profile="3" aria-selected="false">
+                    <img class="gov-tab-avatar" src="images/RaviIyer.png" alt="Ravi Iyer">
+                    <div class="gov-tab-meta">
+                        <span class="gov-tab-name">Ravi Iyer</span>
+                        <span class="gov-tab-role">CFO & Head of IR, Flipkart</span>
+                    </div>
+                </button>
+                <button class="gov-tab-btn" data-profile="4" aria-selected="false">
+                    <img class="gov-tab-avatar" src="images/SeemaNair.png" alt="Seema Nair">
+                    <div class="gov-tab-meta">
+                        <span class="gov-tab-name">Seema Nair</span>
+                        <span class="gov-tab-role">CHRO, Flipkart</span>
+                    </div>
+                </button>
+            </nav>
+
+            <!-- Tablet/Mobile: custom dropdown -->
+            <div class="gov-dropdown-wrapper">
+                <button class="gov-dropdown-trigger" aria-expanded="false" aria-haspopup="listbox">
+                    <div class="gov-dropdown-selected">
+                        <img class="gov-tab-avatar" src="images/Balaji.png" alt="Balaji Thiagarajan">
+                        <div class="gov-tab-meta">
+                            <span class="gov-tab-name">Balaji Thiagarajan</span>
+                            <span class="gov-tab-role">CPTO, Flipkart</span>
+                        </div>
+                    </div>
+                    <span class="gov-dropdown-arrow" aria-hidden="true">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                </button>
+                <ul class="gov-dropdown-list" role="listbox" aria-hidden="true">
+                    <li class="gov-dropdown-item active" role="option" data-profile="0" aria-selected="true">
+                        <img class="gov-tab-avatar" src="images/Balaji.png" alt="Balaji Thiagarajan">
+                        <div class="gov-tab-meta">
+                            <span class="gov-tab-name">Balaji Thiagarajan</span>
+                            <span class="gov-tab-role">CPTO, Flipkart</span>
+                        </div>
+                    </li>
+                    <li class="gov-dropdown-item" role="option" data-profile="1" aria-selected="false">
+                        <img class="gov-tab-avatar" src="images/Jane.png" alt="Jane Duke">
+                        <div class="gov-tab-meta">
+                            <span class="gov-tab-name">Jane Duke</span>
+                            <span class="gov-tab-role">CECO, Flipkart Group</span>
+                        </div>
+                    </li>
+                    <li class="gov-dropdown-item" role="option" data-profile="2" aria-selected="false">
+                        <img class="gov-tab-avatar" src="images/kalyan.png" alt="Kalyan Krishnamoorthy">
+                        <div class="gov-tab-meta">
+                            <span class="gov-tab-name">Kalyan Krishnamoorthy</span>
+                            <span class="gov-tab-role">CEO, Flipkart Group</span>
+                        </div>
+                    </li>
+                    <li class="gov-dropdown-item" role="option" data-profile="3" aria-selected="false">
+                        <img class="gov-tab-avatar" src="images/RaviIyer.png" alt="Ravi Iyer">
+                        <div class="gov-tab-meta">
+                            <span class="gov-tab-name">Ravi Iyer</span>
+                            <span class="gov-tab-role">CFO & Head of IR, Flipkart</span>
+                        </div>
+                    </li>
+                    <li class="gov-dropdown-item" role="option" data-profile="4" aria-selected="false">
+                        <img class="gov-tab-avatar" src="images/SeemaNair.png" alt="Seema Nair">
+                        <div class="gov-tab-meta">
+                            <span class="gov-tab-name">Seema Nair</span>
+                            <span class="gov-tab-role">CHRO, Flipkart</span>
+                        </div>
+                    </li>
+                </ul>
             </div>
-            <div class="gov-profile-card">
-                <div class="gov-profile-img"></div>
-                <h3>Leadership Profile 2</h3>
-                <p>Title / Position</p>
+
+            <!-- Quote panels (desktop: right column / mobile: below dropdown) -->
+            <div class="gov-quote-panels">
+                <div class="gov-quote-panel active" data-profile="0">
+                    <p class="gov-leadership-quote-text">"At the Flipkart Group, trust is the cornerstone of our business, and we earn it every day by choosing what is right over what is easy. Each click, each delivery, and every interaction is an act of faith from our customers and stakeholders. We don't just follow the law; we foster a culture that embraces doing business the right way and empowers every employee to innovate with courage and lead with uncompromising integrity."</p>
+                </div>
+                <div class="gov-quote-panel" data-profile="1">
+                    <p class="gov-leadership-quote-text">"At the Flipkart Group, trust is the cornerstone of our business, and we earn it every day by choosing what is right over what is easy. Each click, each delivery, and every interaction is an act of faith from our customers and stakeholders. We don't just follow the law; we foster a culture that embraces doing business the right way and empowers every employee to innovate with courage and lead with uncompromising integrity."</p>
+                </div>
+                <div class="gov-quote-panel" data-profile="2">
+                    <p class="gov-leadership-quote-text">"At the Flipkart Group, trust is the cornerstone of our business, and we earn it every day by choosing what is right over what is easy. Each click, each delivery, and every interaction is an act of faith from our customers and stakeholders. We don't just follow the law; we foster a culture that embraces doing business the right way and empowers every employee to innovate with courage and lead with uncompromising integrity."</p>
+                </div>
+                <div class="gov-quote-panel" data-profile="3">
+                    <p class="gov-leadership-quote-text">"At the Flipkart Group, trust is the cornerstone of our business, and we earn it every day by choosing what is right over what is easy. Each click, each delivery, and every interaction is an act of faith from our customers and stakeholders. We don't just follow the law; we foster a culture that embraces doing business the right way and empowers every employee to innovate with courage and lead with uncompromising integrity."</p>
+                </div>
+                <div class="gov-quote-panel" data-profile="4">
+                    <p class="gov-leadership-quote-text">"At the Flipkart Group, trust is the cornerstone of our business, and we earn it every day by choosing what is right over what is easy. Each click, each delivery, and every interaction is an act of faith from our customers and stakeholders. We don't just follow the law; we foster a culture that embraces doing business the right way and empowers every employee to innovate with courage and lead with uncompromising integrity."</p>
+                </div>
             </div>
-            <div class="gov-profile-card">
-                <div class="gov-profile-img"></div>
-                <h3>Leadership Profile 3</h3>
-                <p>Title / Position</p>
-            </div>
-            <div class="gov-profile-card">
-                <div class="gov-profile-img"></div>
-                <h3>Leadership Profile 4</h3>
-                <p>Title / Position</p>
-            </div>
-            <div class="gov-profile-card">
-                <div class="gov-profile-img"></div>
-                <h3>Leadership Profile 5</h3>
-                <p>Title / Position</p>
-            </div>
+
         </div>
     </div>
 </section>
