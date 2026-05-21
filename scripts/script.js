@@ -167,8 +167,22 @@ function addParallax(el, updateFn) {
         },
     });
 
-    // Card 0 is visible at rest (y:0, fully opaque); cards 1-4 wait below
-    gsap.set(cards[0],       { y: '0%', autoAlpha: 1 });
+    // Card 0 entrance: same bounce-in as the header, slightly delayed
+    gsap.from(cards[0], {
+        y: 60,
+        scale: 0.85,
+        opacity: 0,
+        duration: 0.9,
+        ease: 'back.out(1.7)',
+        delay: 0.15,
+        scrollTrigger: {
+            trigger: section,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+        },
+    });
+    // Cards 1-4 wait below
+
     gsap.set(cards.slice(1), { autoAlpha: 0 });
 
     // Phase 2 — Pinned stacking deck
