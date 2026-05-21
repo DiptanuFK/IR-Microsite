@@ -106,7 +106,6 @@
    ═══════════════════════════════════════ */
 .ceo-message {
   background: var(--color-bg);
-  padding: 0 5%;
   height: clamp(400px, 35.59vw, 615px);
   overflow: hidden;
   justify-content: flex-start;
@@ -116,6 +115,15 @@
   width: 100%;
   position: relative;
   z-index: 1;
+}
+.ceo-card-container {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 5%;
+  align-self: stretch;
+  display: flex;
+  align-items: stretch;
 }
 .ceo-card {
   flex: 1 1 0;
@@ -209,9 +217,11 @@
 /* ── tablet breakpoint ── */
 @media (max-width: 1024px) {
   .ceo-message {
-    padding: 24px 3%;
     height: auto;
     display: inline-flex;
+  }
+  .ceo-card-container {
+    padding: 24px 3%;
   }
   .ceo-card {
     padding: 0;
@@ -304,7 +314,7 @@
 
 /* ── ceo mobile breakpoint ── */
 @media (max-width: 768px) {
-  .ceo-message { padding: 24px 2%; }
+  .ceo-card-container { padding: 24px 2%; }
 }
 
 /* ═══════════════════════════════════════
