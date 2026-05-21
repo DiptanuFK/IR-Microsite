@@ -60,7 +60,7 @@ body { background: var(--gov-bg-primary); }
 .gov-container {
   max-width: var(--gov-max-width);
   margin: 0 auto;
-  padding: 0 var(--gov-pad-x);
+  padding: 0 clamp(16px, 4vw, 160px);
 }
 
 /* ── HERO SECTION ── */
@@ -275,7 +275,7 @@ body { background: var(--gov-bg-primary); }
 
 /* ── FRAMEWORK SECTION ── */
 .gov-framework {
-  padding: var(--gov-pad-top) var(--gov-pad-x) var(--gov-pad-bottom);
+  padding: 0;
   background: var(--gov-bg-primary);
 }
 
@@ -295,7 +295,7 @@ body { background: var(--gov-bg-primary); }
 .gov-pillar-title {
   font-size: var(--gov-type-h2);
   font-weight: 700;
-  color: var(--gov-text-primary);
+  color: var(--gov-accent-navy);
   margin: 0 0 var(--gov-space-2xl) 0;
   line-height: var(--gov-leading-tight);
   padding-bottom: var(--gov-space-2xl);
