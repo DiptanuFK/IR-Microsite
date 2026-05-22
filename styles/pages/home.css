@@ -904,6 +904,7 @@
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   max-width: 100%;
+  justify-content: space-evenly;
 }
 .apart-tabs::-webkit-scrollbar {
   display: none;
@@ -931,10 +932,12 @@
   content: '';
   position: absolute;
   bottom: -1px;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 0;
-  height: 2px;
+  height: 4px;
   background: #f5c518;
+  border-radius: 999px;
   transition: width 0.2s;
 }
 
