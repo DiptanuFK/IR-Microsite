@@ -137,10 +137,9 @@ function addParallax(el, updateFn) {
     });
 }());
 
-// ── What Sets Us Apart — simple fade-in on scroll ────────────────────────────
+// ── What Sets Us Apart — header fade-in on scroll ────────────────────────────
 (function () {
     const header = document.querySelector('.apart-header h2');
-    const cards  = gsap.utils.toArray('.apart-card');
     if (!header) return;
 
     gsap.from(header, {
@@ -153,21 +152,6 @@ function addParallax(el, updateFn) {
             start: 'top 85%',
             toggleActions: 'play none none reverse',
         },
-    });
-
-    cards.forEach((card, i) => {
-        gsap.from(card, {
-            y: 40,
-            opacity: 0,
-            duration: 0.6,
-            ease: 'power2.out',
-            delay: i * 0.1,
-            scrollTrigger: {
-                trigger: card,
-                start: 'top 90%',
-                toggleActions: 'play none none reverse',
-            },
-        });
     });
 })();
 
@@ -336,4 +320,25 @@ if (impactPhoto) {
     document.addEventListener('click', e => {
         if (mobDropdown && !mobDropdown.contains(e.target)) closeMobDropdown();
     });
+}());
+
+// ── Apart tabs ────────────────────────────────────────────────────────────────
+(function () {
+  const tabs  = document.querySelectorAll('.apart-tab');
+  const cards = document.querySelectorAll('.apart-card');
+  if (!tabs.length || !cards.length) return;
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const idx = tab.dataset.tab;
+
+      tabs.forEach(t => t.classList.remove('apart-tab--active'));
+      tab.classList.add('apart-tab--active');
+
+      cards.forEach(c => c.classList.remove('apart-card--active'));
+
+      const target = document.querySelector(`.apart-card[data-card="${idx}"]`);
+      if (target) target.classList.add('apart-card--active');
+    });
+  });
 }());
