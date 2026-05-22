@@ -152,7 +152,7 @@ body { background: var(--gov-bg-primary); }
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: clamp(16px, 3vw, 64px);
-  max-width: 1920px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 5%;
 }
