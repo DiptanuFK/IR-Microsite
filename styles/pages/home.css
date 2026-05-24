@@ -322,63 +322,49 @@
    ═══════════════════════════════════════ */
 .advantages {
   position: relative;
-  height: clamp(530px, 53.2vw, 919px);
+  display: grid;
+  grid-template-columns: clamp(205px, 32vw, 553px) repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  height: 100dvh;
+  padding: clamp(109px, 10.9vw, 189px) 5% clamp(28px, 2.84vw, 49px);
   overflow: hidden;
 }
 
-.adv-bg-layer {
+/* ── Background: photo + gradient overlays via pseudo-elements ── */
+.advantages::before {
+  content: '';
   position: absolute;
   inset: 0;
+  z-index: 0;
+  background-image: url('../../images/advantages-photo.jpg');
+  background-size: cover;
+  background-position: center top;
   pointer-events: none;
 }
-.adv-bg-img {
+.advantages::after {
+  content: '';
   position: absolute;
-  left: 0;
-  top: clamp(-272px, -15.7vw, 0px);
-  width: 183.3%;
-  height: clamp(777px, 77.8vw, 1344px);
-  object-fit: cover;
-  object-position: center top;
-}
-.adv-bg-overlay {
-  position: absolute;
-  left: 0; bottom: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to top, #000 0%, #00000000 20%, #00000000 10%, rgba(0, 0, 0, 0) 100%);
-  z-index: 2;
-}
-.adv-bg-gradient {
-  position: absolute;
-  left: 0; top: 0;
-  width: 100%;
-  height: clamp(309px, 38.6vw, 666px);
-  background: linear-gradient(180deg, #000 0%, rgba(0,0,0,0.8) 34.768%, rgba(0,0,0,0) 72.147%);
-}
-
-.adv-people-layer {
-  position: absolute;
-  left: 40.8%;
-  top: 0;
-  width: 59.2%;
-  bottom: 0;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(to top, #000 0%, transparent 20%) bottom / 100% 100% no-repeat,
+    linear-gradient(180deg, #000 0%, rgba(0,0,0,0.8) 34.768%, transparent 72.147%) top / 100% clamp(309px, 38.6vw, 666px) no-repeat;
   pointer-events: none;
-  overflow: hidden;
-  margin-top: 3%;
-}
-.adv-people-img {
-  position: absolute;
-  right: 0; top: 0;
-  width: 100%; height: 100%;
-  object-fit: contain;
-  object-position: center top;
 }
 
+/* ── Heading — grid col 1, row 1 ── */
+.adv-heading-wrap {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: start;
+  display: flex;
+  align-items: center;
+  z-index: 3;
+}
+.adv-heading-text {
+  width: clamp(205px, 32vw, 553px);
+}
 .adv-heading {
-  position: absolute;
-  left: var(--page-pad-desktop);
-  top: clamp(109px, 10.9vw, 189px);
-  width: clamp(320px, 32vw, 553px);
   font-size: clamp(24px, 2.55vw, 44px);
   font-weight: 700;
   color: var(--color-text-light);
@@ -386,12 +372,32 @@
   margin: 0;
 }
 
-.adv-cards-wrapper {
-  position: absolute;
-  bottom: 0;
-  left: var(--page-pad-desktop);
-  right: var(--page-pad-desktop);
-  padding-bottom: clamp(28px, 2.84vw, 49px);
+/* ── People — grid col 2–3, rows 1–2, defines section height ── */
+.adv-people-container {
+  grid-column: 3 / 6;
+  grid-row: 1 / 3;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+.adv-people-inner {
+  width: 100%;
+}
+.adv-people-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center top;
+}
+
+/* ── Cards — grid col 1–3, row 2, overlaps image in col 2–3 ── */
+.adv-cards-outer {
+  grid-column: 1 / 6;
+  grid-row: 2;
+  align-self: end;
+  position: relative;
+  z-index: 3;
 }
 .adv-cards {
   display: grid;
@@ -399,33 +405,47 @@
   gap: clamp(14px, 1.39vw, 24px);
 }
 .adv-card {
-  background: var(--color-surface);
-  backdrop-filter: var(--blur-card);
-  -webkit-backdrop-filter: var(--blur-card);
+  position: relative;
+  isolation: isolate;
   border-radius: var(--radius-card);
   padding: clamp(18px, 1.74vw, 30px) clamp(22px, 2.26vw, 39px);
   height: clamp(140px, 14vw, 242px);
   overflow: hidden;
-  position: relative;
-  box-shadow: var(--shadow-card);
 }
-.adv-card h3 { font-size: clamp(18px, 1.74vw, 30px); font-weight: 500; color: var(--color-white); margin-bottom: clamp(10px, 1.16vw, 20px); }
-.adv-card p  { font-size: clamp(13px, 1.16vw, 20px); font-weight: 400; color: var(--color-text-muted); line-height: 1.5; }
+.adv-card-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: var(--color-surface);
+  backdrop-filter: var(--blur-card);
+  -webkit-backdrop-filter: var(--blur-card);
+  pointer-events: none;
+}
+.adv-card h3 { position: relative; z-index: 1; font-size: clamp(18px, 1.74vw, 30px); font-weight: 500; color: var(--color-white); margin-bottom: clamp(10px, 1.16vw, 20px); }
+.adv-card p  { position: relative; z-index: 1; font-size: clamp(13px, 1.16vw, 20px); font-weight: 400; color: var(--color-text-muted); line-height: 1.5; }
+.adv-card-shadow {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  box-shadow: var(--shadow-card);
+  pointer-events: none;
+}
 
-/* ── desktop-lg breakpoint ── */
+/* ── desktop-lg (≥1729px) ── */
 @media (min-width: 1729px) {
-  .advantages { height: clamp(919px, 35.9vw, 920px); }
-  .adv-bg-img {
-    top: clamp(-272px, -10.6vw, -272px);
-    height: clamp(1344px, 52.5vw, 1345px);
+  .advantages {
+    grid-template-columns: clamp(553px, 21.6vw, 554px) repeat(4, 1fr);
+    padding-top: clamp(189px, 7.4vw, 190px);
+    padding-bottom: clamp(49px, 1.91vw, 50px);
   }
-  .adv-bg-gradient { height: clamp(666px, 26vw, 667px); }
-  .adv-heading {
-    top: clamp(189px, 7.4vw, 190px);
-    width: clamp(553px, 21.6vw, 554px);
-    font-size: clamp(44px, 1.72vw, 45px);
+  .advantages::after {
+    background:
+      linear-gradient(to top, #000 0%, transparent 20%) bottom / 100% 100% no-repeat,
+      linear-gradient(180deg, #000 0%, rgba(0,0,0,0.8) 34.768%, transparent 72.147%) top / 100% clamp(666px, 26vw, 667px) no-repeat;
   }
-  .adv-cards-wrapper { padding-bottom: clamp(49px, 1.91vw, 50px); }
+  .adv-heading { font-size: clamp(44px, 1.72vw, 45px); }
   .adv-cards { gap: clamp(24px, 0.94vw, 25px); }
   .adv-card {
     height: clamp(242px, 9.45vw, 243px);
@@ -436,93 +456,43 @@
   .adv-card p  { font-size: clamp(20px, 0.78vw, 21px); }
 }
 
-/* ── desktop breakpoint ── */
-@media (max-width: 1440px) {
-  .advantages { height: clamp(700px, 53.2vw, 919px); }
-  .adv-people-layer { left: 44%; width: 56%; }
-}
-
-/* ── tablet breakpoint ── */
+/* ── small screen (≤1024px): 2-col grid, implicit rows ── */
 @media (max-width: 1024px) {
   .advantages {
-    position: relative;
-    height: auto;
-    overflow: hidden;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    padding: clamp(40px, 5vw, 60px) 5% clamp(24px, 3vw, 32px);
   }
-  .adv-bg-img { top: 0; width: 200%; height: auto; }
-  .adv-heading {
-    position: relative;
-    left: auto;
-    top: auto;
-    margin: clamp(40px, 4vw, 48px) var(--page-pad-tablet) clamp(28px, 3vw, 32px);
-    width: auto;
-    max-width: 460px;
-    font-size: clamp(20px, 3.2vw, 34px);
-  }
-  .adv-people-layer {
-    position: relative;
-    left: auto;
-    top: auto;
-    width: auto;
-    height: auto;
-    margin: 0 var(--page-pad-tablet);
-    aspect-ratio: 1587 / 1180;
-    overflow: hidden;
-    line-height: 0;
-  }
-  .adv-people-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center top;
-  }
-  .adv-cards-wrapper {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 10;
-    overflow-x: auto;
-    overflow-y: visible;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .adv-cards-wrapper::-webkit-scrollbar { display: none; }
-  .adv-cards {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 14px;
-    padding: 0 var(--page-pad-tablet);
-  }
-  .adv-card { flex: 0 0 72vw; max-width: 320px; height: auto; min-height: 130px; }
+  .advantages::before { top: 0; width: 200%; height: 100%; }
+
+  .adv-heading-wrap { grid-column: 1; grid-row: 1; }
+  .adv-heading-text { width: auto; max-width: 460px; }
+  .adv-heading { font-size: clamp(20px, 3.2vw, 34px); }
+
+  .adv-people-container { grid-column: 1 / 3; grid-row: 2; }
+  .adv-people-img { height: auto; }
+
+  .adv-cards-outer { grid-column: 1 / 3; grid-row: 3; align-self: auto; }
+  .adv-cards { grid-template-columns: 1fr; gap: 14px; }
+  .adv-card { height: auto; min-height: 130px; }
   .adv-card h3 { font-size: 18px; margin-bottom: 10px; }
   .adv-card p  { font-size: 13px; }
 }
 
-/* ── tablet-sm breakpoint ── */
+/* ── small screen sm (≤768px) ── */
 @media (max-width: 768px) {
-  .adv-people-layer { aspect-ratio: 1587 / 1180; }
-  .adv-heading {
-    margin: 40px var(--page-pad-tablet) 28px;
-    max-width: 380px;
-    font-size: clamp(20px, 4vw, 30px);
-  }
-  .adv-cards {
-    width: auto;
-    margin: 0 var(--page-pad-tablet);
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-  .adv-card { height: auto; min-height: 100px; border-radius: var(--radius-card); }
+  .adv-heading-text { max-width: 380px; }
+  .adv-heading { font-size: clamp(20px, 4vw, 30px); }
+  .adv-card { min-height: 100px; border-radius: var(--radius-card); }
   .adv-card h3 { font-size: 17px; }
   .adv-card p  { font-size: 13px; }
 }
 
-/* ── mobile-sm breakpoint ── */
+/* ── mobile-sm (≤425px) ── */
 @media (max-width: 425px) {
-  .adv-heading { margin-top: 32px; margin-bottom: 24px; max-width: 100%; font-size: clamp(15px, 5.5vw, 24px); }
+  .adv-heading { max-width: 100%; font-size: clamp(15px, 5.5vw, 24px); }
   .adv-cards  { gap: clamp(8px, 2.5vw, 10px); }
-  .adv-card   { border-radius: var(--adv-card-radius-sm); padding: clamp(12px, 3.5vw, 16px) clamp(14px, 4.5vw, 18px); min-height: clamp(80px, 22vw, 88px); }
+  .adv-card   { border-radius: var(--radius-sm); padding: clamp(12px, 3.5vw, 16px) clamp(14px, 4.5vw, 18px); min-height: clamp(80px, 22vw, 88px); }
   .adv-card h3 { font-size: clamp(13px, 3.5vw, 15px); margin-bottom: clamp(6px, 2vw, 8px); }
   .adv-card p  { font-size: clamp(11px, 3vw, 12px); }
 }
