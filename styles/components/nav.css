@@ -9,6 +9,7 @@
   flex-direction: column;
   align-items: center;
   padding: 20px 0 0;
+  pointer-events: none; /* transparent wrapper – only pill & dropdown capture events */
 }
 
 /* ── Pill ──
@@ -22,6 +23,7 @@
   width: 100%;
   max-width: 900px;
   height: 76px;
+  pointer-events: auto; /* re-enable clicks on the visible pill */
   background: var(--color-glass);
   backdrop-filter: var(--blur-card);
   -webkit-backdrop-filter: var(--blur-card);
