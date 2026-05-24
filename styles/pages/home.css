@@ -320,18 +320,24 @@
 /* ═══════════════════════════════════════
    ADVANTAGES (Empowering)
    ═══════════════════════════════════════ */
-.advantages {
+.advantages-wrapper {
   position: relative;
+  overflow: hidden;
+  height: 100dvh;
+  isolation: isolate;
+}
+.advantages {
   display: grid;
   grid-template-columns: clamp(205px, 32vw, 553px) repeat(4, 1fr);
   grid-template-rows: auto auto;
-  height: 100dvh;
-  padding: clamp(109px, 10.9vw, 189px) 5% clamp(28px, 2.84vw, 49px);
-  overflow: hidden;
+  max-width: 1920px;
+  margin: 0 auto;
+  height: 100%;
+  padding: clamp(16px, 5.08vw, 52px) 5% clamp(16px, 5.08vw, 52px);
 }
 
 /* ── Background: photo + gradient overlays via pseudo-elements ── */
-.advantages::before {
+.advantages-wrapper::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -341,7 +347,7 @@
   background-position: center top;
   pointer-events: none;
 }
-.advantages::after {
+.advantages-wrapper::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -445,10 +451,8 @@
 @media (min-width: 1729px) {
   .advantages {
     grid-template-columns: clamp(553px, 21.6vw, 554px) repeat(4, 1fr);
-    padding-top: clamp(189px, 7.4vw, 190px);
-    padding-bottom: clamp(49px, 1.91vw, 50px);
   }
-  .advantages::after {
+  .advantages-wrapper::after {
     background:
       linear-gradient(180deg, #000 0%, rgba(0,0,0,0.8) 34.768%, transparent 72.147%) top / 100% clamp(666px, 26vw, 667px) no-repeat;
   }
@@ -468,9 +472,9 @@
   .advantages {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
-    padding: clamp(40px, 5vw, 60px) 5% clamp(24px, 3vw, 32px);
+    padding: clamp(16px, 5.08vw, 52px) 5% clamp(16px, 5.08vw, 52px);
   }
-  .advantages::before { top: 0; width: 200%; height: 100%; }
+  .advantages-wrapper::before { top: 0; width: 200%; height: 100%; }
 
   .adv-heading-wrap { grid-column: 1 / 4; grid-row: 1; }
   .adv-heading-text { width: auto; max-width: 460px; }
