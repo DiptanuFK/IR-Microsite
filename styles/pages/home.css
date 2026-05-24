@@ -347,8 +347,16 @@
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(to top, #000 0%, transparent 20%) bottom / 100% 100% no-repeat,
     linear-gradient(180deg, #000 0%, rgba(0,0,0,0.8) 34.768%, transparent 72.147%) top / 100% clamp(309px, 38.6vw, 666px) no-repeat;
+  pointer-events: none;
+}
+
+/* ── Bottom-to-top fade — above people, below cards/heading ── */
+.adv-bottom-fade {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: linear-gradient(to top, #000 0%, transparent 20%);
   pointer-events: none;
 }
 
@@ -359,7 +367,7 @@
   align-self: start;
   display: flex;
   align-items: center;
-  z-index: 3;
+  z-index: 4;
 }
 .adv-heading-text {
   width: clamp(205px, 32vw, 553px);
@@ -397,7 +405,7 @@
   grid-row: 2;
   align-self: end;
   position: relative;
-  z-index: 3;
+  z-index: 4;
 }
 .adv-cards {
   display: grid;
@@ -442,7 +450,6 @@
   }
   .advantages::after {
     background:
-      linear-gradient(to top, #000 0%, transparent 20%) bottom / 100% 100% no-repeat,
       linear-gradient(180deg, #000 0%, rgba(0,0,0,0.8) 34.768%, transparent 72.147%) top / 100% clamp(666px, 26vw, 667px) no-repeat;
   }
   .adv-heading { font-size: clamp(44px, 1.72vw, 45px); }
@@ -469,7 +476,7 @@
   .adv-heading-text { width: auto; max-width: 460px; }
   .adv-heading { font-size: clamp(20px, 3.2vw, 34px); }
 
-  .adv-people-container { grid-column: 1 / 3; grid-row: 2; }
+  .adv-people-container { grid-column: 1 / 3; grid-row: 2 / 4; }
   .adv-people-img { height: auto; }
 
   .adv-cards-outer { grid-column: 1 / 3; grid-row: 3; align-self: auto; }
