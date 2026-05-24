@@ -415,7 +415,7 @@
 }
 .adv-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: clamp(14px, 1.39vw, 24px);
 }
 .adv-card {
@@ -484,7 +484,7 @@
   .adv-people-img { height: auto; }
 
   .adv-cards-outer { grid-column: 1 / 5; grid-row: 3; align-self: end; }
-  .adv-cards { grid-template-columns: 1fr; gap: 14px; }
+  .adv-cards { gap: 14px; }
   .adv-card { height: auto; min-height: 130px; }
   .adv-card h3 { font-size: 18px; margin-bottom: 10px; }
   .adv-card p  { font-size: 13px; }
