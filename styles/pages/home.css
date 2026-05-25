@@ -514,8 +514,8 @@
    ═══════════════════════════════════════ */
 .impact {
   background: var(--color-bg);
-  padding-top: clamp(65px, 6.5vw, 112px);
-  padding-bottom: clamp(65px, 6.5vw, 112px);
+  padding-top: 0;
+  padding-bottom: 0;
   --impact-card-radius:      clamp(16px, 1.39vw, 24px);
   --impact-chip-radius:      clamp(16px, 1.74vw, 30px);
   --impact-card-padding:     clamp(18px, 1.56vw, 27px);
@@ -529,8 +529,7 @@
   gap: var(--gutter);
   max-width: 1920px;
   margin: 0 auto;
-  padding-left: 5%;
-  padding-right: 5%;
+  padding: clamp(16px, 5.08vw, 52px) 5%;
 }
 
 .impact-photo-card {
@@ -781,8 +780,8 @@
 /* ── What Sets Us Apart — static grid ── */
 .apart {
   background: var(--color-bg);
-  padding-top: clamp(64px, 6vw, 112px);
-  padding-bottom: clamp(64px, 6vw, 112px);
+  padding-top: 0;
+  padding-bottom: 0;
 }
 .apart-sticky {
   display: flex;
@@ -790,8 +789,7 @@
   gap: clamp(32px, 3vw, 56px);
   max-width: 1920px;
   margin: 0 auto;
-  padding-left: 5%;
-  padding-right: 5%;
+  padding: clamp(16px, 5.08vw, 52px) 5%;
 }
 .apart-header {
   text-align: center;

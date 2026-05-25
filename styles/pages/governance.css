@@ -1133,6 +1133,195 @@ body { background: var(--gov-bg-primary); }
   color: #505050;
 }
 
+/* ── ENVIRONMENTAL SUSTAINABILITY SECTION ── */
+.gov-env-wrapper {
+  width: 100%;
+  background: var(--gov-bg-primary);
+}
+
+.gov-env {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 5%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gov-space-3xl);
+  box-sizing: border-box;
+}
+
+.gov-env-img-container {
+  display: flex;
+  width: 100%;
+  height: 400px;
+}
+
+.gov-env-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--gov-radius-xl);
+}
+
+.gov-env-content {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--gov-space-3xl);
+  box-sizing: border-box;
+}
+
+.gov-env-header-col {
+  flex: 1 1 280px;
+  width: 100%;
+  display: flex;
+  align-self: start;
+}
+
+.gov-env-heading {
+  font-size: var(--gov-type-h2);
+  font-weight: 700;
+  color: var(--gov-accent-navy);
+  margin: 0;
+  line-height: var(--gov-leading-tight);
+}
+
+.gov-env-body-col {
+  flex: 2 1 280px;
+  width: 100%;
+  display: flex;
+  align-self: start;
+}
+
+.gov-env-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gov-space-lg);
+  width: 100%;
+}
+
+.gov-env-body p {
+  font-size: var(--gov-type-body);
+  line-height: var(--gov-leading-relaxed);
+  color: var(--gov-text-primary);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .gov-env-img-container {
+    height: 140px;
+  }
+  .gov-env-img {
+    border-radius: var(--gov-radius-lg);
+  }
+}
+
+/* ── FLIPKART FOUNDATION SECTION ── */
+.gov-fdn-wrapper {
+  width: 100%;
+  background: var(--gov-bg-primary);
+}
+
+.gov-fdn {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: clamp(30px, 8vw, 50px) 5%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gov-space-3xl);
+  box-sizing: border-box;
+}
+
+.gov-fdn-img-container {
+  display: flex;
+  width: 100%;
+  height: 400px;
+}
+
+.gov-fdn-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--gov-radius-xl);
+}
+
+.gov-fdn-content {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--gov-space-3xl);
+  box-sizing: border-box;
+}
+
+.gov-fdn-header-col {
+  flex: 1 1 280px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gov-space-lg);
+  align-self: start;
+}
+
+.gov-fdn-heading {
+  font-size: var(--gov-type-h2);
+  font-weight: 700;
+  color: var(--gov-accent-navy);
+  margin: 0;
+  line-height: var(--gov-leading-tight);
+}
+
+.gov-fdn-subheader {
+  width: 100%;
+  display: flex;
+  align-self: start;
+}
+
+.gov-fdn-subheader p {
+  font-size: var(--gov-type-sm);
+  line-height: var(--gov-leading-relaxed);
+  color: var(--gov-text-tertiary);
+  margin: 0;
+}
+
+.gov-fdn-body-col {
+  flex: 2 1 280px;
+  width: 100%;
+  display: flex;
+  align-self: start;
+}
+
+.gov-fdn-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gov-space-lg);
+  width: 100%;
+}
+
+.gov-fdn-body p {
+  font-size: var(--gov-type-body);
+  line-height: var(--gov-leading-relaxed);
+  color: var(--gov-text-primary);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .gov-fdn-img-container {
+    height: 140px;
+  }
+  .gov-fdn-img {
+    border-radius: var(--gov-radius-lg);
+  }
+}
+
 /* ─ Tablet / Mobile: switch to dropdown layout ─ */
 @media (max-width: 1024px) {
   .ecl-desktop-row {
@@ -1164,4 +1353,3 @@ body { background: var(--gov-bg-primary); }
     font-size: clamp(11px, 2.5vw, 14px);
   }
 }
-
