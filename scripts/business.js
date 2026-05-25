@@ -27,6 +27,13 @@ const CONTENT_SWAP_LEAD = 0.6;    // next section triggers content swap when thi
 // .logo-entering { transform: scale(0.4); opacity: 0; transition: transform 0.45s cubic-bezier(0.34,1.56,0.64,1), opacity 0.35s ease; }
 // .logo-visible  { transform: scale(1);   opacity: 1; }
 
+// ── Device detection ─────────────────────────────────────────────────────────
+const isMobileDevice = /Mobi|Android|iPhone|iPad|iPod|IEMobile/i.test(navigator.userAgent) ||
+  (navigator.maxTouchPoints > 1 && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent));
+
+document.querySelector('#ui-cta span').textContent =
+  isMobileDevice ? 'Swipe up to explore' : 'Scroll to explore';
+
 const DATA = [
     { num: null,  logo: null,                           bullets: [], peek: 'images/Myntra%20BG.png' },
     { num: '01',  logo: 'images/myntra%20logo.svg',      imgStyle: 'width:23vh; height:auto; display:block;',  bullets: ['Leading Lifestyle destination for India','Differentiated offerings: Luxe (Premium), Mnow (Quick), Fwd (GenZ)','3K+ popular global brands, 1.5K+ D2C Brands'], peek: 'images/Shopsy%20BG.png' },
