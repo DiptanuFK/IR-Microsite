@@ -7,6 +7,7 @@ const HERO_COUNTER_STAGGER  = 100;   // ms — gap between each hero counter
 const PARALLAX_HERO         = 0.4;   // scroll fraction for hero bg
 const PARALLAX_ADV          = 0.15;  // center-offset fraction for adv bg
 const PARALLAX_IMPACT       = 0.15;  // center-offset fraction for impact photo
+const PARALLAX_GOV_IMG      = 0.10;  // center-offset fraction for gov section images
 const MOBILE_BREAKPOINT     = 768;   // px — below this, impact parallax disabled
 
 gsap.registerPlugin(ScrollTrigger);
@@ -287,6 +288,23 @@ if (impactPhoto) {
 
     document.addEventListener('click', e => {
         if (mobDropdown && !mobDropdown.contains(e.target)) closeMobDropdown();
+    });
+}());
+
+// Parallax on Environmental Sustainability + Foundation images (governance.html)
+(function () {
+    ['.gov-env-img', '.gov-fdn-img'].forEach(function (sel) {
+        const img = document.querySelector(sel);
+        if (!img) return;
+        const container = img.parentElement;
+        function update() {
+            const rect        = container.getBoundingClientRect();
+            const centerOffset = rect.top + rect.height / 2 - window.innerHeight / 2;
+            img.style.transform = 'translateY(' + (centerOffset * -PARALLAX_GOV_IMG) + 'px)';
+        }
+        window.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update, { passive: true });
+        update();
     });
 }());
 

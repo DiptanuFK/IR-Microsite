@@ -1152,16 +1152,21 @@ body { background: var(--gov-bg-primary); }
 
 .gov-env-img-container {
   display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--gov-radius-xl);
   width: 100%;
   height: 400px;
 }
 
 .gov-env-img {
   width: 100%;
-  height: 100%;
+  height: 140%;
   object-fit: cover;
   display: block;
-  border-radius: var(--gov-radius-xl);
+  flex-shrink: 0;
+  will-change: transform;
 }
 
 .gov-env-content {
@@ -1214,8 +1219,6 @@ body { background: var(--gov-bg-primary); }
 @media (max-width: 768px) {
   .gov-env-img-container {
     height: 140px;
-  }
-  .gov-env-img {
     border-radius: var(--gov-radius-lg);
   }
 }
@@ -1239,16 +1242,21 @@ body { background: var(--gov-bg-primary); }
 
 .gov-fdn-img-container {
   display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--gov-radius-xl);
   width: 100%;
   height: 400px;
 }
 
 .gov-fdn-img {
   width: 100%;
-  height: 100%;
+  height: 140%;
   object-fit: cover;
   display: block;
-  border-radius: var(--gov-radius-xl);
+  flex-shrink: 0;
+  will-change: transform;
 }
 
 .gov-fdn-content {
@@ -1316,8 +1324,6 @@ body { background: var(--gov-bg-primary); }
 @media (max-width: 768px) {
   .gov-fdn-img-container {
     height: 140px;
-  }
-  .gov-fdn-img {
     border-radius: var(--gov-radius-lg);
   }
 }
