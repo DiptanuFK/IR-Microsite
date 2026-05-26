@@ -314,17 +314,32 @@ if (impactPhoto) {
   const cards = document.querySelectorAll('.apart-card');
   if (!tabs.length || !cards.length) return;
 
+  let current = 0;
+  let autoTimer = null;
+  const INTERVAL = 5000;
+
+  function activate(idx) {
+    tabs.forEach(t => t.classList.remove('apart-tab--active'));
+    cards.forEach(c => c.classList.remove('apart-card--active'));
+    tabs[idx].classList.add('apart-tab--active');
+    const target = document.querySelector(`.apart-card[data-card="${idx}"]`);
+    if (target) target.classList.add('apart-card--active');
+    current = idx;
+  }
+
+  function startAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => {
+      activate((current + 1) % tabs.length);
+    }, INTERVAL);
+  }
+
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
-      const idx = tab.dataset.tab;
-
-      tabs.forEach(t => t.classList.remove('apart-tab--active'));
-      tab.classList.add('apart-tab--active');
-
-      cards.forEach(c => c.classList.remove('apart-card--active'));
-
-      const target = document.querySelector(`.apart-card[data-card="${idx}"]`);
-      if (target) target.classList.add('apart-card--active');
+      activate(Number(tab.dataset.tab));
+      startAuto(); // reset timer on manual click
     });
   });
+
+  startAuto();
 }());

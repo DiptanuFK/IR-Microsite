@@ -229,7 +229,7 @@ sections.forEach((sec, i) => {
 /* ── Scroll UI elements up with Minutes screen into footer ── */
 const uiEl = document.getElementById('ui');
 ScrollTrigger.create({
-    trigger: '#business-footer',
+    trigger: '#apart-business',
     start: 'top bottom',
     end: 'top top',
     scrub: true,

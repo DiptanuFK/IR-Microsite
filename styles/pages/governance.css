@@ -90,7 +90,7 @@ body { background: var(--gov-bg-primary); }
 .gov-hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(30, 30, 30, 0.8);
+  background: rgba(0, 0, 0, 0.6);
   z-index: 1;
 }
 

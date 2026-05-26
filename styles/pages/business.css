@@ -184,7 +184,9 @@
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.4s ease, transform 0.4s ease;
+  margin-bottom: clamp(24px, 0.8vh, 32px);
 }
+#ui-text li:last-child { margin-bottom: 0; }
 #ui-text li.vis { opacity: 1; transform: translateY(0); }
 
 /* Intro text (section 0) */
@@ -221,6 +223,9 @@
 }
 #ui-intro p.vis { opacity: 1; transform: translateY(0); }
 #ui-intro.exit {
+  position: fixed;
+  top: 30vh;
+  left: 10%;
   opacity: 0;
   transform: translateY(-32px);
   transition: opacity 0.4s ease, transform 0.4s ease;
