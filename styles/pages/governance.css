@@ -60,7 +60,6 @@ body { background: var(--gov-bg-primary); }
 .gov-leadership-container,
 .gov-vision-container,
 .gov-values-container,
-.gov-beliefs-container,
 .gov-integrity-container {
   width: 100%;
   padding-left: 0;
@@ -123,14 +122,14 @@ body { background: var(--gov-bg-primary); }
   position: relative;
   width: 100%;
   padding: clamp(30px, 8vw, 50px) 0;
-  background: linear-gradient(0deg, rgb(150, 174, 249) 0%, rgb(162, 184, 255) 25%, rgb(238, 241, 248) 100%);
+  background: var(--color-bg);
   overflow: hidden;
 }
 
 .gov-values-heading {
   font-size: var(--gov-type-h2);
   font-weight: 700;
-  color: #1642b9;
+  color: var(--color-accent);
   text-align: center;
   margin: 0 0 clamp(32px, 5vw, 72px) 0;
 }
@@ -166,16 +165,28 @@ body { background: var(--gov-bg-primary); }
   text-align: center;
   gap: clamp(16px, 2vw, 27px);
   padding: clamp(20px, 3vw, 30px) clamp(16px, 3vw, 44px);
-  background: linear-gradient(180deg, #E6ECFF 0%, #C5D3FF 100%);
-  backdrop-filter: blur(11.489px);
-  -webkit-backdrop-filter: blur(11.489px);
-  border: 5px solid rgba(255, 255, 255, 0.60);
-  border-radius: clamp(24px, 4vw, 64px);
-  box-shadow: 0 35px 59.4px -26px rgba(31, 75, 195, 0.30);
+  background: rgba(59, 59, 59, 0.14);
+  backdrop-filter: var(--blur-card);
+  -webkit-backdrop-filter: var(--blur-card);
+  border-radius: clamp(16px, 4vw, 32px);
+  box-shadow: var(--shadow-blue-inset);
+  overflow: hidden;
   justify-content: flex-start;
 }
 
+.gov-value-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(22, 66, 185, 1) 0%, rgba(16, 48, 134, 0.5) 50%, rgba(10, 30, 83, 0) 100%);
+}
+
 .gov-value-icon {
+  position: relative;
+  z-index: 1;
   width: clamp(72px, 9vw, 140px);
   height: clamp(72px, 9vw, 140px);
   flex-shrink: 0;
@@ -191,109 +202,15 @@ body { background: var(--gov-bg-primary); }
 }
 
 .gov-value-card h3 {
+  position: relative;
+  z-index: 1;
   font-size: clamp(15px, 1.6vw, 24px);
   font-weight: 500;
-  color: #000000;
+  color: var(--color-white);
   margin: 0;
   letter-spacing: 0.45px;
   line-height: 1.3;
   text-align: center;
-}
-
-/* ── BELIEFS SECTION ── */
-.gov-beliefs {
-  width: 100%;
-  padding-top: var(--gov-pad-top);
-  padding-bottom: var(--gov-pad-bottom);
-  padding-left: 0;
-  padding-right: 0;
-  background: var(--gov-bg-primary);
-}
-
-.gov-beliefs-container {
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding-left: 5%;
-  padding-right: 5%;
-}
-
-.gov-beliefs-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--gov-space-2xl);
-}
-
-.gov-belief-card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gov-space-xl);
-  padding: var(--gov-space-3xl);
-  background: var(--gov-bg-secondary);
-  border-radius: var(--gov-radius-lg);
-}
-
-.gov-beliefs-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gov-space-2xl);
-  align-items: center;
-}
-
-.gov-beliefs-title h2 {
-  font-size: var(--gov-type-h2);
-  font-weight: 700;
-  color: var(--color-navy);
-  margin: 0;
-  line-height: var(--gov-leading-tight);
-  text-align: left;
-}
-
-.gov-beliefs-content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gov-space-2xl);
-  align-items: flex-start;
-  text-align: left;
-}
-
-.gov-beliefs-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--gov-space-xl);
-}
-
-.gov-beliefs-list li {
-  font-size: var(--gov-type-body);
-  line-height: var(--gov-leading-relaxed);
-  color: var(--gov-text-primary);
-  padding-left: var(--gov-space-lg);
-  position: relative;
-}
-
-.gov-beliefs-list li::before {
-  content: '•';
-  position: absolute;
-  left: 0;
-  color: var(--gov-accent-blue);
-  font-weight: bold;
-  font-size: 1.5em;
-  line-height: 1;
-}
-
-.gov-beliefs-list a {
-  color: var(--gov-accent-blue);
-  text-decoration: none;
-  font-weight: 600;
-  border-bottom: 1px solid var(--gov-accent-blue);
-  transition: opacity 0.2s ease;
-}
-
-.gov-beliefs-list a:hover {
-  opacity: 0.8;
 }
 
 /* ── FRAMEWORK SECTION ── */
@@ -316,7 +233,7 @@ body { background: var(--gov-bg-primary); }
 .gov-section-title {
   font-size: var(--gov-type-h2);
   font-weight: 700;
-  color: var(--color-navy);
+  color: var(--color-accent);
   margin: 0 0 var(--gov-space-4xl) 0;
   text-align: center;
 }
@@ -639,7 +556,7 @@ body { background: var(--gov-bg-primary); }
 .gov-leadership {
   width: 100%;
   padding: var(--gov-pad-top) 0 var(--gov-pad-bottom);
-  background: var(--gov-bg-primary);
+  background: var(--color-bg);
 }
 
 /* ── FOOTER ── */
@@ -654,10 +571,6 @@ body { background: var(--gov-bg-primary); }
   .gov-values-grid {
     grid-template-columns: repeat(3, 1fr);
     padding: 0 5%;
-  }
-
-  .gov-beliefs-cards {
-    grid-template-columns: 1fr;
   }
 
   .gov-quotes-grid {
@@ -693,10 +606,6 @@ body { background: var(--gov-bg-primary); }
 
   .gov-vision-item {
     padding: var(--gov-space-2xl);
-  }
-
-  .gov-beliefs-col h2 {
-    font-size: var(--gov-type-h3);
   }
 
   .gov-pillar-header {
@@ -900,7 +809,7 @@ body { background: var(--gov-bg-primary); }
 .ecl-quote-card {
   position: relative;
   z-index: 1;
-  border-radius: clamp(28px, 4vw, 72px);
+  border-radius: var(--gov-radius-xl);
   background: linear-gradient(155deg, #93bcff 0%, #6ca5ff 18%, #468eff 36%, #2f7dfb 55%, #196cf7 75%);
   min-height: clamp(280px, 28vw, 525px);
   display: flex;
@@ -1136,7 +1045,7 @@ body { background: var(--gov-bg-primary); }
 /* ── ENVIRONMENTAL SUSTAINABILITY SECTION ── */
 .gov-env-wrapper {
   width: 100%;
-  background: var(--gov-bg-primary);
+  background: var(--color-bg);
 }
 
 .gov-env {
@@ -1157,7 +1066,7 @@ body { background: var(--gov-bg-primary); }
   overflow: hidden;
   border-radius: var(--gov-radius-xl);
   width: 100%;
-  height: 400px;
+  height: clamp(300px, 25vw, 400px);
 }
 
 .gov-env-img {
@@ -1190,7 +1099,7 @@ body { background: var(--gov-bg-primary); }
 .gov-env-heading {
   font-size: var(--gov-type-h2);
   font-weight: 700;
-  color: var(--gov-accent-navy);
+  color: var(--color-accent);
   margin: 0;
   line-height: var(--gov-leading-tight);
 }
@@ -1212,13 +1121,13 @@ body { background: var(--gov-bg-primary); }
 .gov-env-body p {
   font-size: var(--gov-type-body);
   line-height: var(--gov-leading-relaxed);
-  color: var(--gov-text-primary);
+  color: var(--color-white);
   margin: 0;
 }
 
 @media (max-width: 768px) {
   .gov-env-img-container {
-    height: 140px;
+    height: clamp(140px, 36vw, 300px);
     border-radius: var(--gov-radius-lg);
   }
 }
@@ -1226,7 +1135,7 @@ body { background: var(--gov-bg-primary); }
 /* ── FLIPKART FOUNDATION SECTION ── */
 .gov-fdn-wrapper {
   width: 100%;
-  background: var(--gov-bg-primary);
+  background: var(--color-bg);
 }
 
 .gov-fdn {
@@ -1247,7 +1156,7 @@ body { background: var(--gov-bg-primary); }
   overflow: hidden;
   border-radius: var(--gov-radius-xl);
   width: 100%;
-  height: 400px;
+  height: clamp(300px, 25vw, 400px);
 }
 
 .gov-fdn-img {
@@ -1282,7 +1191,7 @@ body { background: var(--gov-bg-primary); }
 .gov-fdn-heading {
   font-size: var(--gov-type-h2);
   font-weight: 700;
-  color: var(--gov-accent-navy);
+  color: var(--color-accent);
   margin: 0;
   line-height: var(--gov-leading-tight);
 }
@@ -1317,13 +1226,13 @@ body { background: var(--gov-bg-primary); }
 .gov-fdn-body p {
   font-size: var(--gov-type-body);
   line-height: var(--gov-leading-relaxed);
-  color: var(--gov-text-primary);
+  color: var(--color-white);
   margin: 0;
 }
 
 @media (max-width: 768px) {
   .gov-fdn-img-container {
-    height: 140px;
+    height: clamp(140px, 36vw, 300px);
     border-radius: var(--gov-radius-lg);
   }
 }
