@@ -63,3 +63,16 @@
   margin-top: 0;
   line-height: 1.3;
 }
+
+.stat-lbl sup {
+  font-size: 0.65em;
+}
+
+.stats-footnote {
+  grid-column: 1 / -1;
+  text-align: right;
+  font-size: clamp(12px, 1.5vw, 14px);
+  color: var(--color-text-light);
+  margin-top: clamp(8px, 1.5vw, 16px);
+  opacity: 0.8;
+}
