@@ -6,7 +6,8 @@
   z-index: 1;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: clamp(16px, 3.13vw, 24px);
+  column-gap: clamp(16px, 3.13vw, 24px);
+  row-gap: 4px;
   padding: clamp(16px, 5.08vw, 52px) 5%;
   max-width: 1920px;
   margin: 0 auto;
@@ -17,7 +18,8 @@
   .stats-bar {
     grid-template-columns: repeat(2, 1fr);
     padding: clamp(16px, 5.08vw, 52px) 3%;
-    gap: clamp(16px, 3.13vw, 24px);
+    column-gap: clamp(16px, 3.13vw, 24px);
+    row-gap: 4px;
   }
 }
 
