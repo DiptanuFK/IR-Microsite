@@ -36,11 +36,11 @@ document.querySelector('#ui-cta span').textContent =
 
 const DATA = [
     { num: null,  logo: null,                           bullets: [], peek: 'images/Myntra%20BG.png' },
-    { num: '01',  logo: 'images/myntra%20logo.svg',      imgStyle: 'width:23vh; height:auto; display:block;',  bullets: ['Leading Lifestyle destination for India','Differentiated offerings: Luxe (Premium), Mnow (Quick), Fwd (GenZ)','3K+ popular global brands, 1.5K+ D2C Brands'], peek: 'images/Shopsy%20BG.png' },
-    { num: '02',  logo: 'images/Shopsy%20logo.svg',      imgStyle: 'width:23vh; height:auto; display:block;',  bullets: ['Hypervalue Leader – Affordable AND quality','Over 450 million downloads','Enables "king-size" living on a budget','Unparalleled market access for all sellers'], peek: 'images/cleartrip%20BG.png', peekTop: '0%' },
-    { num: '03',  logo: 'images/Cleartrip%20logo.svg',   imgStyle: 'width:23vh; height:auto; display:block;',  bullets: ['India\'s fastest-growing travel tech company.','Seamless, end-to-end booking for flights, hotels and trains','Industry-first offerings including ClearChoice and Visa Rejection Cover.'], peek: 'images/super%20money%20BG.png' },
-    { num: '04',  logo: 'images/Super-Money.svg',        imgStyle: 'width:23vh; height:auto; display:block;',  bullets: ['300Mn+ UPI Transactions monthly','Marketplace for loans, insurance','Bank-Grade Security: Fully ISO 27001 and PCI DSS certified'], peek: 'images/Minutes%20BG.png' },
-    { num: '05',  logo: 'images/Minutes%20logo.svg',     imgStyle: 'width:23vh; height:auto; display:block;',  bullets: ['1000+ Dark Stores','Delivery in Minutes'], peek: null },
+    { num: '01',  logo: 'images/myntra%20logo.svg',      bullets: ['Leading Lifestyle destination for India','Differentiated offerings: Luxe (Premium), Mnow (Quick), Fwd (GenZ)','3K+ popular global brands, 1.5K+ D2C Brands'], peek: 'images/Shopsy%20BG.png' },
+    { num: '02',  logo: 'images/Shopsy%20logo.svg',      bullets: ['Hypervalue Leader – Affordable AND quality','Over 450 million downloads','Enables "king-size" living on a budget','Unparalleled market access for all sellers'], peek: 'images/cleartrip%20BG.png', peekTop: '0%' },
+    { num: '03',  logo: 'images/Cleartrip%20logo.svg',   bullets: ['India\'s fastest-growing travel tech company.','Seamless, end-to-end booking for flights, hotels and trains','Industry-first offerings including ClearChoice and Visa Rejection Cover.'], peek: 'images/super%20money%20BG.png' },
+    { num: '04',  logo: 'images/Super-Money.svg',        bullets: ['300Mn+ UPI Transactions monthly','Marketplace for loans, insurance','Bank-Grade Security: Fully ISO 27001 and PCI DSS certified'], peek: 'images/Minutes%20BG.png' },
+    { num: '05',  logo: 'images/Minutes%20logo.svg',     bullets: ['1000+ Dark Stores','Delivery in Minutes'], peek: null },
 ];
 
 const sections      = Array.from({length: SECTION_COUNT}, (_, i) => document.getElementById('sec' + i));
@@ -142,7 +142,7 @@ function doSwitch(i) {
         uiLogoImg.src     = d.logo;
         uiLogoImg.alt     = d.num;
         uiLogoInner.classList.add('logo-entering');
-        uiLogoImg.style.cssText = d.imgStyle || 'width:auto; height:auto; display:block;';
+        uiLogoImg.style.cssText = 'width:80%; height:80%; object-fit:contain; display:block;';
 
         uiTextList.replaceChildren(...d.bullets.map(b => {
             const li = document.createElement('li');
