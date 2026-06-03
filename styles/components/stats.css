@@ -73,6 +73,6 @@
   text-align: right;
   font-size: clamp(12px, 1.5vw, 14px);
   color: var(--color-text-light);
-  margin-top: clamp(8px, 1.5vw, 16px);
+ 
   opacity: 0.8;
 }
