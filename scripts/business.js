@@ -282,7 +282,8 @@ window.addEventListener('keydown', e => {
     }
 });
 
+history.scrollRestoration = 'manual';
 window.scrollTo(0, 0);
-onScroll();
+requestAnimationFrame(onScroll);
 
 })();
