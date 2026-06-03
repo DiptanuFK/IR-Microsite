@@ -70,7 +70,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  font-size: clamp(44px, 3.01vw, 80px);
+  font-size: clamp(44px, 3.01vw, 60px);
 }
 
 /* ── tablet breakpoint ── */
