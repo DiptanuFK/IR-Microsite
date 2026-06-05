@@ -18,7 +18,7 @@ document.querySelectorAll('nav a').forEach(link => {
 // ── Constants ────────────────────────────────────────────────────────────────
 const SECTION_COUNT     = 6;
 const AUTO_ADVANCE_MS   = 60000;  // ms — time on intro before auto-scrolling to first brand
-const PARALLAX_DRIFT    = 0.15;   // fraction of vh for section bg parallax
+const PARALLAX_DRIFT    = 0.8;   // fraction of vh for section bg parallax
 const SWITCH_DELAY_MS   = 300;    // ms — num exit animation before content swap
 const PEEK_SCROLL_RANGE = 3;      // peek reveal tracks over this many viewport heights
 const CONTENT_SWAP_LEAD = 0.6;    // next section triggers content swap when this fraction from top
@@ -169,7 +169,7 @@ function scrollToSection(i) {
     if (!sec) return;
     gsap.to(smoother, {
         scrollTop: smoother.offset(sec, 'top top'),
-        duration: .2,
+        duration: 1,
         ease: 'power2.out',
         overwrite: 'auto',
     });
@@ -181,7 +181,7 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, ScrollSmoother);
 const smoother = ScrollSmoother.create({
     wrapper: '#smooth-wrapper',
     content: '#smooth-content',
-    smooth: .8,
+    smooth: 1.5,
     smoothTouch: 0.1,
     normalizeScroll: true,
 });
@@ -283,10 +283,31 @@ ScrollTrigger.create({
 
 window.addEventListener('keydown', e => {
     if (e.key === 'ArrowDown' || e.key === ' ') {
-        e.preventDefault(); scrollToSection(Math.min(current + 1, SECTION_COUNT - 1));
+        e.preventDefault();
+        if (current >= SECTION_COUNT - 1) {
+            gsap.to(smoother, {
+                scrollTop: smoother.scrollTop() + window.innerHeight,
+                duration: .6,
+                ease: 'power2.out',
+                overwrite: 'auto',
+            });
+        } else {
+            scrollToSection(Math.min(current + 1, SECTION_COUNT - 1));
+        }
     }
     if (e.key === 'ArrowUp') {
-        e.preventDefault(); scrollToSection(Math.max(current - 1, 0));
+        e.preventDefault();
+        const lastSectionBottom = sections[SECTION_COUNT - 1].offsetTop + sections[SECTION_COUNT - 1].offsetHeight;
+        if (smoother.scrollTop() > lastSectionBottom) {
+            gsap.to(smoother, {
+                scrollTop: Math.max(0, smoother.scrollTop() - window.innerHeight),
+                duration: .6,
+                ease: 'power2.out',
+                overwrite: 'auto',
+            });
+        } else {
+            scrollToSection(Math.max(current - 1, 0));
+        }
     }
 });
 
