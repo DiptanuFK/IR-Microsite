@@ -35,19 +35,18 @@ document.querySelector('#ui-cta span').textContent =
   isMobileDevice ? 'Swipe up to explore' : 'Scroll to explore';
 
 const DATA = [
-    { num: null,  logo: null,                           bullets: [], peek: 'images/Myntra%20BG.png' },
-    { num: '01',  logo: 'images/myntra%20logo.svg',      bullets: ['Leading Lifestyle destination for India','Differentiated offerings: Luxe (Premium), Mnow (Quick), Fwd (GenZ)','3K+ popular global brands, 1.5K+ D2C Brands'], peek: 'images/Shopsy%20BG.png' },
-    { num: '02',  logo: 'images/Shopsy%20logo.svg',      bullets: ['Hypervalue Leader – Affordable AND quality','Over 450 million downloads','Enables "king-size" living on a budget','Unparalleled market access for all sellers'], peek: 'images/cleartrip%20BG.png', peekTop: '0%' },
-    { num: '03',  logo: 'images/Cleartrip%20logo.svg',   bullets: ['India\'s fastest-growing travel tech company.','Seamless, end-to-end booking for flights, hotels and trains','Industry-first offerings including ClearChoice and Visa Rejection Cover.'], peek: 'images/super%20money%20BG.png' },
-    { num: '04',  logo: 'images/Super-Money.svg',        bullets: ['300Mn+ UPI Transactions monthly','Marketplace for loans, insurance','Bank-Grade Security: Fully ISO 27001 and PCI DSS certified'], peek: 'images/Minutes%20BG.png' },
-    { num: '05',  logo: 'images/Minutes%20logo.svg',     bullets: ['1000+ Dark Stores','Delivery in Minutes'], peek: null },
+    { logo: null,                           bullets: [] },
+    { logo: 'images/myntra%20logo.svg',     bullets: ['Leading Lifestyle destination for India','Differentiated offerings: Luxe (Premium), Mnow (Quick), Fwd (GenZ)','3K+ popular global brands, 1.5K+ D2C Brands'] },
+    { logo: 'images/Shopsy%20logo.svg',     bullets: ['Hypervalue Leader – Affordable AND quality','Over 450 million downloads','Enables "king-size" living on a budget','Unparalleled market access for all sellers'] },
+    { logo: 'images/Cleartrip%20logo.svg',  bullets: ['India\'s fastest-growing travel tech company.','Seamless, end-to-end booking for flights, hotels and trains','Industry-first offerings including ClearChoice and Visa Rejection Cover.'] },
+    { logo: 'images/Super-Money.svg',       bullets: ['300Mn+ UPI Transactions monthly','Marketplace for loans, insurance','Bank-Grade Security: Fully ISO 27001 and PCI DSS certified'] },
+    { logo: 'images/Minutes%20logo.svg',    bullets: ['1000+ Dark Stores','Delivery in Minutes'] },
 ];
 
 const sections      = Array.from({length: SECTION_COUNT}, (_, i) => document.getElementById('sec' + i));
 const bgs           = Array.from({length: SECTION_COUNT}, (_, i) => document.getElementById('bg' + i));
 const uiLine        = document.getElementById('ui-line');
 const uiLineFill    = document.getElementById('ui-line-fill');
-const uiNum         = document.getElementById('ui-num');
 const uiLogo        = document.getElementById('ui-logo');
 const uiLogoInner   = document.getElementById('ui-logo-inner');
 const uiLogoImg     = document.getElementById('ui-logo-img');
@@ -55,12 +54,9 @@ const uiIntro       = document.getElementById('ui-intro');
 const uiText        = document.getElementById('ui-text');
 const uiTextList    = uiText ? uiText.querySelector('ul') : null;
 const uiCtaIcon     = document.getElementById('ui-cta-icon');
-const uiPeek        = document.getElementById('ui-peek');
-const uiPeekImg     = document.getElementById('ui-peek-img');
-const uiPeekBlocker = document.getElementById('ui-peek-blocker');
 
 // Guard — bail out if critical elements are missing
-if (!sections[0] || !uiLine || !uiNum || !uiLogo || !uiText || !uiLogoInner || !uiPeekBlocker) return;
+if (!sections[0] || !uiLine || !uiLogo || !uiText || !uiLogoInner) return;
 
 let current      = -1;
 let pending      = -1;
@@ -76,9 +72,6 @@ function switchTo(i) {
     switchTimers.forEach(t => clearTimeout(t));
     switchTimers = [];
 
-    uiNum.classList.remove('vis');
-    uiNum.classList.add('exit');
-
     switchTimers.push(setTimeout(() => doSwitch(i), SWITCH_DELAY_MS));
 }
 
@@ -89,19 +82,15 @@ function doSwitch(i) {
     pending = i;
     const d = DATA[i];
 
-    uiNum.classList.remove('exit');
     uiLogo.classList.remove('vis');
     uiLogoInner.classList.remove('logo-visible', 'logo-entering');
     uiLogoImg.style.cssText = '';
     uiTextList.querySelectorAll('li').forEach(li => li.classList.remove('vis'));
     uiIntro.querySelectorAll('p').forEach(p => p.classList.remove('vis'));
-    uiPeekBlocker.style.height = '100%';
 
     if (i === 0) {
         uiEl.classList.add('ui--intro');
-        uiEl.classList.remove('ui--brand');
         uiLine.classList.add('ui-hidden');
-        uiNum.classList.add('ui-hidden');
         uiLogo.classList.add('ui-hidden');
         uiText.classList.add('ui-hidden');
         uiIntro.classList.remove('ui-hidden');
@@ -113,20 +102,16 @@ function doSwitch(i) {
             uiCtaIcon.classList.add('morph-in');
             setTimeout(() => uiCtaIcon.classList.remove('morph-in'), 200);
         }, 200);
-        uiPeekImg.src = d.peek;
-        uiPeek.classList.remove('ui-hidden');
         switchTimers.push(setTimeout(() => document.getElementById('ip0').classList.add('vis'), 150));
         switchTimers.push(setTimeout(() => document.getElementById('ip1').classList.add('vis'), 450));
         stopAuto();
         startAuto();
     } else {
-        uiEl.classList.add('ui--brand');
         uiEl.classList.remove('ui--intro');
         uiIntro.classList.add('exit');
         setTimeout(() => uiIntro.classList.add('ui-hidden'), 400);
 
         uiLine.classList.remove('ui-hidden');
-        uiNum.classList.remove('ui-hidden');
         uiLogo.classList.remove('ui-hidden');
         uiText.classList.remove('ui-hidden');
         uiCtaIcon.classList.add('morph-out');
@@ -138,9 +123,8 @@ function doSwitch(i) {
         }, 200);
         stopAuto();
 
-        uiNum.textContent = d.num;
-        uiLogoImg.src     = d.logo;
-        uiLogoImg.alt     = d.num;
+        uiLogoImg.src = d.logo;
+        uiLogoImg.alt = '';
         uiLogoInner.classList.add('logo-entering');
         uiLogoImg.style.cssText = 'width:80%; height:80%; object-fit:contain; display:block;';
 
@@ -150,16 +134,6 @@ function doSwitch(i) {
             return li;
         }));
 
-        if (d.peek) {
-            uiPeekImg.src             = d.peek;
-            uiPeekImg.style.top       = d.peekTop || '50%';
-            uiPeekImg.style.transform = d.peekTop ? 'translate(-50%, 0)' : 'translate(-50%, -50%)';
-            uiPeek.classList.remove('ui-hidden');
-        } else {
-            uiPeek.classList.add('ui-hidden');
-        }
-
-        switchTimers.push(setTimeout(() => uiNum.classList.add('vis'), 80));
         switchTimers.push(setTimeout(() => uiLogo.classList.add('vis'), 100));
         switchTimers.push(setTimeout(() => {
             uiLogoInner.classList.remove('logo-entering');
@@ -171,10 +145,6 @@ function doSwitch(i) {
     }
 }
 
-function updatePeek(t) {
-    uiPeekBlocker.style.height = (100 * (1 - t)) + '%';
-}
-
 function updateLine(t) {
     uiLineFill.style.width = (t * 100) + '%';
 }
@@ -183,7 +153,6 @@ function startAuto() {
     autoStart = performance.now();
     function tick(now) {
         const t = Math.min((now - autoStart) / AUTO_ADVANCE_MS, 1);
-        updatePeek(t);
         updateLine(t);
         if (t >= 1) { scrollToSection(1); return; }
         autoRaf = requestAnimationFrame(tick);
@@ -240,7 +209,7 @@ ScrollTrigger.create({
     onEnterBack: () => {},
 });
 
-/* ── Scroll-based content swap + line + peek ── */
+/* ── Scroll-based content swap + line ── */
 function onScroll() {
     const sy = window.scrollY;
     const vh = window.innerHeight;
@@ -252,14 +221,6 @@ function onScroll() {
         const exit  = next ? next.offsetTop - vh * CONTENT_SWAP_LEAD : Infinity;
         if (sy >= enter && sy < exit && current !== i) switchTo(i);
     });
-
-    /* Peek: tracks next BG rising */
-    if (current >= 1 && current <= SECTION_COUNT - 2 && sections[current + 1]) {
-        const nextTop   = sections[current + 1].offsetTop;
-        const peekStart = nextTop - vh;
-        const t = Math.max(0, Math.min(1, (sy - peekStart) / (vh * PEEK_SCROLL_RANGE)));
-        updatePeek(t);
-    }
 
     /* Global line progress */
     const start   = sections[1].offsetTop;
