@@ -168,9 +168,9 @@ function scrollToSection(i) {
     const sec = sections[i];
     if (!sec) return;
     gsap.to(window, {
-        duration: 1.2,
+        duration: .2,
         scrollTo: { y: sec, autoKill: false },
-        ease: 'power2.inOut',
+        ease: 'power2.Out',
         overwrite: 'auto',
     });
 }
@@ -187,7 +187,7 @@ sections.forEach((sec, i) => {
         trigger: sec,
         start: 'top top',
         end: () => `+=${window.innerHeight * PEEK_SCROLL_RANGE}`,
-        scrub: true,
+        scrub: .5,
         onUpdate: self => {
             const maxDrift = window.innerHeight * PARALLAX_DRIFT;
             gsap.set(bg, { y: -self.progress * maxDrift });
