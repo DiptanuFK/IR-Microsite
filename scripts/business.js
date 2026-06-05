@@ -167,16 +167,37 @@ function stopAuto() {
 function scrollToSection(i) {
     const sec = sections[i];
     if (!sec) return;
-    gsap.to(window, {
+    gsap.to(smoother, {
+        scrollTop: smoother.offset(sec, 'top top'),
         duration: .2,
-        scrollTo: { y: sec, autoKill: false },
-        ease: 'power2.Out',
+        ease: 'power2.out',
         overwrite: 'auto',
     });
 }
 
 /* ── GSAP ── */
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, ScrollSmoother);
+
+const smoother = ScrollSmoother.create({
+    wrapper: '#smooth-wrapper',
+    content: '#smooth-content',
+    smooth: .8,
+    smoothTouch: 0.1,
+    normalizeScroll: true,
+});
+
+/* Pin each panel — replaces CSS position:sticky (incompatible with ScrollSmoother) */
+const panels = Array.from({length: SECTION_COUNT}, (_, i) => document.getElementById('panel' + i));
+panels.forEach((panel, i) => {
+    if (!panel || !sections[i]) return;
+    ScrollTrigger.create({
+        trigger: sections[i],
+        start: 'top top',
+        end: 'bottom top',
+        pin: panel,
+        pinSpacing: false,
+    });
+});
 
 /* Parallax per section */
 sections.forEach((sec, i) => {
@@ -195,23 +216,47 @@ sections.forEach((sec, i) => {
     });
 });
 
-/* ── Scroll UI elements up with Minutes screen into footer ── */
+
+/* ── UI content fades out as Minutes section exits ── */
 const uiEl = document.getElementById('ui');
-ScrollTrigger.create({
-    trigger: '#apart-business',
-    start: 'top bottom',
-    end: 'top top',
-    scrub: true,
-    onUpdate: self => {
-        gsap.set(uiEl, { y: -self.progress * window.innerHeight });
+const uiContent = document.getElementById('ui-content');
+
+gsap.to(uiContent, {
+    opacity: 0,
+    ease: 'none',
+    scrollTrigger: {
+        trigger: sections[SECTION_COUNT - 1],
+        start: 'bottom bottom',
+        end: 'bottom center',
+        scrub: true,
     },
-    onLeave:     () => gsap.set(uiEl, { y: -window.innerHeight }),
-    onEnterBack: () => {},
+});
+
+gsap.to('#bg5-overlay', {
+    opacity: 1,
+    ease: 'none',
+    scrollTrigger: {
+        trigger: '#apart-business',
+        start: 'top bottom',
+        end: 'top 60%',
+        scrub: true,
+    },
+});
+
+gsap.to(uiEl, {
+    opacity: 0,
+    ease: 'none',
+    scrollTrigger: {
+        trigger: '#apart-business',
+        start: 'top bottom',
+        end: 'top 60%',
+        scrub: true,
+    },
 });
 
 /* ── Scroll-based content swap + line ── */
 function onScroll() {
-    const sy = window.scrollY;
+    const sy = smoother.scrollTop();
     const vh = window.innerHeight;
 
     sections.forEach((sec, i) => {
@@ -229,10 +274,12 @@ function onScroll() {
     if (sy >= start) updateLine(globalT);
 }
 
-window.addEventListener('scroll', () => {
-    if (scrollRaf) return;
-    scrollRaf = requestAnimationFrame(() => { scrollRaf = null; onScroll(); });
-}, { passive: true });
+ScrollTrigger.create({
+    onUpdate: () => {
+        if (scrollRaf) return;
+        scrollRaf = requestAnimationFrame(() => { scrollRaf = null; onScroll(); });
+    },
+});
 
 window.addEventListener('keydown', e => {
     if (e.key === 'ArrowDown' || e.key === ' ') {
@@ -243,7 +290,7 @@ window.addEventListener('keydown', e => {
     }
 });
 
-window.scrollTo(0, 0);
+smoother.scrollTo(0, false);
 requestAnimationFrame(onScroll);
 
 })();

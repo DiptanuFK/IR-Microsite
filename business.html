@@ -50,6 +50,8 @@
     </div>
 </nav>
 
+<div id="smooth-wrapper"><div id="smooth-content">
+
 <!-- SCROLL TRACK: BGs only -->
 <div id="scroll-track">
 
@@ -85,7 +87,10 @@
 
     <div class="section" id="sec5">
         <div class="panel" id="panel5">
-            <div class="slide-bg" id="bg5"><img src="images/Minutes%20BG.png" alt=""></div>
+            <div class="slide-bg" id="bg5">
+                <img src="images/Minutes%20BG.png" alt="">
+                <div id="bg5-overlay"></div>
+            </div>
         </div>
     </div>
 
@@ -198,10 +203,14 @@
     </section>
 </div>
 
+</div></div><!-- /smooth-content /smooth-wrapper -->
+
 <!-- FIXED UI LAYER -->
 <div id="ui">
 
     <div id="ui-overlay"></div>
+
+    <div id="ui-content">
 
     <div id="ui-line"><div id="ui-line-fill"></div></div>
 
@@ -221,10 +230,13 @@
         <img id="ui-cta-icon" src="images/arrow-down.svg" alt="">
     </div>
 
+    </div><!-- /ui-content -->
+
 </div>
 
 <script src="scripts/gsap.min.js"></script>
 <script src="scripts/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollSmoother.min.js"></script>
 <script src="scripts/ScrollToPlugin.min.js"></script>
 <script src="scripts/nav.js"></script>
 <script src="scripts/script.js"></script>
