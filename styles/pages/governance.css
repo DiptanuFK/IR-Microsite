@@ -55,7 +55,7 @@
 }
 
 /* ── Base reset ── */
-body { background: var(--gov-bg-primary); }
+body { background: black; }
 
 .gov-leadership-container,
 .gov-vision-container,
@@ -561,7 +561,7 @@ body { background: var(--gov-bg-primary); }
 
 /* ── FOOTER ── */
 .footer {
-  background: var(--gov-bg-secondary);
+  background: black;
   border-top: 1px solid var(--gov-border-light);
   height: 200px;
 }
