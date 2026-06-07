@@ -967,6 +967,7 @@
 .story {
   background: var(--color-bg);
   padding: 0 0 clamp(40px, 4.6vw, 80px);
+  overflow: hidden;
 }
 .story > h2 {
   font-size: clamp(28px, 3vw, 52px);
@@ -977,22 +978,46 @@
   padding-left: calc(var(--col) + var(--gutter));
 }
 
-/* Scrollable track */
-.story-scroll-track {
-  display: flex;
-  gap: 24px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding: 0 calc(var(--col) + var(--gutter)) 16px;
-  scrollbar-width: none;
+/* Swiper container */
+.story-swiper {
+  overflow: visible;
+  padding: 0 calc(var(--col) + var(--gutter)) 80px;
 }
-.story-scroll-track::-webkit-scrollbar { display: none; }
+.story-swiper .swiper-slide {
+  width: clamp(280px, 26vw, 461px);
+}
+
+/* Pagination dots — below carousel */
+.story-swiper .swiper-pagination {
+  position: static;
+  margin-top: 20px;
+}
+.story-swiper .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.4);
+  opacity: 1;
+}
+.story-swiper .swiper-pagination-bullet-active {
+  background: #1162f2;
+}
+
+/* Nav arrows */
+.story-swiper .swiper-button-prev,
+.story-swiper .swiper-button-next {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  top: 35%;
+}
+.story-swiper .swiper-button-prev::after,
+.story-swiper .swiper-button-next::after {
+  font-size: 16px;
+  font-weight: 700;
+}
 
 /* Individual card */
 .story-card {
-  flex: 0 0 clamp(280px, 26vw, 461px);
-  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   gap: 41px;
