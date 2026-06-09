@@ -21,28 +21,24 @@ function animateCounter(el, duration) {
     const end     = parseFloat(match[2]);
     const suffix  = match[3];
     const isFloat = match[2].includes('.');
-    let raf;
+    const proxy   = { val: 0 };
+    let tween;
     return {
         run() {
-            cancelAnimationFrame(raf);
-            const startTime = performance.now();
-            function tick(now) {
-                const progress = Math.min((now - startTime) / duration, 1);
-                const eased    = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-                el.textContent = prefix + (isFloat ? (eased * end).toFixed(1) : Math.floor(eased * end)) + suffix;
-                if (progress < 1) raf = requestAnimationFrame(tick);
-                else el.textContent = target;
-            }
-            raf = requestAnimationFrame(tick);
+            if (tween) tween.kill();
+            proxy.val = 0;
+            tween = gsap.to(proxy, {
+                val: end,
+                duration: duration / 1000,
+                ease: 'expo.out',
+                onUpdate() {
+                    el.textContent = prefix + (isFloat ? proxy.val.toFixed(1) : Math.floor(proxy.val)) + suffix;
+                },
+                onComplete() { el.textContent = target; },
+            });
         },
-        reset() { cancelAnimationFrame(raf); el.textContent = target; },
+        reset() { if (tween) tween.kill(); el.textContent = target; },
     };
-}
-
-// ── Parallax helper ──────────────────────────────────────────────────────────
-function addParallax(el, updateFn) {
-    if (!el) return;
-    window.addEventListener('scroll', updateFn, { passive: true });
 }
 
 // Hero entrance — h1 lines then stat pills stagger in on load
@@ -125,11 +121,13 @@ function addParallax(el, updateFn) {
 })();
 
 
-// Parallax on hero bg
+// Parallax on hero bg — direct scroll listener avoids ScrollTrigger no-trigger edge cases
 const heroBg = document.querySelector('.hero-bg');
-addParallax(heroBg, () => {
-    heroBg.style.transform = `translateY(${window.scrollY * PARALLAX_HERO}px)`;
-});
+if (heroBg) {
+    const updateHeroBg = () => gsap.set(heroBg, { y: window.scrollY * PARALLAX_HERO });
+    updateHeroBg();
+    window.addEventListener('scroll', updateHeroBg, { passive: true });
+}
 
 // Impact stats — entrance + counter animations
 (function () {
@@ -179,28 +177,37 @@ addParallax(heroBg, () => {
 
 // Parallax on advantages bg
 const advBgImg = document.querySelector('.adv-bg-img');
-addParallax(advBgImg, () => {
-    const section     = advBgImg.closest('.advantages');
-    const rect        = section.getBoundingClientRect();
-    const centerOffset = rect.top + rect.height / 2 - window.innerHeight / 2;
-    advBgImg.style.transform = `translateY(calc(${centerOffset * -PARALLAX_ADV}px))`;
-});
+if (advBgImg) {
+    const advSection = advBgImg.closest('.advantages');
+    ScrollTrigger.create({
+        trigger: advSection,
+        start: 'top bottom',
+        end: 'bottom top',
+        onUpdate(self) {
+            gsap.set(advBgImg, {
+                y: (0.5 - self.progress) * (window.innerHeight + advSection.offsetHeight) * PARALLAX_ADV,
+            });
+        },
+    });
+}
 
 // Parallax on impact photo — disabled in single-column layout (≤768px)
 const impactPhoto = document.querySelector('.impact-photo-card img');
 if (impactPhoto) {
-    const updateImpactParallax = () => {
-        if (window.innerWidth <= MOBILE_BREAKPOINT) {
-            impactPhoto.style.transform = '';
-            return;
-        }
-        const card         = impactPhoto.closest('.impact-photo-card');
-        const rect         = card.getBoundingClientRect();
-        const centerOffset = rect.top + rect.height / 2 - window.innerHeight / 2;
-        impactPhoto.style.transform = `translate(-50%, calc(-50% + ${centerOffset * PARALLAX_IMPACT}px))`;
-    };
-    window.addEventListener('scroll', updateImpactParallax, { passive: true });
-    window.addEventListener('resize', updateImpactParallax, { passive: true });
+    const impactCard = impactPhoto.closest('.impact-photo-card');
+    gsap.matchMedia().add(`(min-width: ${MOBILE_BREAKPOINT + 1}px)`, () => {
+        gsap.set(impactPhoto, { xPercent: -50, yPercent: -50, x: 0, y: 0 });
+        const st = ScrollTrigger.create({
+            trigger: impactCard,
+            start: 'top bottom',
+            end: 'bottom top',
+            onUpdate(self) {
+                const offset = (0.5 - self.progress) * (window.innerHeight + impactCard.offsetHeight);
+                gsap.set(impactPhoto, { y: offset * PARALLAX_IMPACT });
+            },
+        });
+        return () => { st.kill(); gsap.set(impactPhoto, { clearProps: 'transform' }); };
+    });
 }
 
 // Hero stat counters — fire after GSAP pill animation completes
@@ -292,21 +299,21 @@ if (impactPhoto) {
 }());
 
 // Parallax on Environmental Sustainability + Foundation images (governance.html)
-(function () {
-    ['.gov-env-img', '.gov-fdn-img'].forEach(function (sel) {
-        const img = document.querySelector(sel);
-        if (!img) return;
-        const container = img.parentElement;
-        function update() {
-            const rect        = container.getBoundingClientRect();
-            const centerOffset = rect.top + rect.height / 2 - window.innerHeight / 2;
-            img.style.transform = 'translateY(' + (centerOffset * -PARALLAX_GOV_IMG) + 'px)';
-        }
-        window.addEventListener('scroll', update, { passive: true });
-        window.addEventListener('resize', update, { passive: true });
-        update();
+['.gov-env-img', '.gov-fdn-img'].forEach(sel => {
+    const img = document.querySelector(sel);
+    if (!img) return;
+    const container = img.parentElement;
+    ScrollTrigger.create({
+        trigger: container,
+        start: 'top bottom',
+        end: 'bottom top',
+        onUpdate(self) {
+            gsap.set(img, {
+                y: (0.5 - self.progress) * (window.innerHeight + container.offsetHeight) * PARALLAX_GOV_IMG,
+            });
+        },
     });
-}());
+});
 
 // ── Apart tabs ────────────────────────────────────────────────────────────────
 (function () {
