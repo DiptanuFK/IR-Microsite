@@ -176,6 +176,7 @@
 }
 .ceo-name  { align-self: stretch; color: var(--color-white);   font-size: 20px; font-weight: 400; line-height: 1.6; }
 .ceo-title { align-self: stretch; color: var(--color-text-muted); font-size: 16px; font-weight: 400; line-height: 1.6; }
+.ceo-word  { display: inline-block; }
 
 .ceo-img-container {
   width: clamp(474px, 35.76vw, 835px);
@@ -362,7 +363,7 @@
   position: absolute;
   inset: 0;
   z-index: 3;
-  background: linear-gradient(to top, #000 0%, #000 25%, transparent 50%);
+  background: linear-gradient(to top, #000 0%, #000 10%, transparent 30%);
   pointer-events: none;
 }
 

@@ -64,43 +64,73 @@ function animateCounter(el, duration) {
     }, '-=0.4');
 }());
 
-// CEO section — GSAP line-by-line fade-in on scroll
+// CEO section — scrub word reveal (desktop ≥1025px) + on-enter stagger (mobile ≤1024px)
 (function () {
-    const ceoContent = document.querySelector('.ceo-content');
-    if (!ceoContent) return;
+    const section = document.querySelector('.ceo-message');
+    if (!section) return;
 
-    const blockquote = ceoContent.querySelector('blockquote');
-    const name       = ceoContent.querySelector('.ceo-name');
-    const title      = ceoContent.querySelector('.ceo-title');
+    function splitWords(blockquote) {
+        const text = blockquote.innerText.trim();
+        blockquote.innerHTML = text.split(/\s+/).map(w => `<span class="ceo-word">${w}</span>`).join(' ');
+        return [...blockquote.querySelectorAll('.ceo-word')];
+    }
 
-    const words = blockquote.innerText.trim().split(' ');
-    blockquote.innerHTML = words.map(w => `<span class="ceo-word">${w}</span>`).join(' ');
+    const mm = gsap.matchMedia();
 
-    const allEls = [
-        ...blockquote.querySelectorAll('.ceo-word'),
-        name,
-        title,
-    ];
+    // Desktop: words reveal progressively as you scroll through the section
+    mm.add('(min-width: 1025px)', () => {
+        const blockquote = section.querySelector('.ceo-text blockquote');
+        const name  = section.querySelector('.ceo-text .ceo-name');
+        const title = section.querySelector('.ceo-text .ceo-title');
+        if (!blockquote) return;
 
-    gsap.set(allEls, { opacity: 0, y: 16 });
+        const words  = splitWords(blockquote);
+        const allEls = [...words, name, title];
 
-    ScrollTrigger.create({
-        trigger: ceoContent,
-        start: 'top 75%',
-        onEnter: () => {
-            gsap.to(allEls, {
-                opacity: 1,
-                y: 0,
-                duration: 0.5,
-                ease: 'power2.out',
-                stagger: 0.04,
-            });
-        },
-        onLeaveBack: () => {
-            gsap.set(allEls, { opacity: 0, y: 16 });
-        },
+        gsap.set(allEls, { opacity: 0.12 });
+
+        gsap.to(allEls, {
+            opacity: 1,
+            ease: 'none',
+            stagger: { each: 0.4, from: 'start' },
+            scrollTrigger: {
+                trigger: section,
+                start: 'top 80%',
+                end: 'bottom 70%',
+                scrub: 0.6,
+            },
+        });
+
+        return () => { gsap.set(allEls, { clearProps: 'opacity' }); };
+    });
+
+    // Mobile: staggered on-enter fade-up
+    mm.add('(max-width: 1024px)', () => {
+        const blockquote = section.querySelector('.ceo-text-card blockquote');
+        const name  = section.querySelector('.ceo-text-card .ceo-name');
+        const title = section.querySelector('.ceo-text-card .ceo-title');
+        if (!blockquote) return;
+
+        const words  = splitWords(blockquote);
+        const allEls = [...words, name, title];
+
+        gsap.set(allEls, { opacity: 0, y: 10 });
+
+        ScrollTrigger.create({
+            trigger: section.querySelector('.ceo-text-card'),
+            start: 'top 82%',
+            onEnter: () => {
+                gsap.to(allEls, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out', stagger: 0.025 });
+            },
+            onLeaveBack: () => {
+                gsap.set(allEls, { opacity: 0, y: 10 });
+            },
+        });
+
+        return () => { gsap.set(allEls, { clearProps: 'all' }); };
     });
 }());
+
 
 // ── What Sets Us Apart — header fade-in on scroll ────────────────────────────
 (function () {
@@ -190,6 +220,43 @@ if (advBgImg) {
         },
     });
 }
+
+// Advantages — heading fade-up + cards stagger entrance
+(function () {
+    const section = document.querySelector('.advantages');
+    if (!section) return;
+
+    const heading = section.querySelector('.adv-heading');
+    if (heading) {
+        gsap.from(heading, {
+            y: 40,
+            opacity: 0,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: heading,
+                start: 'top 85%',
+                toggleActions: 'play none none reverse',
+            },
+        });
+    }
+
+    const cards = section.querySelectorAll('.adv-card');
+    if (cards.length) {
+        gsap.from(cards, {
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+            stagger: 0.15,
+            scrollTrigger: {
+                trigger: section.querySelector('.adv-cards'),
+                start: 'top 82%',
+                toggleActions: 'play none none reverse',
+            },
+        });
+    }
+}());
 
 // Parallax on impact photo — disabled in single-column layout (≤768px)
 const impactPhoto = document.querySelector('.impact-photo-card img');
