@@ -113,7 +113,7 @@ function animateCounter(el, duration) {
             scrollTrigger: {
                 trigger: section,
                 start: 'top 75%',
-                end: 'center 55%',
+                end: 'center 65%',
                 scrub: 0.6,
                 onLeave:      startBlink,
                 onEnterBack:  stopBlink,
@@ -262,12 +262,24 @@ if (advBgImg) {
 
     const cards = section.querySelectorAll('.adv-card');
     if (cards.length) {
+        // No opacity on the card itself — opacity<1 on a parent breaks backdrop-filter on children
         gsap.from(cards, {
             y: 50,
-            opacity: 0,
             duration: 0.8,
             ease: 'power3.out',
             stagger: 0.15,
+            scrollTrigger: {
+                trigger: section.querySelector('.adv-cards'),
+                start: 'top 82%',
+                toggleActions: 'play none none reverse',
+            },
+        });
+        // Fade the text content instead
+        gsap.from(section.querySelectorAll('.adv-card h3, .adv-card p'), {
+            opacity: 0,
+            duration: 0.6,
+            ease: 'power2.out',
+            stagger: 0.08,
             scrollTrigger: {
                 trigger: section.querySelector('.adv-cards'),
                 start: 'top 82%',
