@@ -87,6 +87,23 @@ function animateCounter(el, duration) {
         const words  = splitWords(blockquote);
         const allEls = [...words, name, title];
 
+        const playBtn = section.querySelector('.ceo-play-col .ceo-play');
+        let blinkTween = null;
+
+        function startBlink() {
+            if (blinkTween || !playBtn) return;
+            blinkTween = gsap.fromTo(playBtn,
+                { opacity: 1 },
+                { opacity: 0.2, duration: 0.45, ease: 'power1.inOut', yoyo: true, repeat: 5,
+                  onComplete() { gsap.set(playBtn, { opacity: 1 }); blinkTween = null; } }
+            );
+        }
+
+        function stopBlink() {
+            if (blinkTween) { blinkTween.kill(); blinkTween = null; }
+            if (playBtn) gsap.set(playBtn, { opacity: 1 });
+        }
+
         gsap.set(allEls, { opacity: 0.12 });
 
         gsap.to(allEls, {
@@ -95,13 +112,15 @@ function animateCounter(el, duration) {
             stagger: { each: 0.4, from: 'start' },
             scrollTrigger: {
                 trigger: section,
-                start: 'top 80%',
-                end: 'bottom 70%',
+                start: 'top 75%',
+                end: 'center 55%',
                 scrub: 0.6,
+                onLeave:      startBlink,
+                onEnterBack:  stopBlink,
             },
         });
 
-        return () => { gsap.set(allEls, { clearProps: 'opacity' }); };
+        return () => { stopBlink(); gsap.set(allEls, { clearProps: 'opacity' }); };
     });
 
     // Mobile: staggered on-enter fade-up
