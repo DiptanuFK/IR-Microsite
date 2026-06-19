@@ -126,7 +126,7 @@ function doSwitch(i) {
         uiLogoImg.src = d.logo;
         uiLogoImg.alt = '';
         uiLogoInner.classList.add('logo-entering');
-        uiLogoImg.style.cssText = 'width:80%; height:80%; object-fit:contain; display:block;';
+        uiLogoImg.style.cssText = 'width:75%; height:50%; object-fit:contain; display:block;';
 
         uiTextList.replaceChildren(...d.bullets.map(b => {
             const li = document.createElement('li');

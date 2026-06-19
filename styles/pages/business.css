@@ -10,11 +10,11 @@
   --business-shell-pad-bottom: clamp(20px, 8vh, 80px);
   --business-shell-gap-x: clamp(20px, 3vw, 48px);
   --business-shell-gap-y: clamp(14px, 2.6vh, 28px);
-  --business-copy-size: clamp(24px, 2.2vw, 32px);
+  --business-copy-size: clamp(16px, 2.2vw, 24px);
   --business-copy-leading: clamp(1.5, 1.5 + 0.35vw, 2.0);
   --business-label-size: clamp(14px, 0.95vw, 18px);
-  --business-logo-width: clamp(168px, 26vw, 380px);
-  --business-logo-height: clamp(104px, 13vh, 150px);
+  --business-logo-width: clamp(152px, 26vw, 232px);
+  --business-logo-ratio: 2.4;
   --business-text-max: 52rem;
   --business-intro-max: 60rem;
   --business-mobile-copy-max: 42rem;
@@ -122,9 +122,9 @@
   bottom: calc(50vh + 2vh);
   left: 10%;
   width: min(100%, var(--business-logo-width));
-  height: var(--business-logo-height);
+  aspect-ratio: var(--business-logo-ratio);
   background: var(--color-white);
-  border-radius: var(--radius-card);
+  border-radius: clamp(24px, 1.7vw, 36px);
   overflow: hidden;
   transform-origin: center center;
   transform: scale(0.5);
@@ -153,7 +153,7 @@
   position: fixed;
   top: calc(50vh + 2vh);
   left: 10%;
-  width: min(100%, var(--business-text-max));
+  width: 50%;
   color: var(--color-white);
   font-size: var(--business-copy-size);
   font-weight: 400;
@@ -247,11 +247,12 @@
 }
 
 @media (max-width: 1024px) {
-  #ui-text  { width: 100%; }
+  #ui-text  { width: 50%; }
   #ui-intro { width: 100%; }
 }
 
 @media (max-width: 640px) {
-  #ui-text,
+  #ui-text  { width: 80%; max-width: none; }
   #ui-intro { max-width: var(--business-mobile-copy-max); }
+  #ui-logo  { width: min(58vw, 152px); }
 }
