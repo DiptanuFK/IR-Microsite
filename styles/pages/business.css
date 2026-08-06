@@ -11,10 +11,14 @@
   --business-shell-gap-x: clamp(20px, 3vw, 48px);
   --business-shell-gap-y: clamp(14px, 2.6vh, 28px);
   --business-copy-size: clamp(16px, 2.2vw, 24px);
-  --business-copy-leading: clamp(1.5, 1.5 + 0.35vw, 2.0);
+  --business-copy-leading: clamp(1.5, 1.5 + 0.35vw, 4.0);
   --business-label-size: clamp(14px, 0.95vw, 18px);
   --business-logo-width: clamp(152px, 26vw, 232px);
   --business-logo-ratio: 2.4;
+  --business-logo-height: calc(var(--business-logo-width) / var(--business-logo-ratio));
+  /* Available room between the top padding and the logo's top edge — keeps the
+     top-anchored media card (tablet/mobile) from ever overlapping the logo. */
+  --business-media-max-height: calc(48vh - var(--business-shell-pad-top) - var(--business-logo-height) - 16px);
   --business-text-max: 52rem;
   --business-intro-max: 60rem;
   --business-mobile-copy-max: 42rem;
@@ -26,7 +30,7 @@
   --business-panel-overlap: -70vh;
   --business-bg-height: 130vh;
   --business-footer-height: 2400px;
-  --business-overlay: rgba(0, 0, 0, 0.5);
+  --business-overlay: rgba(0, 0, 0, 0.8);
   --business-line-track: rgba(255, 255, 255, 0.18);
   --business-line-fill: rgba(255, 255, 255, 0.65);
   --business-footer-stop-1: rgba(0, 0, 0, 0);
@@ -153,7 +157,7 @@
   position: fixed;
   top: calc(50vh + 2vh);
   left: 10%;
-  width: 50%;
+  width: 40%;
   color: var(--color-white);
   font-size: var(--business-copy-size);
   font-weight: 400;
@@ -169,6 +173,59 @@
 #ui-text li:last-child { margin-bottom: 0; }
 #ui-text li.vis { opacity: 1; transform: translateY(0); }
 
+.btn-visit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: clamp(20px, 2.4vh, 32px);
+  background: var(--color-accent);
+  color: var(--color-text-body);
+  font-size: var(--business-label-size);
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  padding: 0 clamp(20px, 1.8vw, 28px);
+  height: clamp(40px, 3.2vw, 48px);
+  text-decoration: none;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: auto;
+}
+.btn-visit.vis { opacity: 1; transform: translateY(0); }
+
+/* Video / play-pause card */
+#ui-media {
+  position: fixed;
+  right: 12%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(360px, 36vw, 690px);
+  aspect-ratio: 690 / 470;
+  background: #202020;
+  border-radius: clamp(24px, 3vw, 47px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+#ui-media.vis { opacity: 1; }
+#ui-media-toggle {
+  width: clamp(64px, 8vw, 124px);
+  height: clamp(64px, 8vw, 124px);
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+#ui-media-toggle img { width: 100%; height: 100%; display: block; }
+
 /* Intro text (section 0) */
 #ui-intro {
   position: relative;
@@ -176,11 +233,10 @@
   color: var(--color-white);
   font-size: var(--business-copy-size);
   font-weight: 400;
-  line-height: var(--business-copy-leading);
 }
 #ui-intro p + p { margin-top: var(--business-intro-gap); }
 #ui-intro #ip0 { font-size: var(--font-6xl); font-weight: 700; line-height: 1.1; }
-#ui-intro #ip1 { line-height: var(--leading-loose); }
+#ui-intro #ip1 { line-height: 2.5; }
 .intro-logo-pill {
   display: inline-flex;
   align-items: center;
@@ -232,7 +288,6 @@
 #ui-cta img.morph-out { transform: scale(0); opacity: 0; }
 #ui-cta img.morph-in  { transform: scale(1); opacity: 1; }
 
-
 .ui-hidden {
   opacity: 0;
   pointer-events: none;
@@ -249,10 +304,28 @@
 @media (max-width: 1024px) {
   #ui-text  { width: 50%; }
   #ui-intro { width: 100%; }
+
+  /* Video card repositioned to top-center for tablet. Height (not width) is
+     the driving dimension so it shrinks to fit the space above the logo
+     instead of overlapping it; width follows from the aspect-ratio. */
+  #ui-media {
+    right: auto;
+    left: 50%;
+    top: var(--business-shell-pad-top);
+    bottom: auto;
+    transform: translateX(-50%);
+    width: auto;
+    height: clamp(160px, var(--business-media-max-height), 337px);
+  }
 }
 
 @media (max-width: 640px) {
+  :root { --business-logo-width: min(58vw, 152px); }
   #ui-text  { width: 80%; max-width: none; }
   #ui-intro { max-width: var(--business-mobile-copy-max); }
-  #ui-logo  { width: min(58vw, 152px); }
+  #ui-logo  { width: var(--business-logo-width); }
+
+  #ui-media {
+    height: clamp(120px, var(--business-media-max-height), 219px);
+  }
 }

@@ -54,6 +54,9 @@ const uiIntro       = document.getElementById('ui-intro');
 const uiText        = document.getElementById('ui-text');
 const uiTextList    = uiText ? uiText.querySelector('ul') : null;
 const uiCtaIcon     = document.getElementById('ui-cta-icon');
+const uiVisitBtn    = document.getElementById('ui-visit-btn');
+const uiMedia       = document.getElementById('ui-media');
+const uiMediaToggle = document.getElementById('ui-media-toggle');
 
 // Guard — bail out if critical elements are missing
 if (!sections[0] || !uiLine || !uiLogo || !uiText || !uiLogoInner) return;
@@ -87,12 +90,15 @@ function doSwitch(i) {
     uiLogoImg.style.cssText = '';
     uiTextList.querySelectorAll('li').forEach(li => li.classList.remove('vis'));
     uiIntro.querySelectorAll('p').forEach(p => p.classList.remove('vis'));
+    uiVisitBtn.classList.remove('vis');
+    uiMedia.classList.remove('vis');
 
     if (i === 0) {
         uiEl.classList.add('ui--intro');
         uiLine.classList.add('ui-hidden');
         uiLogo.classList.add('ui-hidden');
         uiText.classList.add('ui-hidden');
+        uiMedia.classList.add('ui-hidden');
         uiIntro.classList.remove('ui-hidden');
         uiIntro.classList.remove('exit');
         uiCtaIcon.classList.add('morph-out');
@@ -114,6 +120,7 @@ function doSwitch(i) {
         uiLine.classList.remove('ui-hidden');
         uiLogo.classList.remove('ui-hidden');
         uiText.classList.remove('ui-hidden');
+        uiMedia.classList.remove('ui-hidden');
         uiCtaIcon.classList.add('morph-out');
         setTimeout(() => {
             uiCtaIcon.src = 'images/arrows-vertical.svg';
@@ -135,6 +142,7 @@ function doSwitch(i) {
         }));
 
         switchTimers.push(setTimeout(() => uiLogo.classList.add('vis'), 100));
+        switchTimers.push(setTimeout(() => uiMedia.classList.add('vis'), 100));
         switchTimers.push(setTimeout(() => {
             uiLogoInner.classList.remove('logo-entering');
             uiLogoInner.classList.add('logo-visible');
@@ -142,6 +150,7 @@ function doSwitch(i) {
         uiTextList.querySelectorAll('li').forEach((li, n) =>
             switchTimers.push(setTimeout(() => li.classList.add('vis'), 250 + n * 130))
         );
+        switchTimers.push(setTimeout(() => uiVisitBtn.classList.add('vis'), 250 + d.bullets.length * 130));
     }
 }
 
@@ -313,5 +322,10 @@ window.addEventListener('keydown', e => {
 
 smoother.scrollTo(0, false);
 requestAnimationFrame(onScroll);
+
+// ── Video card play/pause toggle (placeholder — no video source wired yet) ────
+uiMediaToggle?.addEventListener('click', () => {
+    uiMedia.classList.toggle('is-playing');
+});
 
 })();
